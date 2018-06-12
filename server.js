@@ -171,7 +171,7 @@ app.get('/printers/:category/table', function(req, res) {
   var jsonForTable = [];
   printers.forEach((element) => {
     if(element.category === printersCategory) {
-      jsonForTable = [element.name, element.building, element.experience, element.price, element.cuality, element.dimensions, element.value]
+      jsonForTable = [getImage(element.image, element.name, element.postlink), element.building, element.experience, element.price, element.cuality, element.dimensions, getValue(element.value)]
       matchedJsonCategory.push(jsonForTable);
     }
   })
@@ -192,3 +192,18 @@ app.listen(PORT, function () {
   console.log('Express served in the port ' + PORT)
   console.log('http://localhost:' + PORT)
 })
+
+function getImage(image, name, postlink) {
+  return `<div class='table-image' style='background:url(${image})  no-repeat center center; background-size: cover'><a href='${postlink}' class='table-link' target='_blank'>${name}</a></div>`
+}
+
+function getValue(value) {
+  let cssClass = 'medium';
+  if(value > 8) {
+    cssClass = 'high'
+  }
+  if(value < 6) {
+    cssClass = 'low'
+  }
+  return `<span class='score ${cssClass}'>${value}</span>`
+}

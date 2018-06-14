@@ -120,9 +120,9 @@ var printers = [{
   {
     name: 'Impresora 3D Anycubic Photon',
     category: 'profesional',
-    image: 'https://3dmakernow.com/wp-content/uploads/2018/05/414l5cb72IL._SX425_.jpg',
-    link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B073DBZN8Z&linkId=47c1c6a569e92ccd9ecd966ce21180a3',
-    shortlink: 'https://amzn.to/2xHkSWL',
+    image: 'https://3dmakernow.com/wp-content/uploads/2018/05/201801201844010827.jpg',
+    link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B078TCT7P5&linkId=66042dbbed38ebf6b8656236749a17f3',
+    shortlink: 'https://amzn.to/2Htdb6i',
     postlink: 'https://3dmakernow.com/anycubic-photon-impresora-3d/',
     building: '-',
     experience: 'Avanzada',

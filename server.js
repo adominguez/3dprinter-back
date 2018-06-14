@@ -171,19 +171,17 @@ app.get('/printers/:category', function (req, res) {
 // GET /printers/:category/table
 app.get('/printers/:category/table', function (req, res) {
   var printersCategory = req.params.category;
-  var matchedJsonCategory = { "data": [
-    ['Impresora 3D', 'Montaje', 'Experiencia', 'Precio', 'Calidad', 'Dimensiones', 'Nota 3D MakerNow']
-  ]};
+  var matchedJsonCategory = { "data": []};
   var jsonForTable = [];
 
 
-  /*printers.forEach((element) => {
+  printers.forEach((element) => {
     if (element.category === printersCategory) {
 
       jsonForTable = [getImage(element.image, element.name, element.postlink), element.building, element.experience, element.price, element.cuality, element.dimensions, getValue(element.value)]
-      matchedJsonCategory.push(jsonForTable);
+      matchedJsonCategory.data.push(jsonForTable);
     }
-  })*/
+  })
 
   // res.status(404).send();
   if (matchedJsonCategory) {

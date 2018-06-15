@@ -6,6 +6,7 @@ var app = express();
 var PORT = process.env.PORT || 8000;
 
 var printers = [{
+    id: 'anpri3',
     name: 'Anycubic Prusa i3 Impresora 3D',
     category: 'kit',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/04/61mDMg6A-zL._SX425_.jpg',
@@ -20,6 +21,7 @@ var printers = [{
     value: '7'
   },
   {
+    id: 'ankoli',
     name: 'Anycubic Kossel Linear Plus',
     category: 'kit',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/201801051039328705.jpg',
@@ -34,6 +36,7 @@ var printers = [{
     value: '8'
   },
   {
+    id: '3dana6',
     name: 'Impresora 3D Anet A6',
     category: 'kit',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/7167OhjMPFL._SX425_.jpg',
@@ -48,6 +51,7 @@ var printers = [{
     value: '9'
   },
   {
+    id: '3dana8',
     name: 'Impresora 3D Anet A8',
     category: 'kit',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/61uZ-K4dBGL._SX425_.jpg',
@@ -62,6 +66,7 @@ var printers = [{
     value: '9'
   },
   {
+    id: 'gepri3',
     name: 'Geeetech Prusa I3 Pro B',
     category: 'kit',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/51btpEFWpFL._SX425_.jpg',
@@ -76,6 +81,7 @@ var printers = [{
     value: '6'
   },
   {
+    id: 'ani3me',
     name: 'Impresora 3D Anycubic I3 Mega',
     category: 'principiante',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/61OeIv3kdNL._SX425_.jpg',
@@ -90,6 +96,7 @@ var printers = [{
     value: '10'
   },
   {
+    id: 'crcr10',
     name: 'Impresora 3D Creality CR10',
     category: 'principiante',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/51ZdYvvZ9L._SX425_.jpg',
@@ -104,6 +111,7 @@ var printers = [{
     value: '9'
   },
   {
+    id: 'cren2d',
     name: 'Creality Ender 2 Desktop',
     category: 'principiante',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/414l5cb72IL._SX425_.jpg',
@@ -118,6 +126,7 @@ var printers = [{
     value: '9'
   },
   {
+    id: '3danph',
     name: 'Impresora 3D Anycubic Photon',
     category: 'profesional',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/201801201844010827.jpg',
@@ -163,6 +172,27 @@ app.get('/printers/:category', function (req, res) {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     res.json(matchedJsonCategory)
+  } else {
+    res.status(404).send();
+  }
+});
+
+// GET /printer/:id
+app.get('/printer/:id', function (req, res) {
+  var printersId = req.params.id;
+  var matchedJsonId = [];
+  printers.forEach((element) => {
+    if (element.id === printersId) {
+      matchedJsonId.push(element);
+    }
+  })
+
+  // res.status(404).send();
+  if (matchedJsonId) {
+    res.header('Access-Control-Allow-Origin', "*"); // TODO - Make this more secure!!
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+    res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
+    res.json(matchedJsonId)
   } else {
     res.status(404).send();
   }

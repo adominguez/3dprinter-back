@@ -14,7 +14,7 @@ var printers = [{
     shortlink: 'https://amzn.to/2sGEfJN',
     postlink: 'http://3dmakernow.com/anycubic-prusa-i3-impresora-3d',
     building: '10 horas',
-    experience: 'Intermedia',
+    dificult: 'Intermedia',
     price: '0',
     quality: 'Buena',
     dimensions: '475 x 410 x 460mm',
@@ -29,7 +29,7 @@ var printers = [{
     shortlink: 'https://amzn.to/2JdJeNz',
     postlink: 'https://3dmakernow.com/anycubic-kossel-linear-plus/',
     building: '05 horas',
-    experience: 'Basica',
+    dificult: 'Basica',
     price: '0',
     quality: 'Buena',
     dimensions: '300mm',
@@ -44,7 +44,7 @@ var printers = [{
     shortlink: 'https://amzn.to/2JdJwDK',
     postlink: 'https://3dmakernow.com/impresora-3d-anet-a6-opiniones/',
     building: '08 horas',
-    experience: 'Basica',
+    dificult: 'Basica',
     price: '0',
     quality: 'Buena',
     dimensions: '400 x 500 x 400mm',
@@ -59,7 +59,7 @@ var printers = [{
     shortlink: 'https://amzn.to/2xETrgA',
     postlink: 'https://3dmakernow.com/impresora-3d-anet-a8-opiniones/',
     building: '08 horas',
-    experience: 'Basica',
+    dificult: 'Basica',
     price: '0',
     quality: 'Buena',
     dimensions: '510 x 400 x 415mm',
@@ -74,7 +74,7 @@ var printers = [{
     shortlink: 'https://amzn.to/2JgTQqK',
     postlink: 'https://3dmakernow.com/geeetech-prusa-i3-pro-b-opiniones/',
     building: '12 horas',
-    experience: 'Avanzada',
+    dificult: 'Avanzada',
     price: '0',
     quality: 'Media',
     dimensions: '450 x 440 x 440mm',
@@ -89,7 +89,7 @@ var printers = [{
     shortlink: 'https://amzn.to/2suQMAP',
     postlink: 'https://3dmakernow.com/anycubic-i3-mega-opiniones-valoracion-analisis/',
     building: '-',
-    experience: 'Basica',
+    dificult: 'Basica',
     price: '0',
     quality: 'Buena',
     dimensions: '475 x 410 x 460mm',
@@ -104,7 +104,7 @@ var printers = [{
     shortlink: 'https://amzn.to/2svhbP2',
     postlink: 'https://3dmakernow.com/impresora-3d-cr10-opiniones-valoracion-analisis/',
     building: '-',
-    experience: 'Basica',
+    dificult: 'Basica',
     price: '0',
     quality: 'Buena',
     dimensions: '620 x 490 x 615mm',
@@ -119,7 +119,7 @@ var printers = [{
     shortlink: 'https://amzn.to/2xHkSWL',
     postlink: 'https://3dmakernow.com/creality-ender-2-desktop-opiniones/',
     building: '-',
-    experience: 'Basica',
+    dificult: 'Basica',
     price: '0',
     quality: 'Buena',
     dimensions: '330 x 330 x 540mm',
@@ -134,7 +134,7 @@ var printers = [{
     shortlink: 'https://amzn.to/2Htdb6i',
     postlink: 'https://3dmakernow.com/anycubic-photon-impresora-3d/',
     building: '-',
-    experience: 'Avanzada',
+    dificult: 'Avanzada',
     price: '0',
     quality: 'Buena',
     dimensions: '405 x 410 x 453mm',
@@ -208,7 +208,7 @@ app.get('/printers/:category/table', function (req, res) {
   printers.forEach((element) => {
     if (element.category === printersCategory) {
 
-      jsonForTable = [getImage(element.image, element.name, element.postlink), element.building, element.experience, element.price, element.quality, element.dimensions, getValue(element.value)]
+      jsonForTable = [getImage(element.image, element.name, element.postlink), element.building, element.dificult, element.price, element.quality, element.dimensions, getValue(element.value)]
       matchedJsonCategory.data.push(jsonForTable);
     }
   })

@@ -16,7 +16,7 @@ var printers = [{
     building: '10 horas',
     experience: 'Intermedia',
     price: '0',
-    cuality: 'Buena',
+    quality: 'Buena',
     dimensions: '475 x 410 x 460mm',
     value: '7'
   },
@@ -31,7 +31,7 @@ var printers = [{
     building: '05 horas',
     experience: 'Basica',
     price: '0',
-    cuality: 'Buena',
+    quality: 'Buena',
     dimensions: '300mm',
     value: '8'
   },
@@ -46,7 +46,7 @@ var printers = [{
     building: '08 horas',
     experience: 'Basica',
     price: '0',
-    cuality: 'Buena',
+    quality: 'Buena',
     dimensions: '400 x 500 x 400mm',
     value: '9'
   },
@@ -61,7 +61,7 @@ var printers = [{
     building: '08 horas',
     experience: 'Basica',
     price: '0',
-    cuality: 'Buena',
+    quality: 'Buena',
     dimensions: '510 x 400 x 415mm',
     value: '9'
   },
@@ -76,7 +76,7 @@ var printers = [{
     building: '12 horas',
     experience: 'Avanzada',
     price: '0',
-    cuality: 'Media',
+    quality: 'Media',
     dimensions: '450 x 440 x 440mm',
     value: '6'
   },
@@ -91,7 +91,7 @@ var printers = [{
     building: '-',
     experience: 'Basica',
     price: '0',
-    cuality: 'Buena',
+    quality: 'Buena',
     dimensions: '475 x 410 x 460mm',
     value: '10'
   },
@@ -106,7 +106,7 @@ var printers = [{
     building: '-',
     experience: 'Basica',
     price: '0',
-    cuality: 'Buena',
+    quality: 'Buena',
     dimensions: '620 x 490 x 615mm',
     value: '9'
   },
@@ -121,7 +121,7 @@ var printers = [{
     building: '-',
     experience: 'Basica',
     price: '0',
-    cuality: 'Buena',
+    quality: 'Buena',
     dimensions: '330 x 330 x 540mm',
     value: '9'
   },
@@ -136,7 +136,7 @@ var printers = [{
     building: '-',
     experience: 'Avanzada',
     price: '0',
-    cuality: 'Buena',
+    quality: 'Buena',
     dimensions: '405 x 410 x 453mm',
     value: '7'
   }
@@ -208,7 +208,7 @@ app.get('/printers/:category/table', function (req, res) {
   printers.forEach((element) => {
     if (element.category === printersCategory) {
 
-      jsonForTable = [getImage(element.image, element.name, element.postlink), element.building, element.experience, element.price, element.cuality, element.dimensions, getValue(element.value)]
+      jsonForTable = [getImage(element.image, element.name, element.postlink), element.building, element.experience, element.price, element.quality, element.dimensions, getValue(element.value)]
       matchedJsonCategory.data.push(jsonForTable);
     }
   })

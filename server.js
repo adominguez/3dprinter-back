@@ -111,6 +111,21 @@ var printers = [{
     value: '9'
   },
   {
+    id: 'anee10',
+    name: 'Impresora 3D Anet E10',
+    category: 'principiante',
+    image: 'https://3dmakernow.com/wp-content/uploads/2018/06/61aYduD7CSL._SX342_.jpg',
+    link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B07849BDBT&linkId=08acf63d55aa6b6cf82998ae7d621190',
+    shortlink: 'https://amzn.to/2lbW9AZ',
+    postlink: 'https://3dmakernow.com/impresora-3d-anet-e10-opiniones-valoracion-analisis/',
+    building: '-',
+    dificult: 'Basica',
+    price: '0',
+    quality: 'Buena',
+    dimensions: '405 x 440 x 495mm',
+    value: '8'
+  },
+  {
     id: 'cren2d',
     name: 'Creality Ender 2 Desktop',
     category: 'principiante',

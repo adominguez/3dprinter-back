@@ -186,6 +186,23 @@ var printers = [{
   }
 ];
 
+var materials = [{
+  id: 'bqeago',
+  asin: 'B077K5PT83',
+  name: 'Filamento pla 1.75 bq Easy Go',
+  category: 'filamento',
+  image: 'https://3dmakernow.com/wp-content/uploads/2018/06/pla-bq-175-easy-go.png',
+  link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B077K5PT83&linkId=51730e6b2b2741574c2d807a80786aa6',
+  shortlink: 'https://amzn.to/2JzmEOC',
+  postlink: 'https://3dmakernow.com/filamento-pla-175-bq-easy-go/',
+  opinionsLink: '',
+  quantity: '1kg',
+  dificult: 'Básica',
+  price: '0',
+  quality: 'Buena',
+  value: '8'
+}];
+
 setValue(printers);
 setPrice(printers);
 setOpinionsLink(printers);
@@ -257,6 +274,85 @@ app.get('/printers/:category/table', function (req, res) {
     if (element.category === printersCategory) {
 
       jsonForTable = [getImage(element.image, element.name, element.postlink), element.building, element.dificult, element.price, element.quality, element.dimensions, getValue(element.value, element.opinions)]
+      matchedJsonCategory.data.push(jsonForTable);
+    }
+  })
+
+  // res.status(404).send();
+  if (matchedJsonCategory) {
+    res.header('Access-Control-Allow-Origin', "*"); // TODO - Make this more secure!!
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+    res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
+    res.json(matchedJsonCategory)
+  } else {
+    res.status(404).send();
+  }
+});
+
+// GET /materials
+app.get('/materials', function (req, res) {
+  res.header('Access-Control-Allow-Origin', "*"); // TODO - Make this more secure!!
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+  res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
+  res.json(materials);
+});
+
+
+// GET /materials/:category
+app.get('/materials/:category', function (req, res) {
+  var materialsCategory = req.params.category;
+  var matchedJsonCategory = [];
+  materials.forEach((element) => {
+    if (element.category === materialsCategory) {
+      matchedJsonCategory.push(element);
+    }
+  })
+
+  // res.status(404).send();
+  if (matchedJsonCategory) {
+    res.header('Access-Control-Allow-Origin', "*"); // TODO - Make this more secure!!
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+    res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
+    res.json(matchedJsonCategory)
+  } else {
+    res.status(404).send();
+  }
+});
+
+// GET /material/:id
+app.get('/material/:id', function (req, res) {
+  var materialId = req.params.id;
+  var matchedJsonId = [];
+  materials.forEach((element) => {
+    if (element.id === materialId) {
+      matchedJsonId.push(element);
+    }
+  })
+
+  // res.status(404).send();
+  if (matchedJsonId) {
+    res.header('Access-Control-Allow-Origin', "*"); // TODO - Make this more secure!!
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+    res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
+    res.json(matchedJsonId)
+  } else {
+    res.status(404).send();
+  }
+});
+
+// GET /materials/:category/table
+app.get('/materials/:category/table', function (req, res) {
+  var materialsCategory = req.params.category;
+  var matchedJsonCategory = {
+    "data": []
+  };
+  var jsonForTable = [];
+
+
+  materials.forEach((element) => {
+    if (element.category === materialsCategory) {
+
+      jsonForTable = [getImage(element.image, element.name, element.postlink), element.quantity, element.dificult, element.price, element.quality, getValue(element.value, element.opinions)]
       matchedJsonCategory.data.push(jsonForTable);
     }
   })

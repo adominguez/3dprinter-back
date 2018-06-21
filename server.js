@@ -291,8 +291,8 @@ function getImage(image, name, postlink) {
  * @param {Number} value
  */
 function getValue(value, opinions) {
-  let cssClass = '';
-  let definedValue = '';
+  let cssClass = '<i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>';
+  let definedValue = `</br>${opinions} opiniones`;
   let definedOpinions = '';
   if(value > 0 && value <= 0.5) {
     cssClass = `<i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
@@ -325,7 +325,12 @@ function getValue(value, opinions) {
     cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i>`
   }
   definedValue = `${value} de un máximo de 5 estrellas</br>`;
-  definedOpinions = `</br>${opinions} opiniones`;
+  if(opinions === 1) {
+    definedOpinions = `</br>${opinions} opinión`;
+  }
+  if(opinions === 0) {
+    definedOpinions = `</br>No hay opiniones todavía`;
+  }
   definedValue += cssClass;
   definedValue += definedOpinions;
   return definedValue;

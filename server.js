@@ -331,6 +331,9 @@ function getValue(value, opinions) {
   if(opinions === 0) {
     definedOpinions = `</br>No hay opiniones todavía`;
   }
+  if(opinions > 1) {
+    definedOpinions = `</br>${opinions} opiniones`;
+  }
   definedValue += cssClass;
   definedValue += definedOpinions;
   return definedValue;

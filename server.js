@@ -256,7 +256,7 @@ app.get('/printers/:category/table', function (req, res) {
   printers.forEach((element) => {
     if (element.category === printersCategory) {
 
-      jsonForTable = [getImage(element.image, element.name, element.postlink), element.building, element.dificult, element.price, element.quality, element.dimensions, getValue(element.value)]
+      jsonForTable = [getImage(element.image, element.name, element.postlink), element.building, element.dificult, element.price, element.quality, element.dimensions, getValue(element.value, element.opinions)]
       matchedJsonCategory.data.push(jsonForTable);
     }
   })
@@ -290,8 +290,10 @@ function getImage(image, name, postlink) {
  * This function set class for value
  * @param {Number} value
  */
-function getValue(value) {
-  let cssClass = ''
+function getValue(value, opinions) {
+  let cssClass = '';
+  let definedValue = '';
+  let definedOpinions = '';
   if(value > 0 && value <= 0.5) {
     cssClass = `<i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
   }
@@ -322,7 +324,11 @@ function getValue(value) {
   if(value > 4.5 && value <= 5) {
     cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i>`
   }
-  return cssClass;
+  definedValue = `<span>${value} de un máximo de 5 estrellas</span><br>`;
+  definedOpinions = `${opinions} opiniones`;
+  definedValue += cssClass;
+  definedValue += definedOpinions;
+  return definedValue;
 }
 /**
  * This function set the element.price

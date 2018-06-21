@@ -202,7 +202,8 @@ var materials = [{
   quality: 'Buena',
   value: '8'
 }];
-
+setPrinters(printers);
+setMaterials(materials);
 
 
 app.get('/', function (req, res) {
@@ -211,7 +212,6 @@ app.get('/', function (req, res) {
 
 // GET /printers
 app.get('/printers', function (req, res) {
-  setPrinters(printers);
   res.header('Access-Control-Allow-Origin', "*"); // TODO - Make this more secure!!
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
   res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
@@ -220,7 +220,6 @@ app.get('/printers', function (req, res) {
 
 // GET /printers/:category
 app.get('/printers/:category', function (req, res) {
-  setPrinters(printers);
   var printersCategory = req.params.category;
   var matchedJsonCategory = [];
   printers.forEach((element) => {
@@ -242,7 +241,6 @@ app.get('/printers/:category', function (req, res) {
 
 // GET /printer/:id
 app.get('/printer/:id', function (req, res) {
-  setPrinters(printers);
   var printersId = req.params.id;
   var matchedJsonId = [];
   printers.forEach((element) => {
@@ -264,7 +262,6 @@ app.get('/printer/:id', function (req, res) {
 
 // GET /printers/:category/table
 app.get('/printers/:category/table', function (req, res) {
-  setPrinters(printers);
   var printersCategory = req.params.category;
   var matchedJsonCategory = {
     "data": []
@@ -293,7 +290,6 @@ app.get('/printers/:category/table', function (req, res) {
 
 // GET /materials
 app.get('/materials', function (req, res) {
-  setMaterials(materials);
   res.header('Access-Control-Allow-Origin', "*"); // TODO - Make this more secure!!
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
   res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
@@ -303,7 +299,6 @@ app.get('/materials', function (req, res) {
 
 // GET /materials/:category
 app.get('/materials/:category', function (req, res) {
-  setMaterials(materials);
   var materialsCategory = req.params.category;
   var matchedJsonCategory = [];
   materials.forEach((element) => {
@@ -325,7 +320,6 @@ app.get('/materials/:category', function (req, res) {
 
 // GET /material/:id
 app.get('/material/:id', function (req, res) {
-  setMaterials(materials);
   var materialId = req.params.id;
   var matchedJsonId = [];
   materials.forEach((element) => {
@@ -347,7 +341,6 @@ app.get('/material/:id', function (req, res) {
 
 // GET /materials/:category/table
 app.get('/materials/:category/table', function (req, res) {
-  setMaterials(materials);
   var materialsCategory = req.params.category;
   var matchedJsonCategory = {
     "data": []

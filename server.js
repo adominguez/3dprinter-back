@@ -291,14 +291,38 @@ function getImage(image, name, postlink) {
  * @param {Number} value
  */
 function getValue(value) {
-  let cssClass = 'medium';
-  if (value > 8) {
-    cssClass = 'high'
+  let cssClass = ''
+  if(value > 0 && value <= 0.5) {
+    cssClass = `<i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
   }
-  if (value < 6) {
-    cssClass = 'low'
+  if(value > 0.5 && value <= 1) {
+    cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
   }
-  return `<span class='score ${cssClass}'>${value}</span>`
+  if(value > 1 && value <= 1.5) {
+    cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
+  }
+  if(value > 1.5 && value <= 2) {
+    cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
+  }
+  if(value > 2 && value <= 2.5) {
+    cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
+  }
+  if(value > 2.5 && value <= 3) {
+    cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
+  }
+  if(value > 3 && value <= 3.5) {
+    cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
+  }
+  if(value > 3.5 && value <= 4) {
+    cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i>`
+  }
+  if(value > 4 && value <= 4.5) {
+    cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i>`
+  }
+  if(value > 4.5 && value <= 5) {
+    cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i>`
+  }
+  return cssClass;
 }
 /**
  * This function set the element.price

@@ -437,7 +437,7 @@ function getValue(value, opinions) {
   if(value > 4.5 && value <= 5) {
     cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i>`
   }
-  definedValue = `${value} de un máximo de 5 estrellas</br>`;
+  definedValue = `${value} de un máximo de 5</br>`;
   if(opinions === 1) {
     definedOpinions = `</br>${opinions} opinión`;
   }

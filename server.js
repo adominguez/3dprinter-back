@@ -149,6 +149,25 @@ var printers = [{
     opinions: ''
   },
   {
+    id: 'ge3d18',
+    asin: 'B076P63G2Y',
+    name: 'Impresora 3D Geeetech E180',
+    category: 'principiante',
+    image: 'https://3dmakernow.com/wp-content/uploads/2018/07/51rM1bSIg2L._SX466_.jpg',
+    link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B076P63G2Y&linkId=174071b95af0a2585ff76ffd4156b521',
+    shortlink: 'https://amzn.to/2yXC0bH',
+    postlink: 'https://amzn.to/2yXC0bH',
+    amazon: true,
+    opinionsLink: '',
+    building: '-',
+    dificult: 'Basica',
+    price: '0',
+    quality: 'Buena',
+    dimensions: '284 x 156 x 320mm',
+    value: '9',
+    opinions: ''
+  },
+  {
     id: 'cren2d',
     asin: 'B073DBZN8Z',
     name: 'Creality Ender 2 Desktop',

@@ -362,7 +362,7 @@ app.get('/printers/:category/table', function (req, res) {
   printers.forEach((element) => {
     if (element.category === printersCategory) {
 
-      jsonForTable = [getImage(element.image, element.name, element.postlink), element.building, element.dificult, element.price, element.quality, element.dimensions, getValue(element.value, element.opinions)]
+      jsonForTable = [getImage(element), element.building, element.dificult, element.price, element.quality, element.dimensions, getValue(element.value, element.opinions)]
       matchedJsonCategory.data.push(jsonForTable);
     }
   })
@@ -441,7 +441,7 @@ app.get('/materials/:category/table', function (req, res) {
   materials.forEach((element) => {
     if (element.category === materialsCategory) {
 
-      jsonForTable = [getImage(element.image, element.name, element.postlink), element.quantity, element.dificult, element.price, element.quality, getValue(element.value, element.opinions)]
+      jsonForTable = [getImage(element), element.quantity, element.dificult, element.price, element.quality, getValue(element.value, element.opinions)]
       matchedJsonCategory.data.push(jsonForTable);
     }
   })
@@ -486,8 +486,8 @@ function setMaterials(materials) {
  * @param {String} name
  * @param {String} postlink
  */
-function getImage(image, name, postlink) {
-  return `<div class='table-image' style='background:url(${image})  no-repeat center center; background-size: cover'><a href='${postlink}' class='table-link' target='_blank'>${name}</a></div>`
+function getImage(element) {
+  return `<div class='table-image' style='background:url(${element.image})  no-repeat center center; background-size: cover'><a href='${element.postlink}' class='table-link' ${element.amazon ? 'rel="nofollow"' : ''} target='_blank'>${element.name}</a></div>`
 }
 /**
  * This function set class for value

@@ -167,6 +167,24 @@ var printers = [{
     opinions: ''
   },
   {
+    id: 'cren3d',
+    asin: 'B07DPJHML9',
+    name: 'Creality Ender 3',
+    category: 'principiante',
+    image: 'https://3dmakernow.com/wp-content/uploads/2018/06/610oWCT427L._SY450_.jpg',
+    link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B07DPJHML9&linkId=9b9b2622bcf0c365d8120fadda3cef35',
+    shortlink: 'https://amzn.to/2IELXKo',
+    postlink: '',
+    opinionsLink: '',
+    building: '-',
+    dificult: 'Basica',
+    price: '0',
+    quality: 'Buena',
+    dimensions: '440 x 410 x 465mm',
+    value: '9',
+    opinions: ''
+  },
+  {
     id: '3danph',
     asin: 'B078TCT7P5',
     name: 'Impresora 3D Anycubic Photon',

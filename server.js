@@ -259,6 +259,25 @@ var printers = [{
     dimensions: '-',
     value: '7',
     opinions: ''
+  },
+  {
+    id: 'slafo2',
+    asin: 'B07BLB1L5L',
+    name: 'Impresora SLA Formlabs Form 2',
+    category: 'profesional',
+    image: 'https://3dmakernow.com/wp-content/uploads/2018/07/41JoHUUg1GL._SY450_.jpg',
+    link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B07BLB1L5L&linkId=b8192c1ed9258fbf6b3242e6654adcb9',
+    shortlink: 'https://amzn.to/2KltGHT',
+    postlink: 'https://amzn.to/2KltGHT',
+    amazon: true,
+    opinionsLink: '',
+    building: '-',
+    dificult: 'Avanzada',
+    price: '0',
+    quality: '-',
+    dimensions: '-',
+    value: '7',
+    opinions: ''
   }
 ];
 
@@ -297,7 +316,7 @@ var materials = [{
   },
   {
     id: 'geemad',
-    asin: 'B01MR5OCX5',
+    asin: 'B075ZPT7MF',
     name: 'Filamento Madera 1.75 Geeetech',
     category: 'filamento',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/07/61gbc2jsd9L._SX466_.jpg',
@@ -314,7 +333,7 @@ var materials = [{
   },
   {
     id: 'sunpla',
-    asin: 'B01MR5OCX5',
+    asin: 'B075H649NR',
     name: 'Filamento PLA 1.75 SUNLU Plus',
     category: 'filamento',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/07/61XBSuRzBwL._SY466_.jpg',
@@ -331,7 +350,7 @@ var materials = [{
   },
   {
     id: 'sunabs',
-    asin: 'B01MR5OCX5',
+    asin: 'B074Z6KDCC',
     name: 'Filamento ABS 1.75 SUNLU Plus',
     category: 'filamento',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/07/61TisaGyYRL._SY466_.jpg',
@@ -372,6 +391,23 @@ var materials = [{
     link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B07DJ2DXDS&linkId=410b302ac00b5f7808dba104e1bde44e',
     shortlink: 'https://amzn.to/2z03Hka',
     postlink: 'https://amzn.to/2z03Hka',
+    amazon: true,
+    opinionsLink: '',
+    quantity: '1000ml',
+    dificult: 'Avanzada',
+    price: '0',
+    quality: 'Buena',
+    value: '8'
+  },
+  {
+    id: 'refo10',
+    asin: 'B01GZ1TNL4',
+    name: 'Resina Formlabs negro 1000 ml',
+    category: 'resina',
+    image: 'https://3dmakernow.com/wp-content/uploads/2018/07/21A96BnQlZL.jpg',
+    link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B01GZ1TNL4&linkId=574fed7ef58d2a8d1a35bbc7a09031aa',
+    shortlink: 'https://amzn.to/2KoxGY2',
+    postlink: 'https://amzn.to/2KoxGY2',
     amazon: true,
     opinionsLink: '',
     quantity: '1000ml',

@@ -29,6 +29,7 @@ var printers = [{
     category: 'kit',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/201801051039328705.jpg',
     link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B076H2KJVG&linkId=6438dd6e4731db8e0f24dd07ee81d70d',
+    gearbestLink: 'https://www.gearbest.com/3d-printers-3d-printer-kits/pp_640022.html?lkid=15117381',
     shortlink: 'https://amzn.to/2JdJeNz',
     postlink: 'https://3dmakernow.com/anycubic-kossel-linear-plus/',
     opinionsLink: '',
@@ -47,6 +48,7 @@ var printers = [{
     category: 'kit',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/7167OhjMPFL._SX425_.jpg',
     link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B01N4KT3SC&linkId=bae69a4cfd6684fad7c722367939359f',
+    gearbestLink: 'https://www.gearbest.com/3d-printers-3d-printer-kits/pp_428456.html?lkid=15117394',
     shortlink: 'https://amzn.to/2JdJwDK',
     postlink: 'https://3dmakernow.com/impresora-3d-anet-a6-opiniones/',
     opinionsLink: '',
@@ -65,6 +67,7 @@ var printers = [{
     category: 'kit',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/61uZ-K4dBGL._SX425_.jpg',
     link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B075TZPX5G&linkId=95dca0935c3d069940fbed1b2cd62302',
+    gearbestLink: 'https://www.gearbest.com/3d-printers-3d-printer-kits/pp_337314.html?lkid=15117326',
     shortlink: 'https://amzn.to/2xETrgA',
     postlink: 'https://3dmakernow.com/impresora-3d-anet-a8-opiniones/',
     opinionsLink: '',
@@ -83,6 +86,7 @@ var printers = [{
     category: 'kit',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/51btpEFWpFL._SX425_.jpg',
     link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B01GJDO9I0&linkId=106ce0ded663b0f821a024deda8587f9',
+    gearbestLink: 'https://www.gearbest.com/3d-printers-3d-printer-kits/pp_671774.html?lkid=15117439',
     shortlink: 'https://amzn.to/2JgTQqK',
     postlink: 'https://3dmakernow.com/geeetech-prusa-i3-pro-b-opiniones/',
     opinionsLink: '',
@@ -101,6 +105,7 @@ var printers = [{
     category: 'principiante',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/61OeIv3kdNL._SX425_.jpg',
     link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B06XK7VYX9&linkId=10927245ee752e9cfb2d97039e375f69',
+    gearbestLink: 'https://www.gearbest.com/3d-printers-3d-printer-kits/pp_641323.html?lkid=15117367',
     shortlink: 'https://amzn.to/2suQMAP',
     postlink: 'https://3dmakernow.com/anycubic-i3-mega-opiniones-valoracion-analisis/',
     opinionsLink: '',
@@ -137,6 +142,7 @@ var printers = [{
     category: 'principiante',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/06/61aYduD7CSL._SX342_.jpg',
     link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B07849BDBT&linkId=08acf63d55aa6b6cf82998ae7d621190',
+    gearbestLink: 'https://www.gearbest.com/3d-printers-3d-printer-kits/pp_664899.html?lkid=15117460',
     shortlink: 'https://amzn.to/2lbW9AZ',
     postlink: 'https://3dmakernow.com/impresora-3d-anet-e10-opiniones-valoracion-analisis/',
     opinionsLink: '',
@@ -155,6 +161,7 @@ var printers = [{
     category: 'principiante',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/07/51rM1bSIg2L._SX466_.jpg',
     link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B076P63G2Y&linkId=174071b95af0a2585ff76ffd4156b521',
+    gearbestLink: 'https://www.gearbest.com/3d-printers-3d-printer-kits/pp_1166685.html?lkid=15117469',
     shortlink: 'https://amzn.to/2yXC0bH',
     postlink: 'https://amzn.to/2yXC0bH',
     amazon: true,
@@ -174,6 +181,7 @@ var printers = [{
     category: 'principiante',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/414l5cb72IL._SX425_.jpg',
     link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B073DBZN8Z&linkId=47c1c6a569e92ccd9ecd966ce21180a3',
+    gearbestLink: 'https://www.gearbest.com/3d-printers-3d-printer-kits/pp_620372.html?lkid=15117427',
     shortlink: 'https://amzn.to/2xHkSWL',
     postlink: 'https://3dmakernow.com/creality-ender-2-desktop-opiniones/',
     opinionsLink: '',
@@ -192,6 +200,7 @@ var printers = [{
     category: 'principiante',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/06/610oWCT427L._SY450_.jpg',
     link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B07DPJHML9&linkId=9b9b2622bcf0c365d8120fadda3cef35',
+    gearbestLink: 'https://www.gearbest.com/3d-printers-3d-printer-kits/pp_1845899.html?lkid=15117475',
     shortlink: 'https://amzn.to/2IELXKo',
     postlink: 'https://amzn.to/2IELXKo',
     amazon: true,
@@ -230,6 +239,7 @@ var printers = [{
     category: 'profesional',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/201801201844010827.jpg',
     link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B078TCT7P5&linkId=66042dbbed38ebf6b8656236749a17f3',
+    gearbestLink: 'https://www.gearbest.com/3d-printers-3d-printer-kits/pp_1579266.html?lkid=15117497',
     shortlink: 'https://amzn.to/2Htdb6i',
     postlink: 'https://3dmakernow.com/anycubic-photon-impresora-3d/',
     opinionsLink: '',
@@ -595,6 +605,7 @@ function setPrinters(printers) {
   setValue(printers);
   setPrice(printers);
   setOpinionsLink(printers);
+  setGearbest(printers);
 }
 /**
  * Set all functions for materials
@@ -604,6 +615,7 @@ function setMaterials(materials) {
   setValue(materials);
   setPrice(materials);
   setOpinionsLink(materials);
+  setGearbest(printers);
 }
 /**
  * This function show a div with image for show it in table
@@ -733,6 +745,7 @@ function setValue(printers) {
     });
   });
 };
+
 /**
  * This function set the property printers element.opinionsLink
  * @param {Array} printers
@@ -740,5 +753,32 @@ function setValue(printers) {
 function setOpinionsLink(printers) {
   printers.forEach((element) => {
     element.opinionsLink = 'https://www.amazon.es/product-reviews/' + element.asin + '/ref=as_li_ss_tl?ie=UTF8&linkCode=sl2&tag=3dmakernow-21';
+  });
+};
+
+/**
+ * This function set the property printers element.gearbestPrice
+ * @param {Array} printers
+ */
+function setGearbest(printers) {
+  printers.forEach((element) => {
+    if(element.gearbestLink) {
+      https.get(element.gearbestLink, (res) => {
+        let newData = '';
+        res.on('data', function (chunk) {
+          newData += chunk;
+        });
+        res.on('end', function () {
+          let newString = newData.replace(/[\n\r]+|[\s]{2,}/g, ' ');
+          let newVal = newString.match(/ - \$(.*?) Free Shipping|GearBest.com<\/title>/g).map(function (val) {
+            var firstVal = val.replace(/ - \$/g, '');
+            return firstVal.replace(/ Free Shipping|GearBest.com<\/title>/g, '');
+          });
+          element.gearbestPrice = '$' + newVal[0];
+        });
+      }).on('error', (e) => {
+        console.error(e);
+      });
+    }
   });
 };

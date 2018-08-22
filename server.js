@@ -634,44 +634,44 @@ function getValue(value, opinions) {
   let cssClass = '<i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>';
   let definedValue = `</br>${opinions} opiniones`;
   let definedOpinions = '';
-  if(value > 0 && value <= 0.5) {
+  if (value > 0 && value <= 0.5) {
     cssClass = `<i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
   }
-  if(value > 0.5 && value <= 1) {
+  if (value > 0.5 && value <= 1) {
     cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
   }
-  if(value > 1 && value <= 1.5) {
+  if (value > 1 && value <= 1.5) {
     cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
   }
-  if(value > 1.5 && value <= 2) {
+  if (value > 1.5 && value <= 2) {
     cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
   }
-  if(value > 2 && value <= 2.5) {
+  if (value > 2 && value <= 2.5) {
     cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
   }
-  if(value > 2.5 && value <= 3) {
+  if (value > 2.5 && value <= 3) {
     cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
   }
-  if(value > 3 && value <= 3.5) {
+  if (value > 3 && value <= 3.5) {
     cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`
   }
-  if(value > 3.5 && value <= 4) {
+  if (value > 3.5 && value <= 4) {
     cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i>`
   }
-  if(value > 4 && value <= 4.5) {
+  if (value > 4 && value <= 4.5) {
     cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i>`
   }
-  if(value > 4.5 && value <= 5) {
+  if (value > 4.5 && value <= 5) {
     cssClass = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i>`
   }
   definedValue = `${value} de un máximo de 5</br>`;
-  if(opinions === 1) {
+  if (opinions === 1) {
     definedOpinions = `</br>${opinions} opinión`;
   }
-  if(opinions === 0) {
+  if (opinions === 0) {
     definedOpinions = `</br>No hay opiniones todavía`;
   }
-  if(opinions > 1) {
+  if (opinions > 1) {
     definedOpinions = `</br>${opinions} opiniones`;
   }
   definedValue += cssClass;
@@ -690,10 +690,14 @@ function setPrice(printers) {
         data += chunk;
       });
       res.on('end', function () {
-        price = data.match(/<span class="price" style="color:#000000;">(.*?)<\/span>/g).map(function (val) {
-          var firstVal = val.replace(/<\/?span class="price" style="color:#000000;">/g, '');
-          return firstVal.replace(/<\/?span>/g, '') !== '' ? firstVal.replace(/<\/?span>/g, '') : 'No disponible';
-        });
+        price = () => {
+          if (data.match(/<span class="price" style="color:#000000;">(.*?)<\/span>/g)) {
+            data.match(/<span class="price" style="color:#000000;">(.*?)<\/span>/g).map(function (val) {
+              var firstVal = val.replace(/<\/?span class="price" style="color:#000000;">/g, '');
+              return firstVal.replace(/<\/?span>/g, '') !== '' ? firstVal.replace(/<\/?span>/g, '') : 'No disponible';
+            });
+          }
+        }
         element.price = price[0];
       });
 
@@ -728,7 +732,7 @@ function setValue(printers) {
 
         // Get opinions of product url
         let opinions = '';
-        if(newString.match(/Consulte todas las (.*?) opiniones/g)) {
+        if (newString.match(/Consulte todas las (.*?) opiniones/g)) {
           opinions = newString.match(/Consulte todas las (.*?) opiniones/g).map(function (val) {
             var firstOpinions = val.replace(/Consulte todas las /g, '');
             return firstOpinions.replace(/ opiniones/g, '');
@@ -762,7 +766,7 @@ function setOpinionsLink(printers) {
  */
 function setGearbest(printers) {
   printers.forEach((element) => {
-    if(element.gearbestLink) {
+    if (element.gearbestLink) {
       https.get(element.gearbestLink, (res) => {
         let newData = '';
         res.on('data', function (chunk) {

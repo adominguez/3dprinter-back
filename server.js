@@ -124,6 +124,7 @@ var printers = [{
     category: 'principiante',
     image: 'https://3dmakernow.com/wp-content/uploads/2018/05/51ZdYvvZ9L._SX425_.jpg',
     link: 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&language=es_ES&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B07C268XJY&linkId=2276dbca95386cdde03f2ed0d066040c',
+    gearbestLink: 'https://www.gearbest.com/3d-printers-3d-printer-kits/pp_441282.html?wid=1640583&lkid=15384322',
     shortlink: 'https://amzn.to/2w63mZn',
     postlink: 'https://3dmakernow.com/impresora-3d-cr10-opiniones-valoracion-analisis/',
     opinionsLink: '',
@@ -778,7 +779,7 @@ function setGearbest(printers) {
             var firstVal = val.replace(/ - \$/g, '');
             return firstVal.replace(/ Free Shipping|GearBest.com<\/title>/g, '');
           });
-          element.gearbestPrice = '$' + newVal[0];
+          element.gearbestPrice = '$' + newVal[0].replace('.', ',');
         });
       }).on('error', (e) => {
         console.error(e);

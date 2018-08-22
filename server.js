@@ -684,26 +684,26 @@ function getValue(value, opinions) {
  */
 function setPrice(printers) {
   printers.forEach((element) => {
-    https.get(element.link, (res) => {
-      var data = '';
-      res.on('data', function (chunk) {
-        data += chunk;
-      });
-      res.on('end', function () {
-        price = () => {
+      https.get(element.link, (res) => {
+        var data = '';
+        res.on('data', function (chunk) {
+          data += chunk;
+        });
+        res.on('end', function () {
           if (data.match(/<span class="price" style="color:#000000;">(.*?)<\/span>/g)) {
-            data.match(/<span class="price" style="color:#000000;">(.*?)<\/span>/g).map(function (val) {
+            price = data.match(/<span class="price" style="color:#000000;">(.*?)<\/span>/g).map(function (val) {
               var firstVal = val.replace(/<\/?span class="price" style="color:#000000;">/g, '');
               return firstVal.replace(/<\/?span>/g, '') !== '' ? firstVal.replace(/<\/?span>/g, '') : 'No disponible';
             });
+            element.price = price[0];
+          } else {
+            element.price = "No disponible"
           }
-        }
-        element.price = price[0];
-      });
+        });
 
-    }).on('error', (e) => {
-      console.error(e);
-    });
+      }).on('error', (e) => {
+        console.error(e);
+      });
   });
 };
 

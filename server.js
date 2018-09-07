@@ -754,7 +754,7 @@ function setValue(printers) {
             return firstOpinions.replace(/ opiniones/g, '');
           });
         } else {
-          opinions = '1';
+          opinions = 'No disponible';
         }
         // Set opinions number
         element.opinions = parseInt(opinions[0]);

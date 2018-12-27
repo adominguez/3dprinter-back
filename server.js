@@ -187,11 +187,12 @@ var printers = [{
     shortlink: 'https://amzn.to/2xHkSWL',
     postlink: 'https://3dmakernow.com/creality-ender-2-desktop-opiniones/',
     opinionsLink: '',
-    building: '-',
+    building: '1 - 2 horas',
     dificult: 'Basica',
     price: '0',
     quality: 'Buena',
     dimensions: '330 x 330 x 540mm',
+    printerVolume: '150 x 150 x 150mm',
     value: '9',
     opinions: ''
   },

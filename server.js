@@ -734,27 +734,24 @@ function setValue(printers) {
       res.on('end', function () {
         let newString = newData.replace(/[\n\r]+|[\s]{2,}/g, ' ');
         // Get value of product url
-        if(newString.match(/<span class="a-size-base a-color-secondary">(.*?)<\/span>/g)) {
-          let newVal = newString.match(/<span class="a-size-base a-color-secondary">(.*?)<\/span>/g).map(function (val) {
-            var firstVal = val.replace(/<\/?span class="a-size-base a-color-secondary">/g, '');
-            return firstVal.replace(/<\/?span>/g, '') !== '' ? firstVal.replace(/<\/?span>/g, '') : 'No disponible';
-          });
-          // Set value of product
-          let removeWhiteSpace = newVal[0].replace('  ', '');
-          let getOnlyValue = removeWhiteSpace.replace(' de un máximo de 5 estrellas  ', '')
-          element.value = getOnlyValue;
+        let newVal = newString.match(/<span class="a-size-base a-color-secondary">(.*?)<\/span>/g).map(function (val) {
+          var firstVal = val.replace(/<\/?span class="a-size-base a-color-secondary">/g, '');
+          return firstVal.replace(/<\/?span>/g, '') !== '' ? firstVal.replace(/<\/?span>/g, '') : 'No disponible';
+        });
+        // Set value of product
+        let removeWhiteSpace = newVal[0].replace('  ', '');
+        let getOnlyValue = removeWhiteSpace.replace(' de un máximo de 5 estrellas  ', '')
+        element.value = getOnlyValue;
 
-          // Get opinions of product url
-          let opinions = '';
-        }
-
+        // Get opinions of product url
+        let opinions = '';
         if (newString.match(/Consulte todas las (.*?) opiniones/g)) {
           opinions = newString.match(/Consulte todas las (.*?) opiniones/g).map(function (val) {
             var firstOpinions = val.replace(/Consulte todas las /g, '');
             return firstOpinions.replace(/ opiniones/g, '');
           });
         } else {
-          opinions = 'No disponible';
+          opinions = '1';
         }
         // Set opinions number
         element.opinions = parseInt(opinions[0]);

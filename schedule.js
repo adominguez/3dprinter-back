@@ -7,6 +7,10 @@ exports.cron = (scheduleTime) => {
         firebase.db.ref('3d-printers').on('value', (snapshot) => {
             const dbPrinters = snapshot.val();
             const printers = _.map(dbPrinters, item => item);
+            printers.map(printer => {
+                // console.log(printer.printerName);
+            })
+            // console.log({printers});
         });
     // });
 }

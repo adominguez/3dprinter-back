@@ -6,11 +6,11 @@ const authenticationToken = require('../authenticationToken');
 exports.getCategories = (app) => {
 
   // GET /categories
-  app.get('/categories/:authentication', function (req, res) {
+  app.get('/categories/', function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
-    if (req.params.authentication && authenticationToken.checkAuthenticationToken(req.params.authentication)) {
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
       firebase.db.ref('categories')
         .once('value')
         .then(snapshot => res.json(_.map(snapshot.val(), (item, id) => ({ ...item, id }))))
@@ -32,7 +32,7 @@ exports.getCategories = (app) => {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const productType = req.params.productType;
-    if (req.params.authentication && authenticationToken.checkAuthenticationToken(req.params.authentication)) {
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
       firebase.db.ref('categories')
         .once('value')
         .then(snapshot => { res.json(_.map(snapshot.val(), (item, id) => ({ ...item, id })).filter(category => category.productType === productType)) })
@@ -54,7 +54,7 @@ exports.getCategories = (app) => {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const categoryId = req.params.id;
-    if (req.params.authentication && authenticationToken.checkAuthenticationToken(req.params.authentication)) {
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
       firebase.db.ref('categories')
         .child(categoryId)
         .once("value")
@@ -76,7 +76,7 @@ exports.getCategories = (app) => {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
-    if (req.params.authentication && authenticationToken.checkAuthenticationToken(req.params.authentication)) {
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
       firebase.db.ref('categories')
         .push(req.query)
         .then(() => res.json({
@@ -105,7 +105,7 @@ exports.getCategories = (app) => {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const categoryId = req.params.id;
-    if (req.params.authentication && authenticationToken.checkAuthenticationToken(req.params.authentication)) {
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
       firebase.db.ref('categories')
         .child(categoryId)
         .update({ 'categoryDescription': 'profesional' })
@@ -135,7 +135,7 @@ exports.getCategories = (app) => {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const categoryId = req.params.id;
-    if (req.params.authentication && authenticationToken.checkAuthenticationToken(req.params.authentication)) {
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
       firebase.db.ref('categories')
         .child(categoryId)
         .remove()

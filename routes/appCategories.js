@@ -76,9 +76,10 @@ exports.getCategories = (app) => {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
-    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
+    const {authentication, ...rest} = req.query;
+    if (authenticationToken.checkAuthenticationToken(authentication)) {
       firebase.db.ref('categories')
-        .push(req.query)
+        .push(rest)
         .then(() => res.json({
           error: false,
           status: 'ok',

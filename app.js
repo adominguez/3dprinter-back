@@ -1,6 +1,6 @@
 var admin = require("firebase-admin");
 
-var serviceAccount = require("./project-3dmakernow-firebase-adminsdk-y6rgc-3997ce706a.json");
+var serviceAccount = require("./project-3dmakernow-firebase-adminsdk-y6rgc-cfa2d0f106.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),

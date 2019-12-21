@@ -1,5 +1,6 @@
 const firebase = require('../app');
 const _ = require('lodash');
+const authenticationToken = require('../authenticationToken');
 
 exports.getPrinters = (app) => {
 
@@ -8,109 +9,181 @@ exports.getPrinters = (app) => {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
-    firebase.db.ref('3d-printers')
-      .once('value')
-      .then(snapshot => res.json(_.map(snapshot.val(), (item, id) => ({ ...item, id }))))
-      .catch(error => (res.json({
-        errorCode: error.code,
-        errorMessage: error.message
-      })));
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
+      firebase.db.ref('3d-printers')
+        .once('value')
+        .then(snapshot => res.json(_.map(snapshot.val(), (item, id) => ({ ...item, id }))))
+        .catch(error => (res.json({
+          errorCode: error.code,
+          errorMessage: error.message
+        })));
+    } else {
+      return res.json({
+        errorCode: 401,
+        errorMessage: 'No tienes permisos para ver esta información'
+      })
+    }
   });
 
-  // GET /printers/category
+  // GET /printers/category get printers by category
   app.get('/printers/:category', function (req, res) {
-    const category = req.params.category;
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
-    firebase.db.ref('3d-printers')
-      .once('value')
-      .then(snapshot => { res.json(_.map(snapshot.val(), (item, id) => ({ ...item, id })).filter(printer => printer.category === category)) })
-      .catch(error => (res.json({
-        errorCode: error.code,
-        errorMessage: error.message
-      })));
+    const category = req.params.category;
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
+      firebase.db.ref('3d-printers')
+        .once('value')
+        .then(snapshot => { res.json(_.map(snapshot.val(), (item, id) => ({ ...item, id })).filter(printer => printer.category === category)) })
+        .catch(error => (res.json({
+          errorCode: error.code,
+          errorMessage: error.message
+        })));
+    } else {
+      return res.json({
+        errorCode: 401,
+        errorMessage: 'No tienes permisos para ver esta información'
+      })
+    }
   });
 
   // GET /printers/category/table
   app.get('/printers/:category/table', function (req, res) {
-    const category = req.params.category;
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
-    firebase.db.ref('3d-printers')
-      .once('value')
-      .then(snapshot => { res.json({ "data": _.map(snapshot.val(), (item, id) => ({ ...item, id })).filter(printer => printer.category === category) }) })
-      .catch(error => (res.json({
-        errorCode: error.code,
-        errorMessage: error.message
-      })));
+    const category = req.params.category;
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
+      firebase.db.ref('3d-printers')
+        .once('value')
+        .then(snapshot => { res.json({ "data": _.map(snapshot.val(), (item, id) => ({ ...item, id })).filter(printer => printer.category === category) }) })
+        .catch(error => (res.json({
+          errorCode: error.code,
+          errorMessage: error.message
+        })));
+    } else {
+      return res.json({
+        errorCode: 401,
+        errorMessage: 'No tienes permisos para ver esta información'
+      })
+    }
   });
 
   // GET /printer/:id
   app.get('/printer/:id', function (req, res) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+    res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const printerId = req.params.id;
-    firebase.db.ref('3d-printers')
-      .child(printerId)
-      .once("value")
-      .then(snapshot => res.json(snapshot.val()))
-      .catch(error => (res.json({
-        errorCode: error.code,
-        errorMessage: error.message
-      })));
-  });
-
-  // TODO POST /printer/:id using firebase.db.ref('3d-printers).push({data})
-  /*app.post('/add-new-printer', function (req, res) {
-      const { name,  } = req.body;
-      const printerId = req.params.id;
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
       firebase.db.ref('3d-printers')
-          .child(printerId)
-          .once("value")
-          .then(snapshot => res.json(snapshot.val()))
-          .catch(error => (res.json({
-              errorCode: error.code,
-              errorMessage: error.message
-          })));
-  });*/
+        .child(printerId)
+        .once("value")
+        .then(snapshot => res.json(snapshot.val()))
+        .catch(error => (res.json({
+          errorCode: error.code,
+          errorMessage: error.message
+        })));
+    } else {
+      return res.json({
+        errorCode: 401,
+        errorMessage: 'No tienes permisos para ver esta información'
+      })
+    }
+  });
 
-  /**
-   * UPDATE /printer/:id
-   */
-  app.put('/update-printer/:id', function (req, res) {
-    const printerId = req.params.id;
-    firebase.db.ref('3d-printers')
-      .child(printerId)
-      .update({ 'category': 'profesional' })
-      .then(() => res.json({
-        error: false,
-        status: 'ok',
-        code: 200,
-        message: 'updated printer'
-      }))
-      .catch(error => (res.json({
-        errorCode: error.code,
-        errorMessage: error.message
-      })));
+  // POST /add-new-printer
+  app.post('/add-new-printer', function (req, res) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+    res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
+    const { authentication } = req.query;
+    const data = {
+      ...req.body,
+      creationDate: `${new Date()}`
+    }
+    if (authenticationToken.checkAuthenticationToken(authentication)) {
+      firebase.db.ref('3d-printers')
+        .push(data)
+        .then(() => res.json({
+          error: false,
+          status: 'ok',
+          code: 200,
+          message: 'new printer has been added'
+        }))
+        .catch(error => (res.json({
+          errorCode: error.code,
+          errorMessage: error.message
+        })));
+    } else {
+      return res.json({
+        errorCode: 401,
+        errorMessage: 'No tienes permisos para ver esta información'
+      })
+    }
   });
 
   /**
-   * REMOVE /printer/:id
+   * POST /printer/:id
    */
-  app.delete('/remove-printer/:id', function (req, res) {
+  app.post('/update-printer/:id', function (req, res) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+    res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const printerId = req.params.id;
-    firebase.db.ref('3d-printers')
-      .child(printerId)
-      .remove()
-      .then(() => res.json({
-        error: false,
-        status: 'ok',
-        code: 200,
-        message: 'deleted printer'
-      }))
-      .catch(error => (res.json({
-        errorCode: error.code,
-        errorMessage: error.message
-      })));
+    const data = {
+      ...req.body,
+      updateDate: `${new Date()}`
+    }
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
+      firebase.db.ref('3d-printers')
+        .child(printerId)
+        .update(data)
+        .then(() => res.json({
+          error: false,
+          status: 'ok',
+          code: 200,
+          message: 'The printer has been udpated sucessfull'
+        }))
+        .catch(error => (res.json({
+          errorCode: error.code,
+          errorMessage: error.message
+        })));
+    } else {
+      return res.json({
+        errorCode: 401,
+        errorMessage: 'No tienes permisos para ver esta información'
+      })
+    }
+  });
+
+  /**
+   * GET /printer/:id
+   */
+  app.get('/delete-printer/:id', function (req, res) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+    res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
+    const printerId = req.params.id;
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
+      firebase.db.ref('3d-printers')
+        .child(printerId)
+        .remove()
+        .then(() => res.json({
+          error: false,
+          status: 'ok',
+          code: 200,
+          message: 'The printer has been deleted sucessfull'
+        }))
+        .catch(error => (res.json({
+          errorCode: error.code,
+          errorMessage: error.message
+        })));
+    } else {
+      return res.json({
+        errorCode: 401,
+        errorMessage: 'No tienes permisos para ver esta información'
+      })
+    }
   });
 }

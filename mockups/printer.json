@@ -1,0 +1,82 @@
+{
+	"name": "Creality Ender 3",
+  "category": "principiante",
+	"image": [
+    "https://images-na.ssl-images-amazon.com/images/I/515EImQPCCL._SX466_.jpg",
+    "https://images-na.ssl-images-amazon.com/images/I/61IRAOW24fL._SX466_.jpg",
+    "https://images-na.ssl-images-amazon.com/images/I/61p4qNi0lnL._SX466_.jpg"
+  ],
+	"postLink": "https://3dmakernow.com/impresora-3d-creality-ender-3",
+	"affiliateAmazonInfo": {
+		"informationLink": "https://www.amazon.es/Creality-3D-directa-impresora-impression/dp/B07D218NX3",
+    "asin": "B07D218NX3",
+    "affiliateShortLink": "https://amzn.to/2tygQhQ",
+    "amazonPrice": 225,
+    "amazonPrime": false,
+    "amazonRatings": 109,
+    "amazonRate": 4.40
+	},
+	"affiliateGearbestInfo": {
+    "informationLink": "https://es.gearbest.com/3d-printers-3d-printer-kits/pp_1845899.html?wid=1433363&lkid=78090139",
+    "GearbestPrice": 179.60,
+    "gearbestRatings": 13,
+    "gearbestRate": 4.92,
+    "shipping": "Free Shipping to Spain Via Expedited Shipping"
+	},
+	"affiliateAliexpress": {
+		"informationLink": "http://s.click.aliexpress.com/e/nYBf7clE",
+    "aliexpressPrice": 163.40,
+    "aliexpressRatings": 135,
+    "aliexpressRate": 4.90
+  },
+  "printFeatures": {
+    "technology": "FDM (Deposición de material fundido)",
+    "printerVolume": "220x220x250mm",
+    "printerResolutionLayer": "0,1 - 0,3 mm",
+    "printerPrecision": "+/-0,1 mm",
+    "nozzleSize": "0,4 mm",
+    "bedLeveling": "manual"
+  },
+  "printerParameters": {
+    "filamentDiameter": "1.75mm",
+    "extusorPrinter": "MK8",
+    "bowden": true,
+    "maxExtruderTemp": "255ºC",
+    "maxHeatedTemp": "110ºC",
+    "maxPrinterSpeed": "180 mm/s",
+    "filamentsSuported": "PLA, ABS, TPU, wood, Flexible"
+  },
+  "printerSoftware": {
+    "machineDimmensions": "440 x 440 x 610 mm",
+    "operativeSystem": "Windows, Mac, Linux",
+    "formatFile": "STL, OBJ, G-Code",
+    "conectivity": "Tarjeta SD y cable USB",
+    "firmware": "Marlin",
+    "display": "Control mediante rueda"
+  },
+  "printerUnboxing": {
+    "machineDimmensions": "440 x 440 x 610 mm",
+    "machineWeight": "8kg",
+    "shippingDimensions": "600 x 350 x 160 mm",
+    "shippingWeight": "10kg",
+    "printerContent": [
+      "Perfiles metálicos",
+      "cama caliente y cuadro eléctrico",
+      "Tornillería y piezas necesarias para su montaje",
+      "pantalla display",
+      "herramientas para el montaje (destornillador, allen)",
+      "filamento blanco (sólo para pruebas)",
+      "espátula y tenazas",
+      "usb con tarjeta 8GB",
+      "Cable de alimentación",
+      "Instrucciones"
+    ],
+    "contentImage": [
+      ""
+    ]
+  },
+  "printerElectricity": {
+    "input": "AC 100-265V 50-60Hz",
+    "output": "DC 24V 15A 360W"
+  }
+}

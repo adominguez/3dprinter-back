@@ -3,9 +3,12 @@ const getPrices = require('./getPrices');
 const schedule = require('./schedule');
 const appPrinters = require('./routes/appPrinters');
 const appCategories = require('./routes/appCategories');
+const bodyParser = require('body-parser');
 
 
 app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // schedule tasks to be run on the server
 const amazonlink = 'https://ws-eu.assoc-amazon.com/widgets/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=3dmakernow-21&language=es_ES&o=30&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B077K4QWMT&linkId=9f8d55cc8bb0930a4baa79034bde3622';

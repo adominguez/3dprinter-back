@@ -100,6 +100,7 @@ exports.getPrinters = (app) => {
     const { authentication } = req.query;
     const data = {
       ...req.body,
+      updateDate: `${new Date()}`,
       creationDate: `${new Date()}`
     }
     if (authenticationToken.checkAuthenticationToken(authentication)) {
@@ -124,7 +125,7 @@ exports.getPrinters = (app) => {
   });
 
   /**
-   * POST /printer/:id
+   * POST update /printer/:id
    */
   app.post('/update-printer/:id', function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");
@@ -158,7 +159,7 @@ exports.getPrinters = (app) => {
   });
 
   /**
-   * GET /printer/:id
+   * GET delete /printer/:id
    */
   app.get('/delete-printer/:id', function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");

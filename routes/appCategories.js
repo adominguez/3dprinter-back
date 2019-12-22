@@ -71,15 +71,20 @@ exports.getCategories = (app) => {
     }
   });
 
-  // TODO POST /add-new-category
-  app.get('/add-new-category', function (req, res) {
+  // POST /add-new-category
+  app.post('/add-new-category', function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
-    const {authentication, ...rest} = req.query;
+    const {authentication } = req.query;
+    const data = {
+      ...reque.body,
+      updateDate: `${new Date()}`,
+      creationDate: `${new Date()}`
+    }
     if (authenticationToken.checkAuthenticationToken(authentication)) {
       firebase.db.ref('categories')
-        .push(rest)
+        .push(data)
         .then(() => res.json({
           error: false,
           status: 'ok',
@@ -99,17 +104,21 @@ exports.getCategories = (app) => {
   });
 
   /**
-   * UPDATE /update-category/:id
+   * POST update /update-category/:id
    */
-  app.get('/update-category/:id', function (req, res) {
+  app.post('/update-category/:id', function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const categoryId = req.params.id;
+    const data = {
+      ...req.body,
+      updateDate: `${new Date()}`
+    }
     if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
       firebase.db.ref('categories')
         .child(categoryId)
-        .update({ 'categoryDescription': 'profesional' })
+        .update(data)
         .then(() => res.json({
           error: false,
           status: 'ok',
@@ -129,7 +138,7 @@ exports.getCategories = (app) => {
   });
 
   /**
-   * REMOVE /delete-category/:id
+   * GET delete /delete-category/:id
    */
   app.get('/delete-category/:id', function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");

@@ -1,82 +1,82 @@
 {
-	"name": "Creality Ender 3",
+	"name": "Impresora 3D Anycubic I3 Mega con ultrabase",
   "category": "principiante",
 	"image": [
-    "https://images-na.ssl-images-amazon.com/images/I/515EImQPCCL._SX466_.jpg",
-    "https://images-na.ssl-images-amazon.com/images/I/61IRAOW24fL._SX466_.jpg",
-    "https://images-na.ssl-images-amazon.com/images/I/61p4qNi0lnL._SX466_.jpg"
+    "https://images-na.ssl-images-amazon.com/images/I/61pmef%2B6ZjL._SX425_.jpg",
+    "https://des.gbtcdn.com/storage/item/6573618713229651968/15689/5b7051b3b0d3.jpg",
+    "https://images-na.ssl-images-amazon.com/images/I/61iyBKlxtHL._SX425_.jpg",
+    "https://ae01.alicdn.com/kf/HTB1NZVuaBWD3KVjSZFsq6AqkpXad/Impresora-ANYCUBIC-I3-Mega-3D-marco-de-Metal-completo-Impresora-TFT-pantalla-t-ctil-de-alta.jpg"
   ],
-	"postLink": "https://3dmakernow.com/impresora-3d-creality-ender-3",
+  "building": "1 hora",
+	"postLink": "https://3dmakernow.com/anycubic-i3-mega-opiniones-valoracion-analisis/",
 	"affiliateAmazonInfo": {
-		"informationLink": "https://www.amazon.es/Creality-3D-directa-impresora-impression/dp/B07D218NX3",
-    "asin": "B07D218NX3",
-    "affiliateShortLink": "https://amzn.to/2tygQhQ",
-    "amazonPrice": 225,
+		"informationLink": "https://www.amazon.es/ANYCUBIC-Impresora-patentada-Ultrabase-calefactada/dp/B07SFL5P8Q",
+    "asin": "B07SFL5P8Q",
+    "affiliateShortLink": "https://amzn.to/2PLjCsU",
+    "amazonPrice": 230.00,
     "amazonPrime": false,
-    "amazonRatings": 109,
-    "amazonRate": 4.40
+    "amazonRatings": 24,
+    "amazonRate": 4.50
 	},
 	"affiliateGearbestInfo": {
-    "informationLink": "https://es.gearbest.com/3d-printers-3d-printer-kits/pp_1845899.html?wid=1433363&lkid=78090139",
-    "GearbestPrice": 179.60,
-    "gearbestRatings": 13,
-    "gearbestRate": 4.92,
-    "shipping": "Free Shipping to Spain Via Expedited Shipping"
+    "informationLink": "https://www.gearbest.com/3d-printers-3d-printer-kits/pp_337314.html?wid=1433363&lkid=78093823",
+    "GearbestPrice": 197.65,
+    "gearbestRatings": 10,
+    "gearbestRate": 4.90,
+    "shipping": "free shipping to Spain Via Expedited Shipping"
 	},
 	"affiliateAliexpress": {
-		"informationLink": "http://s.click.aliexpress.com/e/nYBf7clE",
-    "aliexpressPrice": 163.40,
-    "aliexpressRatings": 135,
-    "aliexpressRate": 4.90
+    "informationLink": "https://es.aliexpress.com/item/32844481738.html",
+    "affiliateAliShortLink": "http://s.click.aliexpress.com/e/DhDyu3QC",
+    "aliexpressPrice": 147.15,
+    "aliexpressRatings": 146,
+    "aliexpressRate": 4.80
   },
   "printFeatures": {
     "technology": "FDM (Deposición de material fundido)",
-    "printerVolume": "220x220x250mm",
-    "printerResolutionLayer": "0,1 - 0,3 mm",
-    "printerPrecision": "+/-0,1 mm",
+    "printerVolume": "210x210x205mm",
+    "printerResolutionLayer": "0,05 - 0,3 mm",
+    "printerPrecision": "XY +/-0,0125 mm Z 0.002mm",
     "nozzleSize": "0,4 mm",
     "bedLeveling": "manual"
   },
   "printerParameters": {
     "filamentDiameter": "1.75mm",
-    "extusorPrinter": "MK8",
-    "bowden": true,
-    "maxExtruderTemp": "255ºC",
+    "extrusorPrinter": "Extrusor Bowden MK8",
+    "bowden": false,
+    "maxExtruderTemp": "260ºC",
     "maxHeatedTemp": "110ºC",
-    "maxPrinterSpeed": "180 mm/s",
-    "filamentsSuported": "PLA, ABS, TPU, wood, Flexible"
+    "maxPrinterSpeed": "≤100 mm/s",
+    "filamentsSuported": "PLA, ABS, HIPS, wood",
+    "resumePrint": true
   },
   "printerSoftware": {
-    "machineDimmensions": "440 x 440 x 610 mm",
     "operativeSystem": "Windows, Mac, Linux",
-    "formatFile": "STL, OBJ, G-Code",
-    "conectivity": "Tarjeta SD y cable USB",
-    "firmware": "Marlin",
-    "display": "Control mediante rueda"
+    "formatFile": "STL, OBJ, .DAE, AMF G-Code",
+    "slicer": "Cura, Repetier-Host, Simplify3D",
+    "conectivity": "Tarjeta SD y cable USB (sólo usuarios expertos)",
+    "display": "Display táctil"
   },
   "printerUnboxing": {
-    "machineDimmensions": "440 x 440 x 610 mm",
-    "machineWeight": "8kg",
-    "shippingDimensions": "600 x 350 x 160 mm",
-    "shippingWeight": "10kg",
+    "machineDimensions": "405 x 410 x 453 mm",
+    "machineWeight": "11kg",
+    "shippingWeight": "16,5kg",
     "printerContent": [
-      "Perfiles metálicos",
-      "cama caliente y cuadro eléctrico",
+      "Impresora para montar fácilmente",
+      "varillas y motores paso a paso",
+      "cable de alimentación y de datos",
       "Tornillería y piezas necesarias para su montaje",
-      "pantalla display",
-      "herramientas para el montaje (destornillador, allen)",
-      "filamento blanco (sólo para pruebas)",
-      "espátula y tenazas",
-      "usb con tarjeta 8GB",
-      "Cable de alimentación",
-      "Instrucciones"
+      "herramientas para postprocesado",
+      "soporte para filamento y filamento (1kg)",
+      "usb pendrive",
+      "manual de usuario"
     ],
     "contentImage": [
       ""
     ]
   },
   "printerElectricity": {
-    "input": "AC 100-265V 50-60Hz",
-    "output": "DC 24V 15A 360W"
+    "input": "110/220V AC, 50/60Hz",
+    "output": "DC 12V CC"
   }
 }

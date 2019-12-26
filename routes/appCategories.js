@@ -78,7 +78,7 @@ exports.getCategories = (app) => {
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const {authentication } = req.query;
     const data = {
-      ...reque.body,
+      ...req.body,
       updateDate: `${new Date()}`,
       creationDate: `${new Date()}`
     }

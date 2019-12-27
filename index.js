@@ -1,5 +1,5 @@
 const express = require("express");
-const getPrices = require('./getPrices');
+const getPrices = require('./utils/getPrices');
 const schedule = require('./schedule');
 const appPrinters = require('./routes/appPrinters');
 const appCategories = require('./routes/appCategories');

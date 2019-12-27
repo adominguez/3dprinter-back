@@ -1,7 +1,7 @@
 const https = require('https');
 var cheerio = require('cheerio');
 var request = require('request');
-const firebase = require('./app');
+const firebase = require('../app');
 
 exports.getAmazonProductPrice = (link) => {
     request(link, function (error, response, html) {

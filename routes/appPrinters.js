@@ -190,16 +190,16 @@ exports.getPrinters = (app) => {
   });
 
   /**
-   * POST send Email with error notification
+   * GET send Email with error notification
    */
-  app.post('/error-notification', function (req, res) {
+  app.get('/error-notification/:id', function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
-    const {  } = req.body;
+    const printerId = req.params.id;
     const data = {
       subject: 'Ha habido un error al acceder a la información de una impresora',
-      message: `<div>Estos son los datos: </div>`,
+      message: `La impresora con id <b>${printerId}</b> está teniendo problemas`,
       type: 'error'
     }
     if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {

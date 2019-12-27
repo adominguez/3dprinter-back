@@ -2,3 +2,4 @@ node_modules/
 package-lock.json
 authenticationToken.js
 project-*
+secret*

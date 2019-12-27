@@ -1,6 +1,7 @@
 const firebase = require('../app');
 const _ = require('lodash');
 const authenticationToken = require('../authenticationToken');
+const email = require('../utils/email');
 
 exports.getPrinters = (app) => {
 
@@ -187,4 +188,34 @@ exports.getPrinters = (app) => {
       })
     }
   });
+
+  /**
+   * POST send Email with error notification
+   */
+  app.post('/error-notification', function (req, res) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+    res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
+    const {  } = req.body;
+    const data = {
+      subject: 'Ha habido un error al acceder a la información de una impresora',
+      message: `<div>Estos son los datos: </div>`,
+      type: 'error'
+    }
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
+      email.sendEmail(data);
+      return res.json({
+        error: false,
+        status: 'ok',
+        code: 200,
+        errorMessage: 'The error has been sent ok'
+      })
+    } else {
+      return res.json({
+        errorCode: 401,
+        errorMessage: 'No tienes permisos para ver esta información'
+      })
+    }
+  });
+
 }

@@ -57,7 +57,7 @@ exports.getCategories = (app) => {
     if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
       firebase.db.ref('categories')
         .child(categoryId)
-        .once("value")
+        .once('value')
         .then(snapshot => res.json(snapshot.val()))
         .catch(error => (res.json({
           errorCode: error.code,

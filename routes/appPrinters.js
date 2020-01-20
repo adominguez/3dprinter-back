@@ -76,11 +76,21 @@ exports.getPrinters = (app) => {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const printerId = req.params.id;
-    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
+    const { authentication, affiliateInfo, featuresInfo } = req.query;
+    if (authenticationToken.checkAuthenticationToken(authentication)) {
       firebase.db.ref('3d-printers')
         .child(printerId)
-        .once("value")
-        .then(snapshot => res.json(snapshot.val()))
+        .once('value')
+        .then(snapshot => {
+          const { printFeatures, printerElectricity, printerParameters, printerSoftware, printerUnboxing, ...rest } = snapshot.val();
+          if(affiliateInfo) {
+            return res.json({ ...rest });
+          }
+          if(featuresInfo) {
+            return res.json({ printFeatures, printerElectricity, printerParameters, printerSoftware, printerUnboxing });
+          }
+          return res.json(snapshot.val());
+        })
         .catch(error => (res.json({
           errorCode: error.code,
           errorMessage: error.message

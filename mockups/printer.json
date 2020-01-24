@@ -20,10 +20,9 @@
 	},
 	"affiliateGearbestInfo": {
     "informationLink": "https://www.gearbest.com/3d-printers-3d-printer-kits/pp_337314.html?wid=1433363&lkid=78093823",
-    "GearbestPrice": 197.65,
+    "gearbestPrice": 197.65,
     "gearbestRatings": 10,
-    "gearbestRate": 4.90,
-    "shipping": "free shipping to Spain Via Expedited Shipping"
+    "gearbestRate": 4.90
 	},
 	"affiliateAliexpress": {
     "informationLink": "https://es.aliexpress.com/item/32844481738.html",

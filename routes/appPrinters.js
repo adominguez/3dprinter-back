@@ -2,6 +2,7 @@ const firebase = require('../app');
 const _ = require('lodash');
 const authenticationToken = require('../authenticationToken');
 const email = require('../utils/email');
+const getPrices = require('../utils/getPrices');
 
 exports.getPrinters = (app) => {
 
@@ -161,6 +162,34 @@ exports.getPrinters = (app) => {
           errorCode: error.code,
           errorMessage: error.message
         })));
+    } else {
+      return res.json({
+        errorCode: 401,
+        errorMessage: 'No tienes permisos para ver esta información'
+      })
+    }
+  });
+
+  /**
+   * GET update automatically price /printer/:id
+   */
+  app.get('/update-automatically-printer/:id', function (req, res) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+    res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
+    const printerId = req.params.id;
+
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
+
+      getPrices.getAmazonProductPrice(printerId)
+      getPrices.getAliexpressProductPrice(printerId)
+      getPrices.getGearbestProductPrice(printerId);
+      res.json({
+        error: false,
+        status: 'ok',
+        code: 200,
+        message: 'The printer has been udpated sucessfull'
+      })
     } else {
       return res.json({
         errorCode: 401,

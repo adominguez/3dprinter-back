@@ -184,7 +184,7 @@ exports.getPrinters = (app) => {
       getPrices.getAmazonProductPrice(printerId)
       getPrices.getAliexpressProductPrice(printerId)
       getPrices.getGearbestProductPrice(printerId);
-      res.json({
+      return res.json({
         error: false,
         status: 'ok',
         code: 200,

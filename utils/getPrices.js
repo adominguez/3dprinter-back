@@ -136,8 +136,8 @@ exports.getGearbestProductPrice = (id) => {
       if (affiliateGearbestInfo && affiliateGearbestInfo.informationLink) {
         const {
           informationLink,
-          gearbestPrice : dbGearbestPrice,
-          gearbestRate : dbGearbestRate,
+          gearbestPrice: dbGearbestPrice,
+          gearbestRate: dbGearbestRate,
           gearbestRatings: dbGearbestRatings,
           updateDate
         } = affiliateGearbestInfo;

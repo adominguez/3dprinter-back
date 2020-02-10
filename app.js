@@ -1,7 +1,7 @@
 var admin = require("firebase-admin");
 
 const firebaseData = {
-  "private_key": process.env.FIREBASE_PRIVATE_KEY,
+  "private_key": process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
   "client_email": process.env.FIREBASE_CLIENT_EMAIL,
 }
 

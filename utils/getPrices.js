@@ -36,10 +36,10 @@ exports.getAmazonProductPrice = (id) => {
             return console.error(error);
           }
           const $ = cheerio.load(html);
-          const amazonPrice = parseFloat($('#priceblock_ourprice').text().replace('€', '').replace(',', '.').replace(' ', '')).toFixed(2);
+          const amazonPrice = parseFloat($('#priceblock_ourprice').text().replace('€', '').replace(',', '.').replace(' ', '') || 0).toFixed(2) || "No disponible";
           const prime = $('#priceblock_ourprice_row #price-shipping-message').text().replace('Ver detalles', '').replace(' ', '');
-          const amazonRatings = parseFloat($('#acrCustomerReviewText').text().replace(' valoraciones', '').replace(' ', ''));
-          const amazonRate = parseFloat($('#acrPopover').text().replace(' de 5 estrellas', '').replace(' ', '').replace(',', '.'));
+          const amazonRatings = parseFloat($('#acrCustomerReviewText').text().replace(' valoraciones', '').replace(' ', '') || 0);
+          const amazonRate = parseFloat($('#acrPopover').text().replace(' de 5 estrellas', '').replace(' ', '').replace(',', '.') || 0);
 
           /**
            * Comprueba si se han realizado cambios en los datos
@@ -96,9 +96,9 @@ exports.getAliexpressProductPrice = (id) => {
             email.sendEmail(data);
             return console.error(error);
           }
-          const aliexpressPrice = parseFloat(html.match(/totalValue: "(.*?)"/g)[0].replace('totalValue: "€ ', '').replace('"', '').replace(',', '.')).toFixed(2) || null;
-          const aliexpressRatings = parseFloat(html.match(/"totalValidNum":(.*?),/g)[0].replace('"totalValidNum":', '').replace('"', '').replace(',', '.')) || null;
-          const aliexpressRate = parseFloat(html.match(/"averageStar":(.*?),/g)[0].replace('"averageStar":', '').replace('"', '').replace(',', '.')) || null;
+          const aliexpressPrice = parseFloat(html.match(/totalValue: "(.*?)"/g)[0].replace('totalValue: "€ ', '').replace('"', '').replace(',', '.') || 0).toFixed(2) || null;
+          const aliexpressRatings = parseFloat(html.match(/"totalValidNum":(.*?),/g)[0].replace('"totalValidNum":', '').replace('"', '').replace(',', '.') || 0) || null;
+          const aliexpressRate = parseFloat(html.match(/"averageStar":(.*?),/g)[0].replace('"averageStar":', '').replace('"', '').replace(',', '.') || 0) || null;
 
           /**
            * Comprueba si se han realizado cambios en los datos
@@ -164,9 +164,9 @@ exports.getGearbestProductPrice = (id) => {
             email.sendEmail(data);
             return console.error(error);
           }
-          const gearbestPrice = parseFloat(html.match(/"price": "(.*?)"/g)[0].replace('"price": "', '').replace('"', '')).toFixed(2) || null
-          const gearbestRate = parseFloat(html.match(/"ratingValue": "(.*?)"/g)[0].replace('"ratingValue": "', '').replace('"', '')) || null
-          const gearbestRatings = parseFloat(html.match(/"reviewCount": "(.*?)"/g)[0].replace('"reviewCount": "', '').replace('"', '')) || null
+          const gearbestPrice = parseFloat(html.match(/"price": "(.*?)"/g)[0].replace('"price": "', '').replace('"', '') || 0).toFixed(2) || null
+          const gearbestRate = parseFloat(html.match(/"ratingValue": "(.*?)"/g)[0].replace('"ratingValue": "', '').replace('"', '') || 0) || null
+          const gearbestRatings = parseFloat(html.match(/"reviewCount": "(.*?)"/g)[0].replace('"reviewCount": "', '').replace('"', '') || 0) || null
 
           /**
            * Comprueba si se han realizado cambios en los datos

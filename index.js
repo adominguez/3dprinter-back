@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 
 app = express();
+var PORT = process.env.PORT || 3128;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -21,4 +22,9 @@ appCategories.getCategories(app);
 // 'seg min hora * * *'
 schedule.cron('40 25 21 * * *');
 
-app.listen(3128);
+// Server port listening
+app.listen(PORT, function () {
+  console.log('Express served in the port ' + PORT)
+  console.log('http://localhost:' + PORT)
+});
+

@@ -1,7 +1,7 @@
 const firebase = require('../app');
 const _ = require('lodash');
 const authenticationToken = require('../authenticationToken');
-const email = require('../utils/email');
+const sendEmail = require('../utils/sendEmail');
 const getPrices = require('../utils/getPrices');
 
 exports.getPrinters = (app) => {
@@ -236,11 +236,7 @@ exports.getPrinters = (app) => {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const printerId = req.params.id;
-    const data = {
-      subject: 'Ha habido un error al acceder a la información de una impresora',
-      message: `La impresora con id <b>${printerId}</b> está teniendo problemas`,
-      type: 'error'
-    }
+    sendEmail.errorFromWeb(printerId);
     if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
       email.sendEmail(data);
       return res.json({

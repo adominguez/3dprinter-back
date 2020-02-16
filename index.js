@@ -1,5 +1,4 @@
 const express = require("express");
-const getPrices = require('./utils/getPrices');
 const schedule = require('./schedule');
 const appPrinters = require('./routes/appPrinters');
 const appCategories = require('./routes/appCategories');
@@ -20,7 +19,7 @@ appCategories.getCategories(app);
 
 // schedule tasks to be run on the server
 // 'seg min hora * * *'
-schedule.cron('40 25 21 * * *');
+schedule.cron('00 22 20 * * *');
 
 // Server port listening
 app.listen(PORT, function () {

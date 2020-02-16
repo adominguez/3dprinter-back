@@ -1,16 +1,25 @@
 const cron = require("node-cron");
 const firebase = require('./app');
-const _ = require('lodash');
+const fetch = require('node-fetch');
+const sendEmail = require('./utils/sendEmail');
 
 exports.cron = (scheduleTime) => {
-    // cron.schedule(scheduleTime, () => {
-        firebase.db.ref('3d-printers').on('value', (snapshot) => {
-            const dbPrinters = snapshot.val();
-            const printers = _.map(dbPrinters, item => item);
-            printers.map(printer => {
-                // console.log(printer.printerName);
+  cron.schedule(scheduleTime, () => {
+    firebase.db.ref('3d-printers').on('value', (snapshot) => {
+      const dbPrinters = snapshot.val();
+      const printers = Object.keys(dbPrinters).map(key => ({ key, ...dbPrinters[key] }));
+      printers.forEach(item => {
+        const { key, name } = item;
+        fetch(`http://localhost:3128/update-automatically-printer/${key}?authentication=3DMAKERNOW`)
+          .then(response => response.json())
+          .then(() => {
+              console.log(`La impresora ${name} con id ${key} se ha actualizado correctamente`)
             })
-            // console.log({printers});
-        });
-    // });
+          .catch(error => {
+            sendEmail.responsePrinterError(name, key, error)
+            return console.error(error);
+          });
+      });
+    });
+  });
 }

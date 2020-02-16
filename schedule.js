@@ -13,7 +13,7 @@ exports.cron = (scheduleTime) => {
         fetch(`http://localhost:3128/update-automatically-printer/${key}?authentication=3DMAKERNOW`)
           .then(response => response.json())
           .then(() => {
-              console.log(`La impresora ${name} con id ${key} se ha actualizado correctamente`)
+              console.log(`La impresora ${name} con id ${key} se ha actualizado correctamente`);
             })
           .catch(error => {
             sendEmail.responsePrinterError(name, key, error)

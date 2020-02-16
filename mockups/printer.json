@@ -1,82 +1,95 @@
 {
-	"name": "Impresora 3D Anycubic I3 Mega con ultrabase",
-  "category": "principiante",
-	"image": [
-    "https://images-na.ssl-images-amazon.com/images/I/61pmef%2B6ZjL._SX425_.jpg",
-    "https://des.gbtcdn.com/storage/item/6573618713229651968/15689/5b7051b3b0d3.jpg",
-    "https://images-na.ssl-images-amazon.com/images/I/61iyBKlxtHL._SX425_.jpg",
-    "https://ae01.alicdn.com/kf/HTB1NZVuaBWD3KVjSZFsq6AqkpXad/Impresora-ANYCUBIC-I3-Mega-3D-marco-de-Metal-completo-Impresora-TFT-pantalla-t-ctil-de-alta.jpg"
-  ],
-  "building": "1 hora",
-	"postLink": "https://3dmakernow.com/anycubic-i3-mega-opiniones-valoracion-analisis/",
-	"affiliateAmazonInfo": {
-		"informationLink": "https://www.amazon.es/ANYCUBIC-Impresora-patentada-Ultrabase-calefactada/dp/B07SFL5P8Q",
-    "asin": "B07SFL5P8Q",
-    "affiliateShortLink": "https://amzn.to/2PLjCsU",
-    "amazonPrice": 230.00,
-    "amazonPrime": false,
-    "amazonRatings": 24,
-    "amazonRate": 4.50
-	},
-	"affiliateGearbestInfo": {
-    "informationLink": "https://www.gearbest.com/3d-printers-3d-printer-kits/pp_337314.html?wid=1433363&lkid=78093823",
-    "gearbestPrice": 197.65,
-    "gearbestRatings": 10,
-    "gearbestRate": 4.90
-	},
-	"affiliateAliexpress": {
-    "informationLink": "https://es.aliexpress.com/item/32844481738.html",
-    "affiliateAliShortLink": "http://s.click.aliexpress.com/e/DhDyu3QC",
-    "aliexpressPrice": 147.15,
-    "aliexpressRatings": 146,
-    "aliexpressRate": 4.80
+  "affiliateAliexpress": {
+    "affiliateAliShortLink": "http://s.click.aliexpress.com/e/nYBf7clE",
+    "aliexpressPrice": "195.73",
+    "aliexpressRate": 4.8,
+    "aliexpressRatings": 188,
+    "informationLink": "https://es.aliexpress.com/item/32903432578.html",
+    "updateDate": "Sun Feb 16 2020 13:20:00 GMT+0100 (GMT+01:00)"
   },
+  "affiliateAmazonInfo": {
+    "affiliateShortLink": "https://amzn.to/2GgQOD9",
+    "amazonPrice": "269.80",
+    "amazonPrime": true,
+    "amazonRate": 4.5,
+    "amazonRatings": 9,
+    "asin": "B07PF9ZW4N",
+    "informationLink": "https://www.amazon.es/Impresora-3D-Pro-Creality-estándar/dp/B07PF9ZW4N",
+    "updateDate": "Sun Feb 16 2020 12:54:41 GMT+0100 (GMT+01:00)"
+  },
+  "affiliateGearbestInfo": {
+    "gearbestPrice": "185.39",
+    "gearbestRate": 4.75,
+    "gearbestRatings": 1329,
+    "informationLink": "https://es.gearbest.com/3d-printers-3d-printer-kits/pp_1845899.html?wid=1433363&lkid=78090139",
+    "updateDate": "Sun Feb 16 2020 12:39:01 GMT+0100 (GMT+01:00)"
+  },
+  "building": "1 hora",
+  "category": "principiante",
+  "creationDate": "Sat Dec 21 2019 14:39:11 GMT+0100 (GMT+01:00)",
+  "image": [
+    "https://3dmakernow.com/wp-content/uploads/2020/02/impresora-3d-ender-3.png",
+    "https://3dmakernow.com/wp-content/uploads/2020/02/impresora-3d-ender-3-01.png",
+    "https://3dmakernow.com/wp-content/uploads/2020/02/impresora-3d-ender-3-02.png",
+    "https://3dmakernow.com/wp-content/uploads/2020/02/impresora-3d-ender-3-03.png",
+    "https://3dmakernow.com/wp-content/uploads/2020/02/impresora-3d-ender-3-04.png",
+    "https://3dmakernow.com/wp-content/uploads/2020/02/impresora-3d-ender-3-05.png",
+    "https://3dmakernow.com/wp-content/uploads/2020/02/impresora-3d-ender-3-06.png",
+    "https://3dmakernow.com/wp-content/uploads/2020/02/impresora-3d-ender-3-07.png"
+  ],
+  "name": "Creality Ender 3",
+  "postLink": "https://3dmakernow.com/impresora-3d-creality-ender-3",
   "printFeatures": {
-    "technology": "FDM (Deposición de material fundido)",
-    "printerVolume": "210x210x205mm",
-    "printerResolutionLayer": "0,05 - 0,3 mm",
-    "printerPrecision": "XY +/-0,0125 mm Z 0.002mm",
+    "bedLeveling": "manual",
+    "extrudeNumber": 1,
     "nozzleSize": "0,4 mm",
-    "bedLeveling": "manual"
+    "printerPrecision": "+/-0,1 mm",
+    "printerResolutionLayer": "0,1 - 0,3 mm",
+    "printerVolume": "220x220x250mm",
+    "technology": "FDM (Deposición de material fundido)"
+  },
+  "printerElectricity": {
+    "input": "AC 100-265V 50-60Hz",
+    "output": "DC 24V 15A 360W"
   },
   "printerParameters": {
+    "bowden": true,
+    "extrusorPrinter": "Bowden MK8",
     "filamentDiameter": "1.75mm",
-    "extrusorPrinter": "Extrusor Bowden MK8",
-    "bowden": false,
-    "maxExtruderTemp": "260ºC",
+    "filamentsSuported": "PLA, ABS, TPU, wood, Flexible",
+    "maxExtruderTemp": "255ºC",
     "maxHeatedTemp": "110ºC",
-    "maxPrinterSpeed": "≤100 mm/s",
-    "filamentsSuported": "PLA, ABS, HIPS, wood",
+    "maxPrinterSpeed": "180 mm/s",
     "resumePrint": true
   },
   "printerSoftware": {
+    "conectivity": "Tarjeta SD y cable USB",
+    "display": "Control mediante rueda",
+    "firmware": "Marlin",
+    "formatFile": "STL, OBJ, G-Code",
     "operativeSystem": "Windows, Mac, Linux",
-    "formatFile": "STL, OBJ, .DAE, AMF G-Code",
-    "slicer": "Cura, Repetier-Host, Simplify3D",
-    "conectivity": "Tarjeta SD y cable USB (sólo usuarios expertos)",
-    "display": "Display táctil"
+    "slicer": "Cura, Repetier-Host, Simplify3D"
   },
   "printerUnboxing": {
-    "machineDimensions": "405 x 410 x 453 mm",
-    "machineWeight": "11kg",
-    "shippingWeight": "16,5kg",
-    "printerContent": [
-      "Impresora para montar fácilmente",
-      "varillas y motores paso a paso",
-      "cable de alimentación y de datos",
-      "Tornillería y piezas necesarias para su montaje",
-      "herramientas para postprocesado",
-      "soporte para filamento y filamento (1kg)",
-      "usb pendrive",
-      "manual de usuario"
-    ],
     "contentImage": [
-      ""
-    ]
-  },
-  "printerElectricity": {
-    "input": "110/220V AC, 50/60Hz",
-    "output": "DC 12V CC"
+      "https://3dmakernow.com/wp-content/uploads/2020/02/impresora-3d-ender-3-03.png"
+    ],
+    "machineDimensions": "440 x 440 x 610 mm Incluido el portafilamento",
+    "machineWeight": "8kg",
+    "printerContent": [
+      "Perfiles metálicos",
+      "cama caliente y cuadro eléctrico",
+      "Tornillería y piezas necesarias para su montaje",
+      "pantalla display",
+      "herramientas para el montaje (destornillador, allen)",
+      "filamento blanco (sólo para pruebas)",
+      "espátula y tenazas",
+      "usb con tarjeta 8GB",
+      "Cable de alimentación",
+      "Instrucciones"
+    ],
+    "shippingDimensions": "600 x 350 x 160 mm",
+    "shippingWeight": "10kg"
   },
   "socialCommunity": [
     {
@@ -136,7 +149,7 @@
       "languaje": "Inglés"
     }
   ],
-  "printerFeatures": [
+  "toPrintFeatures": [
     {
       "feature": "Tensor para el eje X",
       "description": "facebook",
@@ -184,5 +197,6 @@
       "review": "facebook",
       "stars": 5
     }
-  ]
+  ],
+  "updateDate": "Mon Feb 10 2020 19:16:51 GMT+0100 (GMT+01:00)"
 }

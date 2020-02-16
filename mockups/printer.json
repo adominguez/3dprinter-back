@@ -77,5 +77,112 @@
   "printerElectricity": {
     "input": "110/220V AC, 50/60Hz",
     "output": "DC 12V CC"
-  }
+  },
+  "socialCommunity": [
+    {
+      "socialName": "Creality Ender-3 3d printer user group",
+      "type": "facebook",
+      "url": "https://www.facebook.com/groups/Ender3dp",
+      "users": "Más de 50.000 miembros",
+      "languaje": "Inglés"
+    },
+    {
+      "socialName": "Creality Ender-3 3D Printer Support & Modding Community",
+      "type": "facebook",
+      "url": "https://www.facebook.com/groups/ender3supportandmodding",
+      "users": "Más de 25.000 miembros",
+      "languaje": "Inglés"
+    },
+    {
+      "socialName": "Creality Official Ender-3 Ender-3 pro 3D Printer Group",
+      "type": "facebook",
+      "url": "https://www.facebook.com/groups/1275880512515568/",
+      "users": "Más de 180.000 miembros",
+      "languaje": "Inglés"
+    },
+    {
+      "socialName": "Creality 3D CR-10/ENDER 3 España/Spain",
+      "type": "facebook",
+      "url": "https://www.facebook.com/groups/1569112459778578",
+      "users": "Más de 4.500 miembros",
+      "languaje": "Español"
+    },
+    {
+      "socialName": "Creality Ender 3 Original",
+      "type": "telegram",
+      "url": "https://t.me/CrealityEnder3Original",
+      "users": "Más de 2.900 miembros",
+      "languaje": "Español"
+    },
+    {
+      "socialName": "ENDER 3 ESPAÑA",
+      "type": "telegram",
+      "url": "https://t.me/Ender3Spain",
+      "users": "Más de 2.000 miembros",
+      "languaje": "Español"
+    },
+    {
+      "socialName": "Creality Ender 3",
+      "type": "thinghiverse",
+      "url": "https://www.thingiverse.com/groups/ender3",
+      "users": "Más de 11.000 miembros",
+      "languaje": "Inglés"
+    },
+    {
+      "socialName": "Everything Ender 3",
+      "type": "thinghiverse",
+      "url": "https://www.thingiverse.com/groups/everything-ender-3",
+      "users": "Más de 900 miembros",
+      "languaje": "Inglés"
+    }
+  ],
+  "printerFeatures": [
+    {
+      "feature": "Tensor para el eje X",
+      "description": "facebook",
+      "url": "https://www.thingiverse.com/thing:2854971"
+    },
+    {
+      "feature": "Tensor para el eje Y",
+      "description": "facebook",
+      "url": "https://www.thingiverse.com/thing:2986144"
+    },
+    {
+      "feature": "tapa para el ventilador",
+      "description": "facebook",
+      "url": "https://www.thingiverse.com/thing:2935204"
+    },
+    {
+      "feature": "Guía para el filamento",
+      "description": "facebook",
+      "url": "https://www.thingiverse.com/thing:2917932"
+    },
+    {
+      "feature": "Portarrollo con rodamiento",
+      "description": "facebook",
+      "url": "https://www.thingiverse.com/thing:3020026"
+    },
+    {
+      "feature": "Protector parte trasera del LCD",
+      "description": "facebook",
+      "url": "https://www.thingiverse.com/thing:2858209"
+    },
+    {
+      "feature": "Rueda para deslizar extruir el filamento",
+      "description": "facebook",
+      "url": "https://www.thingiverse.com/thing:3176144"
+    },
+    {
+      "feature": "Compartimento para guardar herramientas",
+      "description": "facebook",
+      "url": "https://www.thingiverse.com/thing:2989218"
+    }
+  ],
+  "reviews": [
+    {
+      "name": "Anónimo",
+      "review": "facebook",
+      "stars": 5
+    }
+  ]
 }

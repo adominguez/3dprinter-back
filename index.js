@@ -1,6 +1,7 @@
 const express = require("express");
 const schedule = require('./schedule');
 const appPrinters = require('./routes/appPrinters');
+const appMaterials = require('./routes/appMaterials');
 const appCategories = require('./routes/appCategories');
 const bodyParser = require('body-parser');
 
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
  * Get Printers
  */
 appPrinters.getPrinters(app);
+appMaterials.getMaterials(app);
 appCategories.getCategories(app);
 
 // schedule tasks to be run on the server

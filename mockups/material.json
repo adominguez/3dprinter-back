@@ -1,0 +1,55 @@
+{
+  "affiliateAliexpress": {
+    "affiliateAliShortLink": "http://s.click.aliexpress.com/e/nYBf7clE",
+    "aliexpressPrice": "195.73",
+    "aliexpressRate": 4.8,
+    "aliexpressRatings": 188,
+    "informationLink": "https://es.aliexpress.com/item/32903432578.html",
+    "updateDate": "Sun Feb 16 2020 13:20:00 GMT+0100 (GMT+01:00)"
+  },
+  "affiliateAmazonInfo": {
+    "affiliateShortLink": "https://amzn.to/2GgQOD9",
+    "amazonPrice": "269.80",
+    "amazonPrime": true,
+    "amazonRate": 4.5,
+    "amazonRatings": 9,
+    "asin": "B07PF9ZW4N",
+    "informationLink": "https://www.amazon.es/Impresora-3D-Pro-Creality-estándar/dp/B07PF9ZW4N",
+    "updateDate": "Sun Feb 16 2020 12:54:41 GMT+0100 (GMT+01:00)"
+  },
+  "affiliateGearbestInfo": {
+    "gearbestPrice": "185.39",
+    "gearbestRate": 4.75,
+    "gearbestRatings": 1329,
+    "informationLink": "https://es.gearbest.com/3d-printers-3d-printer-kits/pp_1845899.html?wid=1433363&lkid=78090139",
+    "updateDate": "Sun Feb 16 2020 12:39:01 GMT+0100 (GMT+01:00)"
+  },
+  "category": "Filamento",
+  "image": [
+    "https://images-na.ssl-images-amazon.com/images/I/61weyB0FucL._SX385_.jpg"
+  ],
+  "name": "GEEETECH Filamento PLA 1.75mm",
+  "postLink": "",
+  "materialFeatures": {
+    "weight": "1kg",
+    "materialType": "PLA",
+    "diameter": "1,75mm",
+    "temperature": "190 - 210 ºC",
+    "colors": [
+      "#fff"
+    ]
+  },
+  "materialExamples": [
+    {
+      "description": "descripción",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/61xiQS0tcsL._SX385_.jpg"
+    }
+  ],
+  "reviews": [
+    {
+      "name": "Anónimo",
+      "review": "facebook",
+      "stars": 5
+    }
+  ]
+}

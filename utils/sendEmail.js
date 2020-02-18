@@ -29,8 +29,8 @@ exports.responsePrinterError = (name, id, error) => {
      * Enviamos un correo para informar de que ha habido un error.
      */
     const data = {
-        subject: 'Ha habido un error al actualizar la información de la impresora con id ' + key,
-        message: `La impresora ${name} con id <b>${key}</b> está teniendo problemas en su actualización diaria al realizar la llamada desde schedule. <br/> este es el error:<br/>` + error,
+        subject: 'Ha habido un error al actualizar la información de la impresora con id ' + id,
+        message: `La impresora ${name} con id <b>${id}</b> está teniendo problemas en su actualización diaria al realizar la llamada desde schedule. <br/> este es el error:<br/>` + error,
         type: 'error'
     }
     email.sendEmail(data);

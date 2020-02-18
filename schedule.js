@@ -11,7 +11,6 @@ exports.cron = (scheduleTime) => {
       printers.forEach(item => {
         const { key, name } = item;
         fetch(`https://api-3dmakernow.herokuapp.com/update-automatically-printer/${key}?authentication=3DMAKERNOW`)
-          .then(response => response.json())
           .then(() => {
               console.log(`La impresora ${name} con id ${key} se ha actualizado correctamente`);
             })

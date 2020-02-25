@@ -1,24 +1,21 @@
 const cron = require("node-cron");
 const firebase = require('./app');
-const fetch = require('node-fetch');
-const sendEmail = require('./utils/sendEmail');
+const getPrices = require('./utils/getPrices');
 
 exports.cron = (scheduleTime) => {
   cron.schedule(scheduleTime, () => {
-    firebase.db.ref('3d-printers').on('value', (snapshot) => {
-      const dbPrinters = snapshot.val();
-      const printers = Object.keys(dbPrinters).map(key => ({ key, ...dbPrinters[key] }));
-      printers.forEach(item => {
-        const { key, name } = item;
-        fetch(`https://api-3dmakernow.herokuapp.com/update-automatically-printer/${key}?authentication=3DMAKERNOW`)
-          .then(() => {
-              console.log(`La impresora ${name} con id ${key} se ha actualizado correctamente`);
-            })
-          .catch(error => {
-            sendEmail.responsePrinterError(name, key, error)
-            return console.error(error);
-          });
+    return firebase.db.ref('3d-printers').once('value').then(snapshot => {
+      snapshot.forEach(childSnapshot => {
+        const {key} = childSnapshot;
+        getPrices.getAmazonProductPrice(key)
+        getPrices.getAliexpressProductPrice(key)
+        getPrices.getGearbestProductPrice(key);
       });
+    }, error => {
+      // The Promise was rejected.
+      console.error(error);
+    }).then(values => {
+      console.log(values); // [snap, snap, snap]
     });
   });
 }

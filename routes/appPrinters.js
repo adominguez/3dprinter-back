@@ -180,6 +180,83 @@ exports.getPrinters = (app) => {
   });
 
   /**
+   * POST update /add-printer-review/:id
+   */
+  app.post('/add-printer-review/:id', function (req, res) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+    res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
+    const printerId = req.params.id;
+    const data = {
+      ...req.body,
+      enabled: false,
+      name: req.body.name !== '' ? req.body.name : 'Anonimo'
+    }
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
+      firebase.db.ref('3d-printers')
+        .child(printerId)
+        .child('reviews')
+        .push(data)
+        .then(() =>{
+          sendEmail.newPrinterReview(printerId, data);
+          return res.json({
+            error: false,
+            status: 'ok',
+            code: 200,
+            message: 'The printer has been udpated sucessfull'
+          })
+        })
+        .catch(error => (res.json({
+          errorCode: error.code,
+          errorMessage: error.message
+        })));
+    } else {
+      return res.json({
+        errorCode: 401,
+        errorMessage: 'No tienes permisos para ver esta información'
+      })
+    }
+  });
+
+  /**
+   * POST update /add-printer-review/:id
+   */
+  app.post('/accept-printer-review/:id', function (req, res) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+    res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
+    const printerId = req.params.id;
+    const data = {
+      ...req.body,
+      enabled: true,
+    }
+    if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
+      firebase.db.ref('3d-printers')
+        .child(printerId)
+        .child('reviews')
+        .push(data)
+        .then(() =>{
+          sendEmail.newPrinterReview(printerId, data);
+          return res.json({
+            error: false,
+            status: 'ok',
+            code: 200,
+            message: 'The printer has been udpated sucessfull'
+          })
+        })
+        .catch(error => (res.json({
+          errorCode: error.code,
+          errorMessage: error.message
+        })));
+    } else {
+      return res.json({
+        errorCode: 401,
+        errorMessage: 'No tienes permisos para ver esta información'
+      })
+    }
+  });
+
+  /**
    * GET update automatically price /printer/:id
    */
   app.get('/update-automatically-printer/:id', function (req, res) {
@@ -245,9 +322,8 @@ exports.getPrinters = (app) => {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const printerId = req.params.id;
-    sendEmail.errorFromWeb(printerId);
     if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
-      email.sendEmail(data);
+      sendEmail.errorFromWeb(printerId);
       return res.json({
         error: false,
         status: 'ok',

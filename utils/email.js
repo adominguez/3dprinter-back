@@ -1,6 +1,6 @@
-
 const emailUrl = process.env.SECRET_EMAIL_URL;
 const fetch = require('node-fetch');
+var request = require('request');
 
 /**
  * To commit this file it´s necessary uncomment in gitignore file
@@ -8,20 +8,35 @@ const fetch = require('node-fetch');
 exports.sendEmail = (data) => {
   const { subject, message, fromEmail, toEmail, type } = data;
 
-  console.log(emailUrl)
-
   if (subject && message) {
     const url = `${emailUrl}?subject=${subject}&message=${message}${fromEmail && '&fromEmail=' + fromEmail || ''}${toEmail && '&toEmail=' + toEmail || ''}${type && '&type=' + type || ''}`;
-    fetch(url)
+    const options = {
+      url: url,
+      method: 'GET',
+      headers: {
+        Accept: '*/*',
+        'Accept-Encoding': '*',
+        Connection: 'keep-alive',
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
+      }
+    }
+    request(options, (error, response, html) => {
+      if (error) {
+        console.log(error)
+        return error
+      } else {
+        return response
+      }
+    });
+    /*fetch(url)
       .then(function (response) {
         console.log('ha enviado el correo')
         return response;
-      })
-    } else {
-      console.log('ha habido un error en el envío de correo')
-      return {
-        errorCode: 400,
-        errorMessage: 'Los parámetros subject y message son obligatorios'
-      }
+      })*/
+  } else {
+    return {
+      errorCode: 400,
+      errorMessage: 'Los parámetros subject y message son obligatorios'
+    }
   }
 }

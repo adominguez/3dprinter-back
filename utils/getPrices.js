@@ -23,7 +23,18 @@ exports.getAmazonProductPrice = (id) => {
             updateDate
           } = affiliateAmazonInfo;
 
-          request(informationLink, (error, response, html) => {
+          const options = {
+            url: informationLink,
+            method: 'GET',
+            headers: {
+              Accept: '*/*',
+              'Accept-Encoding': '*',
+              Connection: 'keep-alive',
+              'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
+            }
+          }
+
+          request(options, (error, response, html) => {
             if (error) {
               sendEmail.errorRequestAutommaticallyUpdate(name, id, 'Amazon', error);
               return console.error(error);
@@ -85,7 +96,17 @@ exports.getAliexpressProductPrice = (id) => {
             aliexpressRate: dbAliexpressRate,
             updateDate
           } = affiliateAliexpress;
-          request(informationLink, (error, response, html) => {
+          const options = {
+            url: informationLink,
+            method: 'GET',
+            headers: {
+              Accept: '*/*',
+              'Accept-Encoding': '*',
+              Connection: 'keep-alive',
+              'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
+            }
+          }
+          request(options, (error, response, html) => {
             if (error) {
               sendEmail.errorRequestAutommaticallyUpdate(name, id, 'Aliexpress', error);
               return console.error(error);

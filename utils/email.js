@@ -1,3 +1,4 @@
+const secret = require('../secret');
 const fetch = require('node-fetch');
 
 /**
@@ -6,7 +7,7 @@ const fetch = require('node-fetch');
 exports.sendEmail = (data) => {
   const { subject, message, fromEmail, toEmail, type } = data;
   if (subject && message) {
-    const url = `https://3dmakernow.com/wp-admin/utils/sendEmail.php?subject=${subject}&message=${message}${fromEmail && '&fromEmail=' + fromEmail || ''}${toEmail && '&toEmail=' + toEmail || ''}${type && '&type=' + type || ''}`;
+    const url = `${secret.urlSendEmail}?subject=${subject}&message=${message}${fromEmail && '&fromEmail=' + fromEmail || ''}${toEmail && '&toEmail=' + toEmail || ''}${type && '&type=' + type || ''}`;
     fetch(url)
       .then(function (response) {
         return response;

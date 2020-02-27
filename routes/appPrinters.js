@@ -197,8 +197,9 @@ exports.getPrinters = (app) => {
         .child(printerId)
         .child('reviews')
         .push(data)
-        .then(() =>{
-          sendEmail.newPrinterReview(printerId, data);
+        .then(snap =>{
+          const review = snap.key
+          sendEmail.newPrinterReview(printerId, review, data);
           return res.json({
             error: false,
             status: 'ok',
@@ -221,11 +222,12 @@ exports.getPrinters = (app) => {
   /**
    * POST update /add-printer-review/:id
    */
-  app.get('/accept-printer-review/:id', function (req, res) {
+  app.get('/accept-printer-review/:id/:reviewId', function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const printerId = req.params.id;
+    const reviewId = req.params.reviewId;
     const data = {
       ...req.body,
       enabled: true,
@@ -234,7 +236,8 @@ exports.getPrinters = (app) => {
       firebase.db.ref('3d-printers')
         .child(printerId)
         .child('reviews')
-        .push(data)
+        .child(reviewId)
+        .update(data)
         .then(() =>{
           return res.json({
             error: false,

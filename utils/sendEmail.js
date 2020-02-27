@@ -48,13 +48,13 @@ exports.errorFromWeb = (printerId) => {
     email.sendEmail(data);
 }
 
-exports.newPrinterReview = (printerId, dataReview) => {
+exports.newPrinterReview = (printerId, review, dataReview) => {
     /**
      * Enviamos un correo para informar de que ha habido un error al acceder a la web.
      */
     const data = {
       subject: 'Nueva review a la impresora ',
-      message: `Se ha añadido una nueva review a la impresora con id ${printerId} con el siguiente contenido: <br/> ${dataReview.review}<br/>Si quieres aceptar la review haz click aquí: <a href="http://api-3dmakernow.herokuapp.com/accept-printer-review/${printerId}?authentication=3DMAKERNOW">Aceptar</a>`,
+      message: `Se ha añadido una nueva review a la impresora con id ${printerId} con el siguiente contenido: <br/> ${dataReview.review}<br/>Si quieres aceptar la review haz click aquí: <a href="http://api-3dmakernow.herokuapp.com/accept-printer-review/${printerId}/${review}?authentication=3DMAKERNOW">Aceptar</a>`,
       type: 'error'
     }
     email.sendEmail(data);

@@ -182,15 +182,16 @@ exports.getPrinters = (app) => {
   /**
    * POST update /add-printer-review/:id
    */
-  app.post('/add-printer-review/:id', function (req, res) {
+  app.get('/add-printer-review/:id', function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const printerId = req.params.id;
     const data = {
-      ...req.body,
       enabled: false,
-      name: req.body.name !== '' ? req.body.name : 'Anonimo'
+      name: req.query.name !== '' ? req.query.name : 'Anonimo',
+      try: req.query.try,
+      review: req.query.review
     }
     if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
       firebase.db.ref('3d-printers')

@@ -42,7 +42,19 @@ exports.errorFromWeb = (printerId) => {
      */
     const data = {
       subject: 'Error desde la página web al acceder a una impresora',
-      message: `Error desde la página web, alguien ha intentado acceder acceder a la información de la impresora con id <b>${printerId}</b> y no ha podido acceder.`,
+      message: `Error desde la página web, alguien ha intentado acceder a la información de la impresora con id <b>${printerId}</b> y no ha podido acceder.`,
+      type: 'error'
+    }
+    email.sendEmail(data);
+}
+
+exports.newPrinterReview = (printerId, dataReview) => {
+    /**
+     * Enviamos un correo para informar de que ha habido un error al acceder a la web.
+     */
+    const data = {
+      subject: 'Nueva review a la impresora ',
+      message: `Se ha añadido una nueva review a la impresora con id ${printerId} con el siguiente contenido: <br/> ${dataReview.review}<br/>Si quieres aceptar la review haz click aquí: <a href="http://api-3dmakernow.herokuapp.com/accept-printer-review/${printerId}?authentication=3DMAKERNOW">Aceptar</a>`,
       type: 'error'
     }
     email.sendEmail(data);

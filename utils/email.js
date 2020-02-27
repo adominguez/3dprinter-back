@@ -1,4 +1,5 @@
-const secret = require('../secret');
+
+const emailUrl = process.env.SECRET_EMAIL_URL;
 const fetch = require('node-fetch');
 
 /**
@@ -7,10 +8,10 @@ const fetch = require('node-fetch');
 exports.sendEmail = (data) => {
   const { subject, message, fromEmail, toEmail, type } = data;
 
-  console.log(secret.urlSendEmail)
+  console.log(emailUrl)
 
   if (subject && message) {
-    const url = `${secret.urlSendEmail}?subject=${subject}&message=${message}${fromEmail && '&fromEmail=' + fromEmail || ''}${toEmail && '&toEmail=' + toEmail || ''}${type && '&type=' + type || ''}`;
+    const url = `${emailUrl}?subject=${subject}&message=${message}${fromEmail && '&fromEmail=' + fromEmail || ''}${toEmail && '&toEmail=' + toEmail || ''}${type && '&type=' + type || ''}`;
     fetch(url)
       .then(function (response) {
         console.log('ha enviado el correo')

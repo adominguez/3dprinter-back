@@ -236,7 +236,6 @@ exports.getPrinters = (app) => {
         .child('reviews')
         .push(data)
         .then(() =>{
-          sendEmail.newPrinterReview(printerId, data);
           return res.json({
             error: false,
             status: 'ok',

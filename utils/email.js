@@ -30,8 +30,7 @@ exports.sendEmail = (data) => {
     </body>
   </html>`);
 
-  console.log('content', content);
-  console.log('subject', subject);
+  console.log('Se va a enviar un correo con el siguiente subject: ', subject);
 
   if (subject && message) {
     var mail = new helper.Mail(from_email, subject, to_email, content);

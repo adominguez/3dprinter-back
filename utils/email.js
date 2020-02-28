@@ -1,4 +1,4 @@
-const emailUrl = process.env.SECRET_EMAIL_URL;
+const secret = require('../secret');
 const fetch = require('node-fetch');
 var request = require('request');
 
@@ -9,25 +9,17 @@ exports.sendEmail = (data) => {
   const { subject, message, fromEmail, toEmail, type } = data;
 
   if (subject && message) {
-    const url = `${emailUrl}?subject=${subject}&message=${message}${fromEmail && '&fromEmail=' + fromEmail || ''}${toEmail && '&toEmail=' + toEmail || ''}${type && '&type=' + type || ''}`;
+    const url = `${secret.urlSendEmail}?subject=${subject}&message=${message}${fromEmail && '&fromEmail=' + fromEmail || ''}${toEmail && '&toEmail=' + toEmail || ''}${type && '&type=' + type || ''}`;
     const options = {
-      url: url,
-      method: 'GET',
-      headers: {
-        Accept: '*/*',
-        'Accept-Encoding': '*',
-        Connection: 'keep-alive',
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
+      headers:{
+        'Content-Type': 'application/x-www-form-urlencoded',
       }
     }
     request(options, (error, response, html) => {
       if (error) {
-        console.log('Ha habido algún problema en el envío de correo')
         console.log(error)
         return error
       } else {
-        console.log('Ha ido ok, debería de haber enviado email')
-        console.log(response)
         return response
       }
     });

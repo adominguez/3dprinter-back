@@ -3,19 +3,19 @@ const firebase = require('./app');
 const getPrices = require('./utils/getPrices');
 
 exports.cron = (scheduleTime) => {
-  cron.schedule(scheduleTime, () => {
-    return firebase.db.ref('3d-printers').once('value').then(snapshot => {
-      snapshot.forEach(childSnapshot => {
-        const {key} = childSnapshot;
-        getPrices.getAmazonProductPrice(key)
-        getPrices.getAliexpressProductPrice(key)
-        getPrices.getGearbestProductPrice(key);
-      });
-    }, error => {
-      // The Promise was rejected.
-      console.error(error);
-    }).then(values => {
-      console.log(values); // [snap, snap, snap]
-    });
+  cron.schedule(scheduleTime, async () => {
+    try {
+      const node = await firebase.db.ref('3d-printers');
+      const data = await node.once('value');
+      const printersData = data.val();
+      printersId = Object.keys(printersData)
+      printersId.forEach(item => {
+        getPrices.getAmazonProductPrice(printersData[item], item)
+        getPrices.getAliexpressProductPrice(printersData[item])
+        getPrices.getGearbestProductPrice(printersData[item]);
+      })
+    } catch (error) {
+      console.log(error);
+    }
   });
 }

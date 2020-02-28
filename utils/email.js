@@ -22,9 +22,6 @@ exports.sendEmail = (data) => {
     const options = {
       hostname: "https://3dmakernow.com",
       path: "/wp-admin/utils/sendEmail.php?" + getRequestArgs,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
     }
     console.log(options)
     const request = http.request(options, (response) => {

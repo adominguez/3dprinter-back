@@ -21,7 +21,7 @@ appCategories.getCategories(app);
 
 // schedule tasks to be run on the server
 // 'seg min hora * * *'
-schedule.cron('00 34 21 * * *');
+schedule.cron('00 44 21 * * *');
 
 // Server port listening
 app.listen(PORT, function () {

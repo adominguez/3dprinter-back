@@ -11,8 +11,8 @@ exports.cron = (scheduleTime) => {
       printersId = Object.keys(printersData)
       printersId.forEach(item => {
         getPrices.getAmazonProductPrice(printersData[item], item)
-        getPrices.getAliexpressProductPrice(printersData[item])
-        getPrices.getGearbestProductPrice(printersData[item]);
+        getPrices.getAliexpressProductPrice(printersData[item], item)
+        getPrices.getGearbestProductPrice(printersData[item], item);
       })
     } catch (error) {
       console.log(error);

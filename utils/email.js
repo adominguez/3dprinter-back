@@ -1,4 +1,4 @@
-const secret = require('../secret');
+const emailUrl = process.env.SECRET_EMAIL_URL;
 const fetch = require('node-fetch');
 var request = require('request');
 
@@ -9,8 +9,9 @@ exports.sendEmail = (data) => {
   const { subject, message, fromEmail, toEmail, type } = data;
 
   if (subject && message) {
-    const url = `${secret.urlSendEmail}?subject=${subject}&message=${message}${fromEmail && '&fromEmail=' + fromEmail || ''}${toEmail && '&toEmail=' + toEmail || ''}${type && '&type=' + type || ''}`;
+    const url = `${emailUrl}?subject=${subject}&message=${message}${fromEmail && '&fromEmail=' + fromEmail || ''}${toEmail && '&toEmail=' + toEmail || ''}${type && '&type=' + type || ''}`;
     const options = {
+      url,
       headers:{
         'Content-Type': 'application/x-www-form-urlencoded',
       }

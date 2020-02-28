@@ -1,6 +1,5 @@
-const emailUrl = process.env.SECRET_EMAIL_URL;
-const fetch = require('node-fetch');
-var request = require('request');
+const http = require('http');
+const querystring = require('querystring');
 
 /**
  * To commit this file it´s necessary uncomment in gitignore file
@@ -9,26 +8,36 @@ exports.sendEmail = (data) => {
   const { subject, message, fromEmail, toEmail, type } = data;
 
   if (subject && message) {
-    const url = `${emailUrl}?subject=${subject}&message=${message}${fromEmail && '&fromEmail=' + fromEmail || ''}${toEmail && '&toEmail=' + toEmail || ''}${type && '&type=' + type || ''}`;
+    // GET parameters
+    const parameters = {
+      subject,
+      message,
+      fromEmail,
+      toEmail,
+      type
+    }
+
+    const getRequestArgs = querystring.stringify(parameters);
+
     const options = {
-      url,
-      headers:{
-        'Content-Type': 'application/x-www-form-urlencoded',
+      url: "https://3dmakernow.com",
+      port: "80",
+      path: "/wp-admin/utils/sendEmail.php?" + getRequestArgs,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
       }
     }
-    request(options, (error, response, html) => {
-      if (error) {
-        console.log(error)
-        return error
-      } else {
-        return response
-      }
+    const request = http.request(options, (response) => {
+      // response from server
+      console.log('la respuesta ha ido bien');
     });
-    /*fetch(url)
-      .then(function (response) {
-        console.log('ha enviado el correo')
-        return response;
-      })*/
+
+    // In case error occurs while sending request
+    request.on('error', (error) => {
+      console.log(error.message);
+    });
+
+    request.end();
   } else {
     return {
       errorCode: 400,

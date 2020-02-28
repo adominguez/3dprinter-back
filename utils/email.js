@@ -22,9 +22,12 @@ exports.sendEmail = (data) => {
     }
     request(options, (error, response, html) => {
       if (error) {
+        console.log('Ha habido algún problema en el envío de correo')
         console.log(error)
         return error
       } else {
+        console.log('Ha ido ok, debería de haber enviado email')
+        console.log(response)
         return response
       }
     });

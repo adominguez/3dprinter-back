@@ -20,12 +20,13 @@ exports.sendEmail = (data) => {
     const getRequestArgs = querystring.stringify(parameters);
 
     const options = {
-      url: "https://3dmakernow.com",
+      hostname: "https://3dmakernow.com",
       path: "/wp-admin/utils/sendEmail.php?" + getRequestArgs,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     }
+    console.log(options)
     const request = http.request(options, (response) => {
       // response from server
       console.log('la respuesta ha ido bien');
@@ -33,7 +34,7 @@ exports.sendEmail = (data) => {
 
     // In case error occurs while sending request
     request.on('error', (error) => {
-      console.log(error.message);
+      console.log('error -->', error.message);
     });
 
     request.end();

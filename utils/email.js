@@ -1,40 +1,30 @@
-const http = require('http');
-const querystring = require('querystring');
+const helper = require('sendgrid').mail;
 
 /**
  * To commit this file it´s necessary uncomment in gitignore file
  */
 exports.sendEmail = (data) => {
-  const { subject, message, fromEmail, toEmail, type } = data;
+  const { subject, message, fromEmail = '3dmakernow@gmail.com', toEmail = '3dmakernow@gmail.com', type } = data;
+
+  const from_email = new helper.Email(fromEmail);
+  const to_email = new helper.Email(toEmail);
+  var content = new helper.Content('text/plain', subject);
 
   if (subject && message) {
-    // GET parameters
-    const parameters = {
-      subject,
-      message,
-      fromEmail,
-      toEmail,
-      type
-    }
+    var mail = new helper.Mail(from_email, subject, to_email, content);
 
-    const getRequestArgs = querystring.stringify(parameters);
-
-    const options = {
-      hostname: "https://3dmakernow.com",
-      path: "/wp-admin/utils/sendEmail.php?" + getRequestArgs,
-    }
-    console.log(options)
-    const request = http.request(options, (response) => {
-      // response from server
-      console.log('la respuesta ha ido bien');
+    var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+    var request = sg.emptyRequest({
+      method: 'POST',
+      path: '/v3/mail/send',
+      body: mail.toJSON(),
     });
 
-    // In case error occurs while sending request
-    request.on('error', (error) => {
-      console.log('error -->', error.message);
+    sg.API(request, function (error, response) {
+      console.log(response.statusCode);
+      console.log(response.body);
+      console.log(response.headers);
     });
-
-    request.end();
   } else {
     return {
       errorCode: 400,

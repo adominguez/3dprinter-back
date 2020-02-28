@@ -21,7 +21,6 @@ exports.sendEmail = (data) => {
 
     const options = {
       url: "https://3dmakernow.com",
-      port: "80",
       path: "/wp-admin/utils/sendEmail.php?" + getRequestArgs,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'

@@ -4,12 +4,27 @@ var request = require('request');
 const firebase = require('../app');
 const sendEmail = require('../utils/sendEmail');
 
-exports.getAmazonProductPrice = (current, id) => {
-  const { affiliateAmazonInfo, name } = current;
-  /**
-   * Si existe affiliateAmazonInfo data
-   */
-  if (affiliateAmazonInfo && affiliateAmazonInfo.informationLink) {
+const getAmazonPriceByCountry = ( countryCode, html ) => {
+  var price = ''
+  switch (countryCode) {
+    case 'ES':
+      price = parseFloat(html('#priceblock_ourprice').text().replace('€', '').replace(',', '.').replace(' ', '') || 0).toFixed(2) || "No disponible";
+      break;
+    case 'MX':
+      price = parseFloat(html('#priceblock_ourprice').text().replace('$', '').replace(',', '').replace(' ', '') || 0).toFixed(2) || "No disponible";
+      break;
+    case 'US':
+      price = parseFloat(html('#priceblock_saleprice').text().replace('US$', '').replace(' ', '') || 0).toFixed(2) || "No disponible";
+      break;
+    default:
+      break;
+  }
+  return price;
+}
+
+const updateAffiliateAmazonInfoByCountry = (country, countryCode, current, id) => {
+  const { name, affiliateAmazonInfo } = current;
+  if (affiliateAmazonInfo && affiliateAmazonInfo[countryCode].informationLink) {
     const {
       informationLink,
       amazonPrice: dbAmazonPrice,
@@ -17,7 +32,7 @@ exports.getAmazonProductPrice = (current, id) => {
       amazonRate: dbAmazonRate,
       amazonPrime: dbPrime,
       updateDate
-    } = affiliateAmazonInfo;
+    } = country;
 
     const options = {
       url: informationLink,
@@ -36,9 +51,9 @@ exports.getAmazonProductPrice = (current, id) => {
         return console.error(error);
       }
       const $ = cheerio.load(html);
-      const amazonPrice = parseFloat($('#priceblock_ourprice').text().replace('€', '').replace(',', '.').replace(' ', '') || 0).toFixed(2) || "No disponible";
+      const amazonPrice = getAmazonPriceByCountry(countryCode, $)
       const prime = $('#priceblock_ourprice_row #price-shipping-message').text().replace('Ver detalles', '').replace(' ', '');
-      const amazonRatings = parseFloat($('#acrCustomerReviewText').text().replace(' valoraciones', '').replace(' ', '') || 0);
+      const amazonRatings = parseFloat($('#acrCustomerReviewText').text().replace(' valoraciones', '').replace(' calificaciones', '').replace(' ', '').replace(',', '') || 0);
       const amazonRate = parseFloat($('#acrPopover').text().replace(' de 5 estrellas', '').replace(' ', '').replace(',', '.') || 0);
 
       if (amazonPrice === '0.00') {
@@ -51,23 +66,35 @@ exports.getAmazonProductPrice = (current, id) => {
       const updated = prime.includes('GRATIS') !== dbPrime || dbAmazonPrice !== amazonPrice || dbAmazonRate !== amazonRate || dbAmazonRatings !== amazonRatings;
       if (updated) {
         const data = {
-          affiliateAmazonInfo: {
-            ...affiliateAmazonInfo,
             updateDate: `${new Date()}`,
             amazonRatings,
             amazonRate,
             amazonPrime: prime.includes('GRATIS'),
             amazonPrice
-          }
         }
         /**
          * Actualizamos los datos de affiliateAmazonInfo de la impresora en la base de datos con los nuevos datos de la impresora.
          */
         firebase.db.ref('3d-printers')
           .child(id)
+          .child('affiliateAmazonInfo')
+          .child(countryCode)
           .update(data)
       }
     });
+  }
+}
+
+exports.getAmazonProductPrice = (current, id) => {
+  const { affiliateAmazonInfo } = current;
+  /**
+   * Si existe affiliateAmazonInfo data
+   */
+  if (affiliateAmazonInfo) {
+    const { ES, MX, US } = affiliateAmazonInfo;
+    updateAffiliateAmazonInfoByCountry(ES, 'ES', current, id)
+    updateAffiliateAmazonInfoByCountry(MX, 'MX', current, id)
+    updateAffiliateAmazonInfoByCountry(US, 'US', current, id)
   }
 };
 

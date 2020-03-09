@@ -1,0 +1,215 @@
+[su_note note_color="#fff" text_color="#222222" class="promotions sections product-card %%noteClass%%"]
+[su_row]
+[su_column size="1/3" center="no" class=""]
+<a id="linkCard-%%productId%%" href="#" hidden>
+    <img id="imageCardLink-%%productId%%" alt="image card" class="alignright size-full wp-image-965" width="300"
+        height="300" />
+</a>
+<img id="imageCard-%%productId%%" alt="image card" class="alignright size-full wp-image-965" width="300"
+height="300" />
+[/su_column]
+[su_column size="2/3" center="no" class=""]
+<h3 id="productName-%%productId%%" hidden></h3>
+<div id="wrapper-card-%%productId%%" class="wrapper" hidden>
+    <div>
+        <span id="difficultLabel-%%productId%%">
+            <span class="bold">dificultad:</span>
+            <span id="difficult-%%productId%%"></span><br />
+        </span>
+        <span id="buildLabel-%%productId%%">
+            <span class="bold">Montaje:</span>
+            <span id="build-%%productId%%"></span>
+            <br />
+        </span>
+        <span id="quantityLabel-%%productId%%">
+            <span class="bold">Cantidad:</span>
+            <span id="quantity-%%productId%%">
+            </span>
+            <br />
+        </span>
+        <span id="qualityLabel-%%productId%%">
+            <span class="bold">Calidad:</span>
+            <span id="quality-%%productId%%">
+            </span>
+            <br />
+        </span>
+    </div>
+    <div id="valueLabel-%%productId%%">
+        <span class="bold">Valoración</span>
+        <br>
+        <span id="value-%%productId%%"></span>
+    </div>
+</div>
+<div id="affiliates" class="affiliates">
+
+
+    <div class="table-price-card">
+        <table cellspacing="0" id="table-price-card-%%productId%%" class="table-price-card">
+        </table>
+    </div>
+</div>
+[/su_column]
+[/su_row]
+[/su_note]
+<script type="text/javascript">
+    const starsRating = (rate) => {
+        let htmlRating = '<i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>';
+        if (rate > 0 && rate <= 0.5) {
+            htmlRating = `<i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 0.5 && rate <= 1) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 1 && rate <= 1.5) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 1.5 && rate <= 2) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 2 && rate <= 2.5) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 2.5 && rate <= 3) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 3 && rate <= 3.5) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 3.5 && rate <= 4) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 4 && rate <= 4.5) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i>`;
+        }
+        if (rate > 4.5 && rate <= 5) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i>`;
+        }
+        return htmlRating;
+    }
+    if('%%showFeatures%%' === 'true') {
+        document.querySelector('#wrapper-card-%%productId%%').hidden = false;
+    }
+    if('%%showProductName%%' === 'true') {
+        document.querySelector('#productName-%%productId%%').hidden = false;
+    }
+    fetch('https://ipapi.co/json/').then(response => console.log(response.country))
+    fetch('https://api-3dmakernow.herokuapp.com/printer/%%productId%%?authentication=3DMAKERNOW&affiliateInfo=true')
+        .then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            const {
+                affiliateAliexpress,
+                affiliateAmazonInfo,
+                affiliateGearbestInfo,
+                image,
+                name,
+                postLink,
+                quantity,
+                building,
+                quality,
+                difficult,
+                valuation,
+            } = data;
+            const trAmazon = affiliateAmazonInfo ? `
+            <tr>
+                <td>
+                    <div class="flex-align-center">
+                        <img src="https://3dmakernow.com/wp-content/uploads/2018/12/amazon-logo.png" alt="Amazon" class="affiliate-img" />Amazon
+                    </div>
+					${affiliateAmazonInfo.amazonPrime ? '<img src="https://3dmakernow.com/wp-content/uploads/2018/12/amazon-prime.png" alt="amazon prime" width="60" />' : ''}
+                </td>
+                <td>${affiliateAmazonInfo.amazonPrice === '0.00' ? `No disponible` : affiliateAmazonInfo.amazonPrice.toString().replace('.', ',')} €</td>
+                <td>${affiliateAmazonInfo.amazonRate ? starsRating(affiliateAmazonInfo.amazonRate) : ''}</td>
+                <td>
+                    <div class="wrapper">
+                        <div class="flex-evenly">
+                            <a id="amazonLink-%%productId%%" class="sections-link sections-link-buy" href="${affiliateAmazonInfo.affiliateShortLink ? affiliateAmazonInfo.affiliateShortLink : ''}" rel="nofollow noopener noreferrer" title="Ver más información en Amazon" target="_blank">Ver info</a>
+                            <form id="form-%%productId%%" target="_blank" method="POST"
+                                action="http://www.amazon.es/exec/obidos/dt/assoc/handle-buy-box=${affiliateAmazonInfo.asin}">
+                                <input id="formasin-%%productId%%" type="hidden" name="${affiliateAmazonInfo.asin}" value="1">
+                                <input id="formtagvalue-%%productId%%" type="hidden" name="tag-value" value="3dmakernow-21">
+                                <input id="formtagValue-%%productId%%" type="hidden" name="tag_value" value="3dmakernow-21">
+                                <input type="submit" class="sections-link sections-link-buy" name="submit.add-to-cart"
+                                    value="Añadir a la cesta" border="0" alt="Añadir a la cesta">
+                            </form>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            ` : ``;
+            const trGearbest = affiliateGearbestInfo ? `
+            <tr>
+                <td>
+                    <div class="flex-align-center">
+                        <img src="https://3dmakernow.com/wp-content/uploads/2018/12/gearbest-logo.png" alt="Amazon" class="affiliate-img" />Gearbest
+                    </div>
+                </td>
+                <td>${affiliateGearbestInfo.gearbestPrice === '0.00' ? `No disponible` : affiliateGearbestInfo.gearbestPrice.toString().replace('.', ',')} €</td>
+                <td>${affiliateGearbestInfo.gearbestRate ? starsRating(affiliateGearbestInfo.gearbestRate) : ''}</td>
+                <td>
+                    <div class="wrapper">
+                        <div class="flex-evenly">
+                            <a id="amazonLink-%%productId%%" class="sections-link sections-link-buy" href="${affiliateGearbestInfo.informationLink ? affiliateGearbestInfo.informationLink : ''}" rel="nofollow noopener noreferrer" title="Ver más información en Gearbest" target="_blank">Ver info</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            ` : ``;
+            const trAliexpress = affiliateAliexpress ? `
+            <tr>
+                <td>
+                    <div class="flex-align-center">
+                        <img src="https://3dmakernow.com/wp-content/uploads/2018/12/aliexpress-logo.png" alt="Amazon" class="affiliate-img" />Aliexpress
+                    </div>
+                </td>
+                <td>${affiliateAliexpress.aliexpressPrice === '0.00' ? `No disponible` : affiliateAliexpress.aliexpressPrice.toString().replace('.', ',')} €</td>
+                <td>${affiliateAliexpress.aliexpressRate ? starsRating(affiliateAliexpress.aliexpressRate) : ''}</td>
+                <td>
+                    <div class="wrapper">
+                        <div class="flex-evenly">
+                            <a id="amazonLink-%%productId%%" class="sections-link sections-link-buy" href="${affiliateAliexpress.affiliateAliShortLink ? affiliateAliexpress.affiliateAliShortLink : ''}" rel="nofollow noopener noreferrer" title="Ver más información en Aliexpress" target="_blank">Ver info</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            ` : ``;
+            const tableTr = `
+            <tr>
+                <th>Tienda</th>
+                <th>Precio</th>
+                <th>Valoración</th>
+                <th></th>
+            </tr>
+            ${trAmazon}
+            ${trGearbest}
+            ${trAliexpress}
+            `;
+            document.querySelector('#imageCard-%%productId%%').src = image[0];
+            document.querySelector('#imageCard-%%productId%%').alt = name;
+            if('%%showLinkCard%%' === 'true') {
+                document.querySelector('#linkCard-%%productId%%').src = postLink;
+                document.querySelector('#linkCard-%%productId%%').hidden = false
+                document.querySelector('#imageCard-%%productId%%').hidden = true;
+                document.querySelector('#imageCardLink-%%productId%%').src = image[0];
+                document.querySelector('#imageCardLink-%%productId%%').alt = name;
+            }
+            document.querySelector('#productName-%%productId%%').innerHTML = name;
+            document.querySelector('#table-price-card-%%productId%%').innerHTML = tableTr;
+            difficult ? document.querySelector('#difficult-%%productId%%').innerHTML = difficult : document
+                .querySelector(
+                    '#difficultLabel-%%productId%%').hidden = true;
+            building ? document.querySelector('#build-%%productId%%').innerHTML = building : document.querySelector(
+                '#buildLabel-%%productId%%').hidden = true;
+            quantity ? document.querySelector('#quantity-%%productId%%').innerHTML = quantity : document
+                .querySelector(
+                    '#quantityLabel-%%productId%%').hidden = true;
+            valuation ? document.querySelector('#value-%%productId%%').innerHTML = valuation : document
+                .querySelector(
+                    '#valueLabel-%%productId%%').hidden = true;
+            quality ? document.querySelector('#quality-%%productId%%').innerHTML = quality : document.querySelector(
+                '#qualityLabel-%%productId%%').hidden = true;
+        }).catch(error => {
+            fetch('https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW').then(data =>
+                response)
+        });
+</script>

@@ -75,7 +75,7 @@ const updateAffiliateAmazonInfoByCountry = (country, countryCode, current, id) =
         /**
          * Actualizamos los datos de affiliateAmazonInfo de la impresora en la base de datos con los nuevos datos de la impresora.
          */
-        firebase.db.ref('3d-printers')
+        firebase.db.ref(instance)
           .child(id)
           .child('affiliateAmazonInfo')
           .child(countryCode)
@@ -85,20 +85,20 @@ const updateAffiliateAmazonInfoByCountry = (country, countryCode, current, id) =
   }
 }
 
-exports.getAmazonProductPrice = (current, id) => {
+exports.getAmazonProductPrice = (current, id, instance) => {
   const { affiliateAmazonInfo } = current;
   /**
    * Si existe affiliateAmazonInfo data
    */
   if (affiliateAmazonInfo) {
     const { ES, MX, US } = affiliateAmazonInfo;
-    updateAffiliateAmazonInfoByCountry(ES, 'ES', current, id)
-    updateAffiliateAmazonInfoByCountry(MX, 'MX', current, id)
-    updateAffiliateAmazonInfoByCountry(US, 'US', current, id)
+    ES && updateAffiliateAmazonInfoByCountry(ES, 'ES', current, id, instance)
+    MX && updateAffiliateAmazonInfoByCountry(MX, 'MX', current, id, instance)
+    US && updateAffiliateAmazonInfoByCountry(US, 'US', current, id, instance)
   }
 };
 
-exports.getAliexpressProductPrice = (current, id) => {
+exports.getAliexpressProductPrice = (current, id, instance) => {
   const { affiliateAliexpress, name } = current;
   /**
    * Si existe affiliateAliexpress data
@@ -151,7 +151,7 @@ exports.getAliexpressProductPrice = (current, id) => {
         /**
          * Actualizamos los datos de affiliateAmazonInfo de la impresora en la base de datos con los nuevos datos de la impresora.
          */
-        firebase.db.ref('3d-printers')
+        firebase.db.ref(instance)
           .child(id)
           .update(data)
       }
@@ -159,7 +159,7 @@ exports.getAliexpressProductPrice = (current, id) => {
   }
 };
 
-exports.getGearbestProductPrice = (current, id) => {
+exports.getGearbestProductPrice = (current, id, instance) => {
   const { affiliateGearbestInfo, name } = current;
   /**
    * Si existe affiliateGearbestInfo data
@@ -212,7 +212,7 @@ exports.getGearbestProductPrice = (current, id) => {
         /**
          * Actualizamos los datos de affiliateGearbestInfo de la impresora en la base de datos con los nuevos datos de la impresora.
          */
-        firebase.db.ref('3d-printers')
+        firebase.db.ref(instance)
           .child(id)
           .update(data)
       }

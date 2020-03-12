@@ -33,10 +33,34 @@ exports.getMaterials = (app) => {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const category = req.params.category;
+    const { country } = req.query;
     if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
       firebase.db.ref('materials')
         .once('value')
-        .then(snapshot => { res.json(_.map(snapshot.val(), (item, id) => ({ ...item, id })).filter(material => material.category === category)) })
+        .then(snapshot => {
+          const materials = _.map(snapshot.val(), (item, id) => ({ ...item, id })).filter(material => material.category === category);
+          if(country) {
+            const materialsFiltered = materials.filter(item => item.affiliateAmazonInfo[country]).map(material => {
+              const colors = material.materialFeatures.colors.filter(color => color.affiliateAmazonInfo && color.affiliateAmazonInfo[country]).map(affiliate => (
+                {
+                  color: affiliate.color,
+                  colorName: affiliate.colorName,
+                  affiliateLink: affiliate.affiliateAmazonInfo[country].affiliateShortLink
+                }
+              ));
+              return {
+                ...material,
+                affiliateAmazonInfo: material.affiliateAmazonInfo[country],
+                materialFeatures: {
+                  ...material.materialFeatures,
+                  colors
+                }
+              }
+            });
+            return res.json(materialsFiltered);
+          }
+          return res.json(materials);
+        })
         .catch(error => (res.json({
           errorCode: error.code,
           errorMessage: error.message

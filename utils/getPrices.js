@@ -22,7 +22,7 @@ const getAmazonPriceByCountry = ( countryCode, html ) => {
   return price;
 }
 
-const updateAffiliateAmazonInfoByCountry = (country, countryCode, current, id) => {
+const updateAffiliateAmazonInfoByCountry = (country, countryCode, current, id, instance) => {
   const { name, affiliateAmazonInfo } = current;
   if (affiliateAmazonInfo && affiliateAmazonInfo[countryCode].informationLink) {
     const {
@@ -92,9 +92,9 @@ exports.getAmazonProductPrice = (current, id, instance) => {
    */
   if (affiliateAmazonInfo) {
     const { ES, MX, US } = affiliateAmazonInfo;
-    ES && updateAffiliateAmazonInfoByCountry(ES, 'ES', current, id, instance)
-    MX && updateAffiliateAmazonInfoByCountry(MX, 'MX', current, id, instance)
-    US && updateAffiliateAmazonInfoByCountry(US, 'US', current, id, instance)
+    ES && updateAffiliateAmazonInfoByCountry(ES, 'ES', current, id, instance);
+    MX && updateAffiliateAmazonInfoByCountry(MX, 'MX', current, id, instance);
+    US && updateAffiliateAmazonInfoByCountry(US, 'US', current, id, instance);
   }
 };
 

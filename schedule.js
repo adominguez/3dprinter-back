@@ -2,7 +2,7 @@ const cron = require("node-cron");
 const firebase = require('./app');
 const getPrices = require('./utils/getPrices');
 
-exports.cron = (scheduleTime) => {
+exports.cronPrinters = (scheduleTime) => {
   cron.schedule(scheduleTime, async () => {
     try {
       /**
@@ -16,7 +16,16 @@ exports.cron = (scheduleTime) => {
         getPrices.getAmazonProductPrice(printersData[item], item, '3d-printers');
         getPrices.getAliexpressProductPrice(printersData[item], item, '3d-printers');
         getPrices.getGearbestProductPrice(printersData[item], item, '3d-printers');
-      })
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  });
+}
+
+exports.cronMaterials = (scheduleTime) => {
+  cron.schedule(scheduleTime, async () => {
+    try {
       /**
        * Obtenemos todos los materiales
        */
@@ -28,7 +37,7 @@ exports.cron = (scheduleTime) => {
         getPrices.getAmazonProductPrice(materialsData[item], item, 'materials');
         getPrices.getAliexpressProductPrice(materialsData[item], item, 'materials');
         getPrices.getGearbestProductPrice(materialsData[item], item, 'materials');
-      })
+      });
     } catch (error) {
       console.log(error);
     }

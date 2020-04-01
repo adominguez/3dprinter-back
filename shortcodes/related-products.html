@@ -1,0 +1,70 @@
+<ul id="related-products-list-amazon-%%productId%%" class="related-products-list amazon"></ul>
+<ul id="related-products-list-aliexpress-%%productId%%" class="related-products-list aliexpress"></ul>
+<ul id="related-products-list-gearbest-%%productId%%" class="related-products-list gearbest"></ul>
+<script type="text/javascript">
+  // community printer list
+  const relatedProductListAmazon = document.querySelector('#related-products-list-amazon-%%productId%%');
+  const relatedProductListAliexpress = document.querySelector('#related-products-list-aliexpress-%%productId%%');
+  const relatedProductListGearbest = document.querySelector('#related-products-list-gearbest-%%productId%%');
+
+  fetch('https://api-3dmakernow.herokuapp.com/printer/%%productId%%?authentication=3DMAKERNOW&affiliateInfo=true')
+    .then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      const {
+        related
+      } = data;
+
+      console.log('holi', related)
+
+      const relatedGroups = related.reduce((r, a) => {
+        r[a.type] = [...r[a.type] || [], a];
+        return r;
+      }, {});
+
+      console.log(relatedGroups)
+
+      if (relatedGroups['amazon'] && relatedGroups['amazon'].length) {
+        var amazonRelatedProduct = ''
+        relatedGroups['amazon'].map(item => {
+          amazonRelatedProduct += `<li class="related-products-list-item ${item.type}">
+                        <a class="related-products-list-link" href="${item.affiliateUrl}" target="_blank" rel="noopener nofollow noreferrer">
+                            <span class="related-products-list-title">${item.name}</span>
+                            <span class="related-products-list-description">Usuarios: ${item.price}</span>
+                        </a>
+                    </li>`;
+        });
+        relatedProductListAmazon.innerHTML = amazonRelatedProduct;
+      } else { relatedProductListAmazon.hidden = true; }
+
+      if (relatedGroups['aliexpress'] && relatedGroups['aliexpress'].length) {
+        var aliexpressRelatedProduct = ''
+        relatedGroups['aliexpress'].map(item => {
+          aliexpressRelatedProduct += `<li class="related-products-list-item ${item.type}">
+                        <a class="related-products-list-link" href="${item.affiliateUrl}" target="_blank" rel="noopener nofollow noreferrer">
+                            <span class="related-products-list-title">${item.name}</span>
+                            <span class="related-products-list-description">Usuarios: ${item.price}</span>
+                        </a>
+                    </li>`;
+        });
+        relatedProductListAliexpress.innerHTML = aliexpressRelatedProduct;
+      } else { relatedProductListAliexpress.hidden = true; }
+
+      if (relatedGroups['gearbest'] && relatedGroups['gearbest'].length) {
+        var gearbestRelatedProduct = ''
+        relatedGroups['gearbest'].map(item => {
+          gearbestRelatedProduct += `<li class="related-products-list-item ${item.type}">
+                        <a class="related-products-list-link" href="${item.affiliateUrl}" target="_blank" rel="noopener nofollow noreferrer">
+                            <span class="related-products-list-title">${item.name}</span>
+                            <span class="related-products-list-description">Usuarios: ${item.price}</span>
+                        </a>
+                    </li>`;
+        });
+        relatedProductListGearbest.innerHTML = gearbestRelatedProduct;
+      } else { relatedProductListGearbest.hidden = true; }
+
+    }).catch(error => {
+      fetch('https://api-3dmakernow.herokuapp.com/error-notification/%%productId%%?authentication=3DMAKERNOW')
+        .then(response => response)
+    });
+</script>

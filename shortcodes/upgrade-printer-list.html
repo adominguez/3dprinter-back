@@ -1,0 +1,30 @@
+<ul id="upgrades-list-%%printerId%%" class="upgrade-list"></ul>
+<script type="text/javascript">
+    // upgradesList
+    const upgradesList = document.querySelector('#upgrades-list-%%printerId%%');
+
+    fetch('https://api-3dmakernow.herokuapp.com/printer/%%printerId%%?authentication=3DMAKERNOW&printFeaturesInfo=true')
+        .then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            const { toPrintFeatures } = data;
+
+            var contentItems = '';
+
+            toPrintFeatures.map(item => {
+                contentItems += `<li class="upgrade-list-item">
+                    <div style="background: url(${item.image})" class="upgrade-list-item-image"></div>
+                    <span class="upgrade-list-item-title">${item.feature}</span>
+                    <span class="upgrade-list-item-description">${item.description}</span>
+                    <a class="upgrade-list-item-link" href="${item.url}" target="_blank" target="_blank" rel="noopener nofollow noreferrer">
+                        <img src="https://3dmakernow.com/wp-content/uploads/2018/05/${item.type}_logo.svg" alt="${item.feature}" style="width:25px;height:25px;margin-right:8px;">
+                        Ver en ${item.type}</a>
+                </li>`
+            });
+
+            upgradesList.innerHTML = contentItems;
+        }).catch(error => {
+          debugger;
+          fetch('https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW').then( data => response)
+        });
+</script>

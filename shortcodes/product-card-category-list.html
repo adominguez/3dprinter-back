@@ -1,0 +1,130 @@
+<ul class="related-products-list amazon" id="related-products-list"></ul>
+<script>
+
+    let starsRating = (rate) => {
+        let htmlRating = '<i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>';
+        if (rate > 0 && rate <= 0.5) {
+            htmlRating = `<i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 0.5 && rate <= 1) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 1 && rate <= 1.5) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 1.5 && rate <= 2) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 2 && rate <= 2.5) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 2.5 && rate <= 3) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 3 && rate <= 3.5) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 3.5 && rate <= 4) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+        }
+        if (rate > 4 && rate <= 4.5) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i>`;
+        }
+        if (rate > 4.5 && rate <= 5) {
+            htmlRating = `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i>`;
+        }
+        return htmlRating;
+    }
+    fetch('https://ipapi.co/json/').then(response => response.text()).then(data => {
+        const {
+            country_code: countryCode
+        } = JSON.parse(data)
+        fetch(
+            `https://api-3dmakernow.herokuapp.com/materials/%%category%%?authentication=3DMAKERNOW&affiliateInfo=%%affiliateInfo%%&country=${countryCode}`
+        )
+            .then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                let relatedProduct = document.querySelector('#related-products-list');
+                let randomNumber = Math.round(Math.random() * 100000000);
+                relatedProduct.id = `related-products-list-${randomNumber}`;
+
+                let affiliateInfo = '%%affiliateInfo%%';
+                let productList = '';
+                let products = '';
+
+                if (affiliateInfo === 'amazon') {
+                    products = data.filter(item => item.affiliateAmazonInfo);
+                }
+
+                if (affiliateInfo === 'aliexpress') {
+                    products = data.filter(item => item.affiliateAliexpress);
+                }
+
+                if (affiliateInfo === 'gearbest') {
+                    products = data.filter(item => item.affiliateGearbestInfo);
+                }
+
+                console.log({products})
+
+                products.forEach(element => {
+
+                    const {
+                        affiliateAmazonInfo = {},
+                        affiliateAliexpress = {},
+                        affiliateGearbestInfo = {},
+                        image,
+                        materialFeatures: {
+                            weight,
+                            colors
+                        },
+                        id,
+                        name
+                    } = element;
+                    let colorList = '';
+                    let link = '';
+                    let price = '0.00';
+                    let hidePrice = false;
+                    let showStars = false;
+                    if (affiliateInfo === 'amazon') {
+                        link = affiliateAmazonInfo.amazonPrice === '0.00' ? affiliateAmazonInfo.urlBackup : affiliateAmazonInfo.affiliateShortLink;
+                        price = affiliateAmazonInfo.amazonPrice === '0.00' ? hidePrice = true : `${affiliateAmazonInfo.amazonPrice.toString().replace('.', ',')} ${affiliateAmazonInfo.currency}`;
+                        colors && colors.length && colors.forEach(item => {
+                            let colorLink = item.affiliateLink;
+                            colorList += `<li class="related-product-list-item" alt="${item.colorName}" title="${item.colorName}" style="background-color: ${item.color}"><a rel="nofollow noopener noreferrer" target="_blank" class="related-product-list-item-link" href=${colorLink}></a></li>`;
+                        });
+                    }
+                    if (affiliateInfo === 'aliexpress') {
+                        link = affiliateAliexpress.aliexpressPrice === '0.00' ? affiliateAliexpress.urlBackup : affiliateAliexpress.affiliateAliShortLink;
+                        price = affiliateAliexpress.amazonPrice === '0.00' ? hidePrice = true : `${affiliateAliexpress.aliexpressPrice.toString().replace('.', ',')} €`;
+                    }
+                    if (affiliateInfo === 'gearbest') {
+
+                    }
+                    productList += `
+              <li class="related-products-list-item amazon">
+                <a href="${link}" rel="nofollow noopener noreferrer" target="_blank">
+                    <div class="related-product-list-item-image"
+                    style="background: url(${image})">
+                    </div>
+                </a>
+                <h4><a href="${link}" rel="nofollow noopener noreferrer" target="_blank">${name}</a></h4>
+                ${element.affiliateAmazonInfo.amazonPrime ? `<img src="https://3dmakernow.com/wp-content/uploads/2018/12/amazon-prime.png" alt="amazon prime" width="60" />` : ''}
+                <div class="related-product-list-item-info">
+                    ${!hidePrice ? `<span class="related-product-list-item-price">${price}</span>` : ''}
+                    ${element.affiliateAmazonInfo.amazonPrice !== '0.00' && element.affiliateAmazonInfo.amazonRate >= 3 ? `<div>${starsRating(affiliateAmazonInfo.amazonRate)}</div>` : ''}
+                </div>
+                ${colors.length ? `<ul class="${`related-product-list-colors`}">${colorList}</ul>` : ''}
+                <a class="sections-link sections-link-buy" href="${link}" rel="nofollow noopener noreferrer"
+                  title="Ver más información en Amazon" target="_blank">Ver más información</a>
+              </li>`;
+                });
+                relatedProduct.innerHTML = productList;
+            }).catch(error => {
+                fetch('https://api-3dmakernow.herokuapp.com/error-notification/%%category%%?authentication=3DMAKERNOW')
+                    .then(response =>
+                        response)
+            });
+    })
+
+</script>

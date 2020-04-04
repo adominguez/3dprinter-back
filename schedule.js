@@ -13,9 +13,11 @@ exports.cronPrinters = (scheduleTime) => {
       const printersData = printers.val();
       printersId = Object.keys(printersData);
       printersId.forEach(item => {
-        getPrices.getAmazonProductPrice(printersData[item], item, '3d-printers');
-        getPrices.getAliexpressProductPrice(printersData[item], item, '3d-printers');
-        getPrices.getGearbestProductPrice(printersData[item], item, '3d-printers');
+        if(item !== '-M444wZc-X1LsTBap-qS') {
+          getPrices.getAmazonProductPrice(printersData[item], item, '3d-printers');
+          getPrices.getAliexpressProductPrice(printersData[item], item, '3d-printers');
+          getPrices.getGearbestProductPrice(printersData[item], item, '3d-printers');
+        }
       });
     } catch (error) {
       console.log(error);

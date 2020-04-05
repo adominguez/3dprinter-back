@@ -83,7 +83,7 @@ exports.getPrinters = (app) => {
         .child(printerId)
         .once('value')
         .then(snapshot => {
-          const { printFeatures, printerElectricity, printerParameters, printerSoftware, printerUnboxing, socialCommunity, toPrintFeatures, reviews, ...rest } = snapshot.val();
+          const { printFeatures, printerElectricity, printerParameters, printerSoftware, printerUnboxing, socialCommunity, toPrintFeatures, reviews: reviewData, ...rest } = snapshot.val();
           if(affiliateInfo) {
             const {affiliateAmazonInfo} = rest;
             return country ? res.json({ ...rest, affiliateAmazonInfo: {...affiliateAmazonInfo[country]} }) : res.json({ ...rest });
@@ -98,6 +98,12 @@ exports.getPrinters = (app) => {
             return res.json({ toPrintFeatures });
           }
           if(reviewsInfo) {
+            var reviews = {}
+            Object.entries(reviewData).forEach(([key, value]) => {
+              if(value.enabled) {
+                reviews[key] = value;
+              }
+            });
             return res.json({ reviews });
           }
           return res.json(snapshot.val());

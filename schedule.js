@@ -14,18 +14,20 @@ printers.then(snapshot => {
   let usaProducts = [];
   let aliexpressProducts = [];
   let gearbestProducts = [];
-  printersElements = Object.values(printersData);
+  let printersElements = [];
+  Object.entries(printersData).forEach(([id, value]) => {
+    printersElements.push({id, ...value})
+  });
   printersElements.forEach(element => {
-    const {affiliateAmazonInfo: {ES, MX, US}, affiliateAliexpress, affiliateGearbestInfo} = element;
+    const {affiliateAmazonInfo: {ES, MX, US}, affiliateAliexpress, affiliateGearbestInfo, id, name: productName} = element;
     /**
      * Añadimos los productos de ES
      */
     if(ES) {
       if(ES.asin) {
-        spanishProducts.push(ES);
+        spanishProducts.push({...ES, id, productName, subproduct: false});
       } else {
-
-        Object.values(ES).forEach(item => spanishProducts.push(item))
+        Object.values(ES).forEach(item => spanishProducts.push({...item, id, productName, subproduct: true}))
       }
     }
     /**
@@ -33,9 +35,9 @@ printers.then(snapshot => {
      */
     if(MX) {
       if(MX.asin) {
-        mxProducts.push(MX);
+        mxProducts.push({...MX, id, productName, subproduct: false});
       } else {
-        Object.values(MX).forEach(item => mxProducts.push(item))
+        Object.values(MX).forEach(item => mxProducts.push({...item, id, productName, subproduct: true}))
       }
     }
     /**
@@ -43,9 +45,9 @@ printers.then(snapshot => {
      */
     if(US) {
       if(US.asin) {
-        usaProducts.push(US);
+        usaProducts.push({...US, id, productName, subproduct: false});
       } else {
-        Object.values(US).forEach(item => usaProducts.push(item))
+        Object.values(US).forEach(item => usaProducts.push({...item, id, productName, subproduct: true}))
       }
     }
     /**
@@ -53,9 +55,9 @@ printers.then(snapshot => {
      */
     if(affiliateAliexpress) {
       if(affiliateAliexpress.asin) {
-        aliexpressProducts.push(affiliateAliexpress);
+        aliexpressProducts.push({...affiliateAliexpress, id, productName, subproduct: false});
       } else {
-        Object.values(affiliateAliexpress).forEach(item => aliexpressProducts.push(item))
+        Object.values(affiliateAliexpress).forEach(item => aliexpressProducts.push({...item, id, productName, subproduct: true}))
       }
     }
     /**
@@ -63,15 +65,15 @@ printers.then(snapshot => {
      */
     if(affiliateGearbestInfo) {
       if(affiliateGearbestInfo.asin) {
-        gearbestProducts.push(affiliateGearbestInfo);
+        gearbestProducts.push({...affiliateGearbestInfo, id, productName, subproduct: false});
       } else {
-        Object.values(affiliateGearbestInfo).forEach(item => gearbestProducts.push(item))
+        Object.values(affiliateGearbestInfo).forEach(item => gearbestProducts.push({...item, id, productName, subproduct: true}))
       }
     }
   });
   getPrices.getAmazonProductPrice({spanishProducts, mxProducts, usaProducts}, '3d-printers');
-  // getPrices.getAliexpressProductPrice(aliexpressProducts, id, '3d-printers');
-  // getPrices.getGearbestProductPrice(gearbestProducts, id, '3d-printers');
+  getPrices.getAliexpressProductPrice(aliexpressProducts, '3d-printers');
+  getPrices.getGearbestProductPrice(gearbestProducts, '3d-printers');
 });
 
 

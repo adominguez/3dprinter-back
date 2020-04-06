@@ -321,7 +321,7 @@ exports.getAliexpressProductPrice = (products, instance) => {
 
 exports.getGearbestProductPrice = (products, instance) => {
   let gearbestInterval = 5000, // 5000
-  gearbestIncremental = 1;
+    gearbestIncremental = 1;
   /**
    * Obtenemos información de los productos
    */
@@ -334,3 +334,32 @@ exports.getGearbestProductPrice = (products, instance) => {
     gearbestIncremental = gearbestIncremental + 1;
   });
 };
+
+exports.formatAffiliateInfo = (data, country) => {
+  const { affiliateAmazonInfo, affiliateAliexpress, affiliateGearbestInfo } = data;
+  let amazonList = [];
+  let aliexpressList = [];
+  let gearbestList = [];
+
+  if (!affiliateAmazonInfo[country].asin) {
+    Object.entries(affiliateAmazonInfo[country]).forEach(([id, value]) => { amazonList.push({ id, ...value }) })
+  } else {
+    affiliateAmazonInfo && amazonList.push(affiliateAmazonInfo[country])
+  }
+
+  if (affiliateAliexpress && !affiliateAliexpress.asin) {
+    Object.entries(affiliateAliexpress).forEach(([id, value]) => { aliexpressList.push({ id, ...value }) })
+  } else {
+    affiliateAliexpress && aliexpressList.push(affiliateAliexpress)
+  }
+
+  if (affiliateGearbestInfo && !affiliateGearbestInfo.asin) {
+    Object.entries(affiliateGearbestInfo).forEach(([id, value]) => { gearbestList.push({ id, ...value }) })
+  } else {
+    affiliateGearbestInfo && gearbestList.push(affiliateGearbestInfo)
+  }
+  const amazonInfo = { affiliateAmazonInfo: amazonList };
+  const aliexpressInfo = { affiliateAliexpress: aliexpressList };
+  const gearbestInfo = { affiliateGearbestInfo: gearbestList };
+  return {amazonInfo, aliexpressInfo, gearbestInfo}
+}

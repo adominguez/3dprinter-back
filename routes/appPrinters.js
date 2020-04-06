@@ -85,8 +85,8 @@ exports.getPrinters = (app) => {
         .then(snapshot => {
           const { printFeatures, printerElectricity, printerParameters, printerSoftware, printerUnboxing, socialCommunity, toPrintFeatures, reviews: reviewData, ...rest } = snapshot.val();
           if(affiliateInfo) {
-            const {affiliateAmazonInfo} = rest;
-            return country ? res.json({ ...rest, affiliateAmazonInfo: {...affiliateAmazonInfo[country]} }) : res.json({ ...rest });
+            const {amazonInfo, aliexpressInfo, gearbestInfo} = getPrices.formatAffiliateInfo(rest, country);
+            return country ? res.json({ ...rest, ...amazonInfo, ...aliexpressInfo, ...gearbestInfo }) : res.json({ ...rest });
           }
           if(featuresInfo) {
             return res.json({ printFeatures, printerElectricity, printerParameters, printerSoftware, printerUnboxing });

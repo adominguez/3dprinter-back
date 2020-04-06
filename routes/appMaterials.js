@@ -101,7 +101,7 @@ exports.getMaterials = (app) => {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const material = req.params.id;
-    const { authentication, affiliateInfo, featuresInfo, examplesInfo, reviewsInfo  } = req.query;
+    const { authentication, affiliateInfo, featuresInfo, examplesInfo, reviewsInfo, country  } = req.query;
     if (authenticationToken.checkAuthenticationToken(authentication)) {
       firebase.db.ref('materials')
         .child(material)
@@ -109,7 +109,8 @@ exports.getMaterials = (app) => {
         .then(snapshot => {
           const { materialFeatures, socialCommunity, materialExamples, reviews, ...rest } = snapshot.val();
           if(affiliateInfo) {
-            return res.json({ ...rest });
+            const {amazonInfo, aliexpressInfo, gearbestInfo} = getPrices.formatAffiliateInfo(rest, country);
+            return country ? res.json({ ...rest, ...amazonInfo, ...aliexpressInfo, ...gearbestInfo }) : res.json({ ...rest });
           }
           if(featuresInfo) {
             return res.json({ materialFeatures });

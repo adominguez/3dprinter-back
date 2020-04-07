@@ -204,30 +204,39 @@ exports.getMaterials = (app) => {
   /**
    * GET update automatically price /material/:id
    */
-  /*app.get('/update-automatically-printer/:id', function (req, res) {
+  app.get('/update-automatically-material/:id', async (req, res) => {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
-    const printerId = req.params.id;
+    const materialId = req.params.id;
 
     if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
-
-      getPrices.getAmazonProductPrice(printerId)
-      getPrices.getAliexpressProductPrice(printerId)
-      getPrices.getGearbestProductPrice(printerId);
-      return res.json({
-        error: false,
-        status: 'ok',
-        code: 200,
-        message: 'The printer has been udpated sucessfull'
-      })
+      try {
+        const materialsdb = await firebase.db.ref('materials').child(materialId);
+        const material = await materialsdb.once('value');
+        const materialData = {[materialId]: material.val()};
+        const result = await getPrices.formatProducts(materialData);
+        const {
+          spanishProducts,
+          mxProducts,
+          usaProducts,
+          aliexpressProducts,
+          gearbestProducts
+        } = await getPrices.formatProducts(materialData);
+        getPrices.getAmazonProductPrice({ spanishProducts, mxProducts, usaProducts }, 'materials');
+        getPrices.getAliexpressProductPrice(aliexpressProducts, 'materials');
+        getPrices.getGearbestProductPrice(gearbestProducts, 'materials');
+        return res.json(result);
+      } catch (error) {
+        return res.json(error);
+      }
     } else {
       return res.json({
         errorCode: 401,
         errorMessage: 'No tienes permisos para ver esta información'
       })
     }
-  });*/
+  });
 
   /**
    * GET delete /material/:id

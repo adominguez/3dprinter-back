@@ -21,10 +21,10 @@ const getAmazonPriceByCountry = (countryCode, html) => {
   var price = ''
   switch (countryCode) {
     case 'ES':
-      price = parseFloat(html('#priceblock_ourprice').text().replace('€', '').replace(',', '.').replace(' ', '') || 0).toFixed(2) || "No disponible";
+      price = parseFloat(html('#price_inside_buybox').text().replace('€', '').replace(',', '.').replace(' ', '') || 0).toFixed(2) || "No disponible";
       break;
     case 'MX':
-      price = parseFloat(html('#priceblock_ourprice').text().replace('$', '').replace(',', '').replace(' ', '') || 0).toFixed(2) || "No disponible";
+      price = parseFloat(html('#price_inside_buybox').text().replace('$', '').replace(',', '').replace(' ', '') || 0).toFixed(2) || "No disponible";
       break;
     case 'US':
       price = parseFloat(html('#price_inside_buybox').text().replace('US$', '').replace(' ', '') || 0).toFixed(2) || "No disponible";

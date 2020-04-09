@@ -76,7 +76,7 @@
             } else { comunityPrinterListThingiverse.hidden = true; }
 
         }).catch(error => {
-            fetch('https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW')
-                .then(data => response)
-        });
+            fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW&&shortcode=community-printer-list&&error${error}`)
+              .then(data => error)
+          });
 </script>

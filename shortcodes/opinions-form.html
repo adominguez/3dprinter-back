@@ -99,8 +99,8 @@
           }
 
       }).catch(error => {
-          fetch('https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW')
-              .then(data => error)
+        fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW&&shortcode=opinions-form&&error${error}`)
+          .then(data => error)
       });
 </script>
 <div id="reviewSuccess" hidden class="reviewSuccess">Muchas gracias por dejar tu review</div>

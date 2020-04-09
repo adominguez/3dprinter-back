@@ -78,10 +78,6 @@
         let containerGearbest = document.querySelector('#related-product-container-gearbest');
         let productListGearbest = document.querySelector('#products-card-list-gearbest');
 
-        let randomNumber = Math.round(Math.random() * 100000000);
-        productListAmazon.id = `products-card-list-amazon-${randomNumber}`;
-        productListAliexpress.id = `products-card-list-aliexpress-${randomNumber}`;
-        productListGearbest.id = `products-card-list-gearbest-${randomNumber}`;
         let amazonElementList = '';
         let aliexpressElementList = '';
         let gearbestElementList = '';
@@ -159,9 +155,8 @@
               sortAliexpressProducts.push(item)
             }
           });
-          sortAliexpressProducts.sort((a, b) => (a.aliexpressPrice > b.aliexpressPrice) ? 1 : ((b.aliexpressPrice > a
-            .aliexpressPrice) ? -1 : 0));
-            aliexpressProducts.forEach(item => {
+          sortAliexpressProducts.sort((a, b) => (a.aliexpressPrice > b.aliexpressPrice) ? 1 : ((b.aliexpressPrice > a.aliexpressPrice) ? -1 : 0));
+          aliexpressProducts.forEach(item => {
             if (item.aliexpressPrice === '0.00') {
               sortAliexpressProducts.push(item)
             }
@@ -217,7 +212,7 @@
           });
           sortGearbestProducts.sort((a, b) => (a.gearbestPrice > b.gearbestPrice) ? 1 : ((b.gearbestPrice > a
             .gearbestPrice) ? -1 : 0));
-            gearbestProducts.forEach(item => {
+          gearbestProducts.forEach(item => {
             if (item.gearbestPrice === '0.00') {
               sortGearbestProducts.push(item)
             }
@@ -261,7 +256,8 @@
           containerGearbest.classList.add('hidden');
         }
       }).catch(error => {
-        console.log('hay un error al acceder, y tengo que tratar de dar más información de cual es el error');
+        fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW&&shortcode=product-card-list&&error${error}`)
+          .then(data => error)
       });
   })
 

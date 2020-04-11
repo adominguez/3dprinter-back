@@ -64,7 +64,7 @@
       country_code: countryCode
     } = JSON.parse(data)
     fetch(
-        `http://localhost:3128/printer/%%printerId%%?authentication=3DMAKERNOW&country=${countryCode}&affiliateInfo=true&`
+        `https://api-3dmakernow.herokuapp.com/printer/%%printerId%%?authentication=3DMAKERNOW&country=${countryCode}&affiliateInfo=true&`
       )
       .then(function (response) {
         return response.json();

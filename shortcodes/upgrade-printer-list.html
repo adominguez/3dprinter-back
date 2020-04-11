@@ -8,9 +8,7 @@
             return response.json();
         }).then(function (data) {
             const { toPrintFeatures } = data;
-
-            var contentItems = '';
-
+            let contentItems = '';
             toPrintFeatures.map(item => {
                 contentItems += `<li class="upgrade-list-item">
                     <div style="background: url(${item.image})" class="upgrade-list-item-image"></div>
@@ -21,10 +19,9 @@
                         Ver en ${item.type}</a>
                 </li>`
             });
-
             upgradesList.innerHTML = contentItems;
         }).catch(error => {
-          debugger;
-          fetch('https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW').then( data => response)
+          fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW&&shortcode=upgrade-printer-list&&error${error}`)
+            .then(data => error)
         });
 </script>

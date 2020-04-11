@@ -40,8 +40,6 @@
   </div>
 </div>
 <div id="affiliates" class="affiliates">
-
-
   <div class="table-price-card">
     <table cellspacing="0" id="table-price-card-%%productId%%" class="table-price-card">
     </table>
@@ -213,9 +211,9 @@
             '#valueLabel-%%productId%%').hidden = true;
         quality ? document.querySelector('#quality-%%productId%%').innerHTML = quality : document.querySelector(
           '#qualityLabel-%%productId%%').hidden = true;
-      }).catch(error => {
-        fetch('https://api-3dmakernow.herokuapp.com/error-notification/%%productId%%?authentication=3DMAKERNOW').then(response =>
-          response)
-      });
+    }).catch(error => {
+      fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW&&shortcode=product-card&&error${error}`)
+        .then(data => error)
+    });
   })
 </script>

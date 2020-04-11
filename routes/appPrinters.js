@@ -85,8 +85,8 @@ exports.getPrinters = (app) => {
         .then(snapshot => {
           const { printFeatures, printerElectricity, printerParameters, printerSoftware, printerUnboxing, socialCommunity, toPrintFeatures, reviews: reviewData, ...rest } = snapshot.val();
           if(affiliateInfo) {
-            const {affiliateAmazonInfo} = rest;
-            return country ? res.json({ ...rest, affiliateAmazonInfo: {...affiliateAmazonInfo[country]} }) : res.json({ ...rest });
+            const {amazonInfo, aliexpressInfo, gearbestInfo} = getPrices.formatAffiliateInfo(rest, country);
+            return country ? res.json({ ...rest, ...amazonInfo, ...aliexpressInfo, ...gearbestInfo }) : res.json({ ...rest });
           }
           if(featuresInfo) {
             return res.json({ printFeatures, printerElectricity, printerParameters, printerSoftware, printerUnboxing });
@@ -269,23 +269,32 @@ exports.getPrinters = (app) => {
   /**
    * GET update automatically price /printer/:id
    */
-  app.get('/update-automatically-printer/:id', function (req, res) {
+  app.get('/update-automatically-printer/:id', async (req, res) => {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const printerId = req.params.id;
 
     if (authenticationToken.checkAuthenticationToken(req.query.authentication)) {
-
-      getPrices.getAmazonProductPrice(printerId)
-      getPrices.getAliexpressProductPrice(printerId)
-      getPrices.getGearbestProductPrice(printerId);
-      return res.json({
-        error: false,
-        status: 'ok',
-        code: 200,
-        message: 'The printer has been udpated sucessfull'
-      })
+      try {
+        const printersdb = await firebase.db.ref('3d-printers').child(printerId);
+        const printer = await printersdb.once('value');
+        const printerData = {[printerId]: printer.val()};
+        const result = await getPrices.formatProducts(printerData);
+        const {
+          spanishProducts,
+          mxProducts,
+          usaProducts,
+          aliexpressProducts,
+          gearbestProducts
+        } = await getPrices.formatProducts(printerData);
+        getPrices.getAmazonProductPrice({ spanishProducts, mxProducts, usaProducts }, '3d-printers');
+        getPrices.getAliexpressProductPrice(aliexpressProducts, '3d-printers');
+        getPrices.getGearbestProductPrice(gearbestProducts, '3d-printers');
+        return res.json(result);
+      } catch (error) {
+        return res.json(error);
+      }
     } else {
       return res.json({
         errorCode: 401,

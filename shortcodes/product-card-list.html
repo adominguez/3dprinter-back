@@ -74,15 +74,7 @@
     }
     return htmlRating;
   }
-  const headers = new Headers();
-
-  const options = {
-    method: 'GET',
-    headers,
-    mode: 'no-cors',
-    cache: 'default'
-  };
-  fetch('https://ipapi.co/json/', options).then(response => response.text()).then(data => {
+  fetch('https://ipapi.co/json/').then(response => response.text()).then(data => {
     const {
       country_code: countryCode
     } = JSON.parse(data)

@@ -3,11 +3,13 @@ const _ = require('lodash');
 const authenticationToken = require('../authenticationToken');
 const sendEmail = require('../utils/sendEmail');
 const getPrices = require('../utils/getPrices');
+const request = require('../utils/request');
+const cacheTime =  request.cache(60*60*24)
 
 exports.getPrinters = (app) => {
 
   // GET /printers
-  app.get('/printers', function (req, res) {
+  app.get('/printers', cacheTime, function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
@@ -28,7 +30,7 @@ exports.getPrinters = (app) => {
   });
 
   // GET /printers/category get printers by category
-  app.get('/printers/:category', function (req, res) {
+  app.get('/printers/:category', cacheTime, function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
@@ -50,7 +52,7 @@ exports.getPrinters = (app) => {
   });
 
   // GET /printers/category/table
-  app.get('/printers/:category/table', function (req, res) {
+  app.get('/printers/:category/table', cacheTime, function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
@@ -72,7 +74,7 @@ exports.getPrinters = (app) => {
   });
 
   // GET /printer/:id
-  app.get('/printer/:id', function (req, res) {
+  app.get('/printer/:id', cacheTime, function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');

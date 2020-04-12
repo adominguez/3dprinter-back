@@ -3,11 +3,13 @@ const _ = require('lodash');
 const authenticationToken = require('../authenticationToken');
 const sendEmail = require('../utils/sendEmail');
 const getPrices = require('../utils/getPrices');
+const request = require('../utils/request');
+const cacheTime =  request.cache(60*60*24)
 
 exports.getMaterials = (app) => {
 
   // GET /materials
-  app.get('/materials', function (req, res) {
+  app.get('/materials', cacheTime, function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
@@ -28,7 +30,7 @@ exports.getMaterials = (app) => {
   });
 
   // GET /materials/category get materials by category
-  app.get('/materials/:category', function (req, res) {
+  app.get('/materials/:category', cacheTime, function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
@@ -74,7 +76,7 @@ exports.getMaterials = (app) => {
   });
 
   // GET /materials/category/table
-  app.get('/materials/:category/table', function (req, res) {
+  app.get('/materials/:category/table', cacheTime, function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
@@ -96,7 +98,7 @@ exports.getMaterials = (app) => {
   });
 
   // GET /material/:id
-  app.get('/material/:id', function (req, res) {
+  app.get('/material/:id', cacheTime, function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');

@@ -36,13 +36,13 @@ exports.responsePrinterError = (name, id, error) => {
     email.sendEmail(data);
 }
 
-exports.errorFromWeb = (printerId, shortcode, error) => {
+exports.errorFromWeb = (printerId, shortcode, error, browser) => {
     /**
      * Enviamos un correo para informar de que ha habido un error al acceder a la web.
      */
     const data = {
       subject: 'Error desde la página web al acceder a una impresora',
-      message: `Error desde la página web, alguien ha intentado acceder a la información de la impresora con id <b>${printerId}</b> y ha habido un error al traer la información del shortcode ${shortcode} y está dando el siguiente error:<br/><div style="padding: 10px; background-color: #cecece;">${error}</div>`,
+      message: `Error desde la página web, alguien ha intentado acceder a la información de la impresora con id <b>${printerId}</b> y ha habido un error al traer la información del shortcode ${shortcode} y está dando el siguiente error:<br/><div style="padding: 10px; background-color: #cecece;">${error}</div><br/> browser: ${browser}`,
       type: 'error'
     }
     email.sendEmail(data);

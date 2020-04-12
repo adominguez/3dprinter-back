@@ -343,9 +343,10 @@ exports.getPrinters = (app) => {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
     const printerId = req.params.id;
-    const { authentication, shortcode, error } = req.query;
+    const { authentication, shortcode, error, browser } = req.query;
     if (authenticationToken.checkAuthenticationToken(authentication)) {
-      sendEmail.errorFromWeb(printerId, shortcode, error);
+      console.log({ authentication, shortcode, error, browser })
+      sendEmail.errorFromWeb(printerId, shortcode, error, browser);
       return res.json({
         error: false,
         status: 'ok',

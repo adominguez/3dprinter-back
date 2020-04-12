@@ -96,9 +96,9 @@
         let amazonElementList = '';
         let aliexpressElementList = '';
         let gearbestElementList = '';
-        let amazonProducts = data.affiliateAmazonInfo;
-        let aliexpressProducts = data.affiliateAliexpress;
-        let gearbestProducts = data.affiliateGearbestInfo;
+        let amazonProducts = data.affiliateAmazonInfo || [];
+        let aliexpressProducts = data.affiliateAliexpress || [];
+        let gearbestProducts = data.affiliateGearbestInfo || [];
         let sortAmazonProducts = [];
         let sortAliexpressProducts = [];
         let sortGearbestProducts = [];

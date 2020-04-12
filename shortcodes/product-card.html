@@ -227,7 +227,7 @@
         quality ? document.querySelector('#quality-%%productId%%').innerHTML = quality : document.querySelector(
           '#qualityLabel-%%productId%%').hidden = true;
     }).catch(error => {
-      fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW&&shortcode=product-card&&error=${error}&&browser=${getBrowserProductCard()}`)
+      fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW&&shortcode=product-card&&error=${error}&&browser=${getBrowserProductCard()}&&country=${countryCode}`)
         .then(data => error)
     });
   })

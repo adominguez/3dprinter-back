@@ -129,7 +129,7 @@
           });
           relatedProduct.innerHTML = productList;
         }).catch(error => {
-          fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%category%%?authentication=3DMAKERNOW&&shortcode=product-card-category-list&&error=${error}&&browser=${getBrowserProductCardCategoryList()}`)
+          fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%category%%?authentication=3DMAKERNOW&&shortcode=product-card-category-list&&error=${error}&&browser=${getBrowserProductCardCategoryList()}&&country=${countryCode}`)
         .then(data => error)
     });
   })

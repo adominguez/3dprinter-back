@@ -2,16 +2,25 @@
   <h3>Amazon</h3>
   %%amazonContent%%
   <ul class="related-products-list amazon" id="products-card-list-amazon"></ul>
+  <p class="products-emptyView amazon hidden" id="products-emptyView-amazon">
+    Actualmente no hay datos de Amazon de este producto.
+  </p>
 </div>
 <div id="related-product-container-aliexpress">
   <h3>Aliexpress</h3>
   %%aliexpressContent%%
   <ul class="related-products-list aliexpress" id="products-card-list-aliexpress"></ul>
+  <p class="products-emptyView aliexpress hidden" id="products-emptyView-aliexpress">
+      Actualmente no hay datos de Aliexpress de este producto.
+  </p>
 </div>
 <div id="related-product-container-gearbest">
   <h3>Gearbest</h3>
   %%gearbestContent%%
   <ul class="related-products-list gearbest" id="products-card-list-gearbest"></ul>
+  <p class="products-emptyView gearbest hidden" id="products-emptyView-gearbest">
+    Actualmente no hay datos de Gearbest de este producto.
+  </p>
 </div>
 <script>
   const getBrowserProductCardList = function() {
@@ -84,14 +93,14 @@
       .then(function (response) {
         return response.json();
       }).then(function (data) {
-        let containerAmazon = document.querySelector('#related-product-container-amazon');
         let productListAmazon = document.querySelector('#products-card-list-amazon');
+        let amazonEmptyView = document.querySelector('#products-emptyView-amazon');
 
-        let containerAliexpress = document.querySelector('#related-product-container-aliexpress');
         let productListAliexpress = document.querySelector('#products-card-list-aliexpress');
+        let aliexpressEmptyView = document.querySelector('#products-emptyView-aliexpress');
 
-        let containerGearbest = document.querySelector('#related-product-container-gearbest');
         let productListGearbest = document.querySelector('#products-card-list-gearbest');
+        let gearbestEmptyView = document.querySelector('#products-emptyView-gearbest');
 
         let amazonElementList = '';
         let aliexpressElementList = '';
@@ -158,7 +167,8 @@
           });
           productListAmazon.innerHTML = amazonElementList;
         } else {
-          containerAmazon.classList.add('hidden');
+          productListAmazon.classList.add('hidden');
+          amazonEmptyView.classList.remove('hidden');
         }
 
         /**
@@ -213,7 +223,8 @@
           });
           productListAliexpress.innerHTML = aliexpressElementList;
         } else {
-          containerAliexpress.classList.add('hidden');
+          productListAliexpress.classList.add('hidden');
+          aliexpressEmptyView.classList.remove('hidden');
         }
 
         /**
@@ -268,12 +279,16 @@
           });
           productListGearbest.innerHTML = gearbestElementList;
         } else {
-          containerGearbest.classList.add('hidden');
+          productListGearbest.classList.add('hidden');
+          gearbestEmptyView.classList.remove('hidden');
         }
       }).catch(error => {
         fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW&&shortcode=product-card-list&&error=${error}&&browser=${getBrowserProductCardList()}&&country=${countryCode}`)
           .then(data => error)
       });
-  })
+  }).catch(error => {
+    fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW&&shortcode=product-card-list -> userIp&&error=${error}&&browser=${getBrowserProductCardList()}`)
+      .then(data => error)
+  });
 
 </script>

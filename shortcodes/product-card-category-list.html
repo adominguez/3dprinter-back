@@ -132,6 +132,9 @@
           fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%category%%?authentication=3DMAKERNOW&&shortcode=product-card-category-list&&error=${error}&&browser=${getBrowserProductCardCategoryList()}&&country=${countryCode}`)
         .then(data => error)
     });
-  })
+  }).catch(error => {
+    fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%category%%?authentication=3DMAKERNOW&&shortcode=product-card-category-list -> userIp&&error=${error}&&browser=${getBrowserProductCardCategoryList()}`)
+      .then(data => error)
+  });
 
 </script>

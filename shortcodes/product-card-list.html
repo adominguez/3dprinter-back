@@ -83,24 +83,40 @@
     }
     return htmlRating;
   }
+  const productCardType = '%%productType%%' || 'printer';
   fetch('https://ipapi.co/json/').then(response => response.text()).then(data => {
     const {
       country_code: countryCode
     } = JSON.parse(data)
     fetch(
-        `https://api-3dmakernow.herokuapp.com/printer/%%printerId%%?authentication=3DMAKERNOW&country=${countryCode}&affiliateInfo=true&`
+        `https://api-3dmakernow.herokuapp.com/${productCardType}/%%printerId%%?authentication=3DMAKERNOW&country=${countryCode}&affiliateInfo=true&`
       )
       .then(function (response) {
         return response.json();
       }).then(function (data) {
+        let productContainerAmazon = document.querySelector('#related-product-container-amazon');
         let productListAmazon = document.querySelector('#products-card-list-amazon');
         let amazonEmptyView = document.querySelector('#products-emptyView-amazon');
+        let hideAmazon = '%%hideAmazon%%' === "yes" ? true : false;
+        if(hideAmazon) {
+          productContainerAmazon.classList.add('hidden');
+        }
 
+        let productContainerAliexpress = document.querySelector('#related-product-container-aliexpress');
         let productListAliexpress = document.querySelector('#products-card-list-aliexpress');
         let aliexpressEmptyView = document.querySelector('#products-emptyView-aliexpress');
+        let hideAliexpress = '%%hideAliexpress%%' === "yes" ? true : false;
+        if(hideAliexpress) {
+          productContainerAliexpress.classList.add('hidden');
+        }
 
+        let productContainerGearbest = document.querySelector('#related-product-container-gearbest');
         let productListGearbest = document.querySelector('#products-card-list-gearbest');
         let gearbestEmptyView = document.querySelector('#products-emptyView-gearbest');
+        let hideGearbest = '%%hideGearbest%%' === "yes" ? true : false;
+        if(hideGearbest) {
+          productContainerGearbest.classList.add('hidden');
+        }
 
         let amazonElementList = '';
         let aliexpressElementList = '';
@@ -115,14 +131,13 @@
         /**
          * if have amazon products
          */
-        if (amazonProducts.length) {
+        if (amazonProducts.length && !hideAmazon) {
           amazonProducts.forEach(item => {
             if (item.amazonPrice !== '0.00') {
               sortAmazonProducts.push(item)
             }
           });
-          sortAmazonProducts.sort((a, b) => (a.amazonPrice > b.amazonPrice) ? 1 : ((b.amazonPrice > a
-            .amazonPrice) ? -1 : 0));
+          sortAmazonProducts.sort((a, b) => (parseInt(a.amazonPrice) > parseInt(b.amazonPrice)) ? 1 : ((parseInt(b.amazonPrice) > parseInt(a.amazonPrice)) ? -1 : 0));
           amazonProducts.forEach(item => {
             if (item.amazonPrice === '0.00') {
               sortAmazonProducts.push(item)
@@ -174,13 +189,13 @@
         /**
          * if have Aliexpress products
          */
-        if (aliexpressProducts.length) {
+        if (aliexpressProducts.length && !hideAliexpress) {
           aliexpressProducts.forEach(item => {
             if (item.aliexpressPrice !== '0.00') {
               sortAliexpressProducts.push(item)
             }
           });
-          sortAliexpressProducts.sort((a, b) => (a.aliexpressPrice > b.aliexpressPrice) ? 1 : ((b.aliexpressPrice > a.aliexpressPrice) ? -1 : 0));
+          sortAliexpressProducts.sort((a, b) => (parseInt(a.aliexpressPrice) > parseInt(b.aliexpressPrice)) ? 1 : ((parseInt(b.aliexpressPrice) > parseInt(a.aliexpressPrice)) ? -1 : 0));
           aliexpressProducts.forEach(item => {
             if (item.aliexpressPrice === '0.00') {
               sortAliexpressProducts.push(item)
@@ -230,14 +245,13 @@
         /**
          * if have Gearbest products
          */
-        if (gearbestProducts.length) {
+        if (gearbestProducts.length && !hideGearbest) {
           gearbestProducts.forEach(item => {
             if (item.gearbestPrice !== '0.00') {
               sortGearbestProducts.push(item)
             }
           });
-          sortGearbestProducts.sort((a, b) => (a.gearbestPrice > b.gearbestPrice) ? 1 : ((b.gearbestPrice > a
-            .gearbestPrice) ? -1 : 0));
+          sortGearbestProducts.sort((a, b) => (parseInt(a.gearbestPrice) > parseInt(b.gearbestPrice)) ? 1 : ((parseInt(b.gearbestPrice) > parseInt(a.gearbestPrice)) ? -1 : 0));
           gearbestProducts.forEach(item => {
             if (item.gearbestPrice === '0.00') {
               sortGearbestProducts.push(item)

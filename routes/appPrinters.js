@@ -122,6 +122,51 @@ exports.getPrinters = (app) => {
     }
   });
 
+  // GET /printer-list/
+  app.get('/printer-list/', function (req, res) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+    res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
+    const { authentication, country = 'ES', productsList  } = req.query;
+    const selectedPrinters = productsList.replace(/\s/g, '').split(',');
+    let resultprinter = [];
+    if (authenticationToken.checkAuthenticationToken(authentication)) {
+      firebase.db.ref('3d-printers')
+        .once('value')
+        .then(snapshot => {
+          const printers = snapshot.val();
+          selectedPrinters.forEach(item => {
+            const printer = printers[item];
+            const {name, postLink, image, description} = printer;
+            if(printer) {
+              const { printFeatures, printerElectricity, printerParameters, printerSoftware, printerUnboxing, socialCommunity, toPrintFeatures, reviews: reviewData, ...rest } = printer;
+              const {amazonInfo, aliexpressInfo, gearbestInfo} = getPrices.formatAffiliateInfo(rest, country);
+              resultprinter.push({
+                ...amazonInfo,
+                ...aliexpressInfo,
+                ...gearbestInfo,
+                name,
+                postLink,
+                image,
+                description,
+                id: item
+              })
+            }
+          })
+          return res.json(resultprinter);
+        })
+        .catch(error => (res.json({
+          errorCode: error.code,
+          errorMessage: error.message
+        })));
+    } else {
+      return res.json({
+        errorCode: 401,
+        errorMessage: 'No tienes permisos para ver esta información'
+      })
+    }
+  });
+
   // POST /add-new-printer
   app.post('/add-new-printer', function (req, res) {
     res.header('Access-Control-Allow-Origin', "*");

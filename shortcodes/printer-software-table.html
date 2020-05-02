@@ -1,0 +1,74 @@
+<ul class="feature-table">
+  <li class="feature-table-list" id="slicerList">
+    <img class="printer-image-table-list" src="https://3dmakernow.com/wp-content/uploads/2018/12/slicer.svg"/>
+    <div class="feature-table-list-container">
+      <span class="bold">
+          Slicer:
+      </span>
+    </div>
+    <div class="feature-table-list-container">
+      <span class="feature-table-list-container-text">%%slicer%%</span>
+      <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Slicer" content="Software con el que se pueden ajustar los parámetros para adaptarlos a la impresión." close="yes" class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
+    </div>
+  </li>
+  <li class="feature-table-list" id="inputFormatList">
+    <img class="printer-image-table-list" src="https://3dmakernow.com/wp-content/uploads/2018/12/inputFormat.svg"/>
+    <div class="feature-table-list-container">
+      <span class="bold">
+          Formatos de entrada:
+      </span>
+    </div>
+    <div class="feature-table-list-container">
+      <span class="feature-table-list-container-text">%%inputFormat%%</span>
+    </div>
+  </li>
+  <li class="feature-table-list" id="outputFormatList">
+    <img class="printer-image-table-list" src="https://3dmakernow.com/wp-content/uploads/2018/12/outputFormat.svg"/>
+    <div class="feature-table-list-container">
+      <span class="bold">
+          Formato de salida:
+      </span>
+    </div>
+    <div class="feature-table-list-container">
+      <span class="feature-table-list-container-text">%%outputFormat%%</span>
+      <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Formato de salida" content="Es el formato al que se debe convertir el archivo para que la impresora pueda leerlo e imprimirlo." close="yes" class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
+    </div>
+  </li>
+  <li class="feature-table-list" id="conectivityList">
+    <img class="printer-image-table-list" src="https://3dmakernow.com/wp-content/uploads/2018/12/conectivity.svg"/>
+    <div class="feature-table-list-container">
+      <span class="bold">
+          Conectividad:
+      </span>
+    </div>
+    <div class="feature-table-list-container">
+      <span class="feature-table-list-container-text">%%conectivity%%</span>
+      <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Conectividad" content="El método con el que puede conectarse para importar los archivos a la impresora." close="yes" class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
+    </div>
+  </li>
+</ul>
+<script>
+  const slicer = '%%slicer%%';
+  const slicerList = document.querySelector('#slicerList');
+  if(!slicer) {
+  	slicerList.hidden = true;
+  }
+
+  const inputFormat = '%%inputFormat%%';
+  const inputFormatList = document.querySelector('#inputFormatList');
+  if(!inputFormat) {
+  	inputFormatList.hidden = true;
+  }
+
+  const outputFormat = '%%outputFormat%%';
+  const outputFormatList = document.querySelector('#outputFormatList');
+  if(!outputFormat) {
+  	outputFormatList.hidden = true;
+  }
+
+  const conectivity = '%%conectivity%%';
+  const conectivityList = document.querySelector('#conectivityList');
+  if(!conectivity) {
+  	conectivityList.hidden = true;
+  }
+</script>

@@ -1,0 +1,46 @@
+<style>
+  /*
+   * Half circle
+   **/
+  .half-circle {
+    display: inline-block;
+    padding: 0 10px 10px 10px;
+    height: 30px;
+    width: 60px;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+    border: 1px solid #e0e0e0;
+    border-top: 0;
+    text-align: center;
+    background-color: #fff;
+    position: absolute;
+    box-sizing: border-box;
+    margin-top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .half-circle i {
+    font-size: 30px;
+    margin-top: -10px;
+    color: #7f7f7f;
+    animation: hand 1000ms ease infinite;
+  }
+
+  .grey {
+    background-color: #f7f7f7;
+  }
+
+  @keyframes hand {
+    0% {
+      transform: translatey(-15px);
+    }
+    50% {
+      transform: translatey(0);
+    }
+    100% {
+      transform: translatey(-15px);
+    }
+  }
+  </style>
+  <div class="half-circle %%background%%"><i class="fa fa-%%icon%%"></i></div>

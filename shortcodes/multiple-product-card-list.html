@@ -1,0 +1,334 @@
+<ul id="multiple-product-card-list" class="multiple-product-card-list"></ul>
+<script>
+  const getBrowserProductCardList = () =>{
+    var ua= navigator.userAgent, tem,
+    M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+    if(/trident/i.test(M[1])){
+        tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+        return 'IE '+(tem[1] || '');
+    }
+    if(M[1]=== 'Chrome'){
+        tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+        if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+    }
+    M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+    if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
+    return M.join(' ');
+  };
+
+  const starsRating = (rate) => {
+    let htmlRating =
+      '<i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>';
+    if (rate > 0 && rate <= 0.5) {
+      htmlRating =
+        `<i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+    }
+    if (rate > 0.5 && rate <= 1) {
+      htmlRating =
+        `<i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+    }
+    if (rate > 1 && rate <= 1.5) {
+      htmlRating =
+        `<i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+    }
+    if (rate > 1.5 && rate <= 2) {
+      htmlRating =
+        `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+    }
+    if (rate > 2 && rate <= 2.5) {
+      htmlRating =
+        `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+    }
+    if (rate > 2.5 && rate <= 3) {
+      htmlRating =
+        `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+    }
+    if (rate > 3 && rate <= 3.5) {
+      htmlRating =
+        `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+    }
+    if (rate > 3.5 && rate <= 4) {
+      htmlRating =
+        `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-o icon orange"></i>`;
+    }
+    if (rate > 4 && rate <= 4.5) {
+      htmlRating =
+        `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star-half-o icon orange"></i>`;
+    }
+    if (rate > 4.5 && rate <= 5) {
+      htmlRating =
+        `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i>`;
+    }
+    return htmlRating;
+  }
+
+  const setAmazonProducts = (amazonProducts, hideAmazon, id) => {
+    let amazonElementList = '';
+    let sortAmazonProducts = [];
+    let productListAmazon = document.querySelector(`#products-card-list-amazon-${id}`);
+    let amazonEmptyView = document.querySelector(`#products-emptyView-amazon-${id}`);
+    /**
+     * if have amazon products
+     */
+      if (amazonProducts.length && !hideAmazon) {
+      amazonProducts.forEach(item => {
+        if (item.amazonPrice !== '0.00') {
+          sortAmazonProducts.push(item)
+        }
+      });
+      sortAmazonProducts.sort((a, b) => (parseInt(a.amazonPrice) > parseInt(b.amazonPrice)) ? 1 : ((parseInt(b.amazonPrice) > parseInt(a.amazonPrice)) ? -1 : 0));
+      amazonProducts.forEach(item => {
+        if (item.amazonPrice === '0.00') {
+          sortAmazonProducts.push(item)
+        }
+      });
+
+      sortAmazonProducts.forEach(element => {
+        const {
+          id,
+          affiliateShortLink,
+          amazonPrice,
+          amazonPrime,
+          amazonRate,
+          amazonRatings,
+          asin,
+          currency,
+          image,
+          informationLink,
+          name,
+          urlBackup
+        } = element;
+        let hidePrice = false;
+        let link = amazonPrice === '0.00' ? urlBackup : affiliateShortLink;
+        let price = amazonPrice === '0.00' ? hidePrice = true :
+          `${amazonPrice.toString().replace('.', ',')} ${currency}`;
+
+        amazonElementList += `<li class="related-products-list-item amazon">
+            <a href="${link}" rel="nofollow noopener noreferrer" target="_blank">
+                <div class="related-product-list-item-image"
+                style="background: url(${image})">
+                </div>
+            </a>
+            <h4><a href="${link}" rel="nofollow noopener noreferrer" target="_blank">${name}</a></h4>
+            ${amazonPrime ? `<img src="https://3dmakernow.com/wp-content/uploads/2018/12/amazon-prime.png" alt="amazon prime" width="60" />` : ''}
+            <div class="related-product-list-item-info">
+                ${!hidePrice ? `<span class="related-product-list-item-price">${price}</span>` : ''}
+                ${amazonPrice !== '0.00' && amazonRate >= 3 ? `<div>${starsRating(amazonRate)}</div>` : ''}
+            </div>
+            <a class="sections-link sections-link-buy amazon" href="${link}" rel="nofollow noopener noreferrer"
+              title="Ver más información en Amazon" target="_blank">Ver más información</a>
+          </li>`
+      });
+      productListAmazon.innerHTML = amazonElementList;
+    } else {
+      productListAmazon.classList.add('hidden');
+      amazonEmptyView.classList.remove('hidden');
+    }
+  }
+
+  const setAliexpressProducts = (aliexpressProducts, hideAliexpress, id) => {
+    let aliexpressElementList = '';
+    let sortAliexpressProducts = [];
+    let productListAliexpress = document.querySelector(`#products-card-list-aliexpress-${id}`);
+    let aliexpressEmptyView = document.querySelector(`#products-emptyView-aliexpress-${id}`);
+    /**
+     * if have Aliexpress products
+     */
+    if (aliexpressProducts.length && !hideAliexpress) {
+      aliexpressProducts.forEach(item => {
+        if (item.aliexpressPrice !== '0.00') {
+          sortAliexpressProducts.push(item)
+        }
+      });
+      sortAliexpressProducts.sort((a, b) => (parseInt(a.aliexpressPrice) > parseInt(b.aliexpressPrice)) ? 1 : ((parseInt(b.aliexpressPrice) > parseInt(a.aliexpressPrice)) ? -1 : 0));
+      aliexpressProducts.forEach(item => {
+        if (item.aliexpressPrice === '0.00') {
+          sortAliexpressProducts.push(item)
+        }
+      });
+
+      sortAliexpressProducts.forEach(element => {
+        const {
+          id,
+          affiliateAliShortLink,
+          aliexpressPrice,
+          aliexpressRate,
+          aliexpressRatings,
+          asin,
+          currency = '€',
+          image,
+          informationLink,
+          name,
+          urlBackup
+        } = element;
+        let hidePrice = false;
+        let link = aliexpressPrice === '0.00' ? urlBackup : affiliateAliShortLink;
+        let price = aliexpressPrice === '0.00' ? hidePrice = true :
+          `${aliexpressPrice.toString().replace('.', ',')} ${currency}`;
+
+        aliexpressElementList += `<li class="related-products-list-item aliexpress">
+            <a href="${link}" rel="nofollow noopener noreferrer" target="_blank">
+                <div class="related-product-list-item-image"
+                style="background: url(${image})">
+                </div>
+            </a>
+            <h4><a href="${link}" rel="nofollow noopener noreferrer" target="_blank">${name}</a></h4>
+            <div class="related-product-list-item-info">
+                ${!hidePrice ? `<span class="related-product-list-item-price">${price}</span>` : ''}
+                ${aliexpressPrice !== '0.00' && aliexpressRate >= 3 ? `<div>${starsRating(aliexpressRate)}</div>` : ''}
+            </div>
+            <a class="sections-link sections-link-buy aliexpress" href="${link}" rel="nofollow noopener noreferrer"
+              title="Ver más información en Aliexpress" target="_blank">Ver más información</a>
+          </li>`
+      });
+      productListAliexpress.innerHTML = aliexpressElementList;
+    } else {
+      productListAliexpress.classList.add('hidden');
+      aliexpressEmptyView.classList.remove('hidden');
+    }
+  }
+
+  const setGearbestProducts = (gearbestProducts, hideGearbest, id) => {
+    let gearbestElementList = '';
+    let sortGearbestProducts = [];
+    let productListGearbest = document.querySelector(`#products-card-list-gearbest-${id}`);
+    let gearbestEmptyView = document.querySelector(`#products-emptyView-gearbest-${id}`);
+
+    /**
+     * if have Gearbest products
+     */
+    if (gearbestProducts.length && !hideGearbest) {
+      gearbestProducts.forEach(item => {
+        if (item.gearbestPrice !== '0.00') {
+          sortGearbestProducts.push(item)
+        }
+      });
+      sortGearbestProducts.sort((a, b) => (parseInt(a.gearbestPrice) > parseInt(b.gearbestPrice)) ? 1 : ((parseInt(b.gearbestPrice) > parseInt(a.gearbestPrice)) ? -1 : 0));
+      gearbestProducts.forEach(item => {
+        if (item.gearbestPrice === '0.00') {
+          sortGearbestProducts.push(item)
+        }
+      });
+
+      sortGearbestProducts.forEach(element => {
+        const {
+          id,
+          gearbestPrice,
+          gearbestRate,
+          gearbestRatings,
+          asin,
+          currency = '€',
+          image,
+          informationLink,
+          name,
+          urlBackup
+        } = element;
+        let hidePrice = false;
+        let link = gearbestPrice === '0.00' ? urlBackup : informationLink;
+        let price = gearbestPrice === '0.00' ? hidePrice = true :
+          `${gearbestPrice.toString().replace('.', ',')} ${currency}`;
+
+        gearbestElementList += `<li class="related-products-list-item gearbest">
+            <a href="${link}" rel="nofollow noopener noreferrer" target="_blank">
+                <div class="related-product-list-item-image"
+                style="background: url(${image})">
+                </div>
+            </a>
+            <h4><a href="${link}" rel="nofollow noopener noreferrer" target="_blank">${name}</a></h4>
+            <div class="related-product-list-item-info">
+                ${!hidePrice ? `<span class="related-product-list-item-price">${price}</span>` : ''}
+                ${gearbestPrice !== '0.00' && gearbestRate >= 3 ? `<div>${starsRating(gearbestRate)}</div>` : ''}
+            </div>
+            <a class="sections-link sections-link-buy gearbest" href="${link}" rel="nofollow noopener noreferrer"
+              title="Ver más información en Gearbest" target="_blank">Ver más información</a>
+          </li>`
+      });
+      productListGearbest.innerHTML = gearbestElementList;
+    } else {
+      productListGearbest.classList.add('hidden');
+      gearbestEmptyView.classList.remove('hidden');
+    }
+  }
+
+  const setDocumentElements = (data) => {
+    const {id} = data;
+    let productContainerAmazon = document.querySelector(`#related-product-container-amazon-${id}`);
+    let hideAmazon = !data.affiliateAmazonInfo.length ? true : false;
+    let amazonProducts = data.affiliateAmazonInfo || [];
+    if(hideAmazon) {
+      productContainerAmazon.classList.add('hidden');
+    } else {
+      setAmazonProducts(amazonProducts, hideAmazon, id);
+    }
+
+    let productContainerAliexpress = document.querySelector(`#related-product-container-aliexpress-${id}`);
+    let hideAliexpress = !data.affiliateAliexpress.length ? true : false;
+    let aliexpressProducts = data.affiliateAliexpress || [];
+    if(hideAliexpress) {
+      productContainerAliexpress.classList.add('hidden');
+    } else {
+      setAliexpressProducts(aliexpressProducts, hideAliexpress, id);
+    }
+
+    let productContainerGearbest = document.querySelector(`#related-product-container-gearbest-${id}`);
+    let hideGearbest = !data.affiliateGearbestInfo.length ? true : false;
+    let gearbestProducts = data.affiliateGearbestInfo || [];
+    if(hideGearbest) {
+      productContainerGearbest.classList.add('hidden');
+    } else {
+      setGearbestProducts(gearbestProducts, hideGearbest, id);
+    }
+  }
+
+  const setProductsList = (data) => {
+    let productsElementList = '';
+    const multipleProductCardList = document.querySelector('#multiple-product-card-list');
+    data.forEach(item => {
+      const { name, image, id, postLink = '#', description, } = item;
+      itemImage = image[0];
+      productsElementList += `<li class="border-bottom-light ">
+          [sc name="category-box" id="category-box-${id}" heading=${name} description=${description} color="#7f7f7f" categoryBoxDescriptionClass="multiple-product-card-description" headingColor="#00aaaa" link="${postLink}" flexDirection="row-reverse" imageSrc=${itemImage} linkText="Ver review de ${name}"]
+          <div id="related-product-container-amazon-${id}">
+            <h4><b>${name} en Amazon</b></h4>
+            <ul class="related-products-list amazon" id="products-card-list-amazon-${id}"></ul>
+            <p class="products-emptyView amazon hidden" id="products-emptyView-amazon-${id}">
+              Actualmente no hay datos de Amazon de este producto.
+            </p>
+          </div>
+          <div id="related-product-container-aliexpress-${id}">
+            <h4><b>${name} en Aliexpress</b></h4>
+            <ul class="related-products-list aliexpress" id="products-card-list-aliexpress-${id}"></ul>
+            <p class="products-emptyView aliexpress hidden" id="products-emptyView-aliexpress-${id}">
+                Actualmente no hay datos de Aliexpress de este producto.
+            </p>
+          </div>
+          <div id="related-product-container-gearbest-${id}">
+            <h4><b>${name} en Gearbest</b></h4>
+            <ul class="related-products-list gearbest" id="products-card-list-gearbest-${id}"></ul>
+            <p class="products-emptyView gearbest hidden" id="products-emptyView-gearbest-${id}">
+              Actualmente no hay datos de Gearbest de este producto.
+            </p>
+          </div>
+        </li>`;
+    });
+    multipleProductCardList.innerHTML = productsElementList;
+    data.forEach(item => setDocumentElements(item));
+  }
+
+  const fetchData = (countryCode) => {
+    const productsList = '%%productsList%%';
+    fetch(`https://api-3dmakernow.herokuapp.com/printer-list?authentication=3DMAKERNOW&country=${countryCode}&productsList=${productsList}`)
+      .then(response => response.json()).then(data => {
+        setProductsList(data)
+      }).catch(error => {
+        fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW&&shortcode=multiple-product-card-list&&error=${error}&&browser=${getBrowserProductCardList()}&&country=${countryCode}`).then(data => error)
+      });
+  }
+
+  fetch('https://ipapi.co/json/').then(response => response.text()).then(data => {
+    const { country_code: countryCode } = JSON.parse(data);
+    fetchData(countryCode);
+  }).catch(error => {
+    fetchData('ES');
+  });
+</script>

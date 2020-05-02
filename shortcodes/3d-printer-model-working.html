@@ -1,0 +1,22 @@
+<style>
+  .animate-container {
+	width: 90%;
+	margin: 0 auto;
+	max-width: 1000px;
+	padding-top: 20px;
+  }
+  .animated-box {
+      width: 220px;
+      height: 300px;
+      margin: 0 auto;
+      background: url('https://3dmakernow.com/wp-content/uploads/2018/08/sprite-test-animation.png') left center no-repeat;
+      animation: warlock-animation 3s steps(126) infinite;
+  }
+
+  @keyframes warlock-animation {
+      100% { background-position: -27720px; }
+  }
+</style>
+<div class="animate-container">
+	<div class="animated-box"></div>
+</div>

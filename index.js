@@ -3,6 +3,7 @@ const schedule = require('./schedule');
 const appPrinters = require('./routes/appPrinters');
 const appMaterials = require('./routes/appMaterials');
 const appCategories = require('./routes/appCategories');
+const appAutomaticWeb = require('./routes/appAutomaticWeb');
 const bodyParser = require('body-parser');
 
 
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 appPrinters.getPrinters(app);
 appMaterials.getMaterials(app);
 appCategories.getCategories(app);
+appAutomaticWeb.getAutomaticWeb(app);
 
 // schedule tasks to be run on the server
 // 'seg min hora * * *'

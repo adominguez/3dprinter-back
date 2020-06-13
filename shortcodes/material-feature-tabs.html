@@ -1,565 +1,233 @@
 [su_tabs class="characteristic-product"]
-[su_tab title="Características" disabled="no" anchor="" url="" target="blank"]
+[su_tab title="Caracteristicas del material" disabled="no" anchor="" url="" target="blank"]
 <ul class="feature-table">
-    <li class="feature-table-list" id="technology">
-        <img class="printer-image-table-list" alt="Tecnología" src="https://3dmakernow.com/wp-content/uploads/2018/12/technology.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Tecnología:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="printerTechnology"></span>
-            <span id="printerTechnologyTooltip"></span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="printerVolumeList">
-        <img class="printer-image-table-list" alt="Volumen de impresión"
-            src="https://3dmakernow.com/wp-content/uploads/2018/12/printerVolume.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Volumen de impresión:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="printerVolume"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Volumen de impresión"
-                content="Es el máximo tamaño que puede imprimir una impresora 3D en largo x ancho x alto y se mide en mm
-                x mm x mm." class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="printerResolutionList">
-        <img class="printer-image-table-list" alt="Resolución de capa"
-            src="https://3dmakernow.com/wp-content/uploads/2018/12/printerThickness.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Resolución de capa:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="printerResolution"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Resolución de capa"
-                content="La resolución de capa es <b>la distancia que una impresora 3D permite que haya entre capa y
-                    capa de una pieza</b>, a menor distancia, mayor detalle podrá tener la impresión."
-                class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="printerPrecisionList">
-        <img class="printer-image-table-list" alt="Precisión de los ejes" src="https://3dmakernow.com/wp-content/uploads/2018/12/accuracy.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Precisión de los ejes:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="printerPrecision"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Precisión de los ejes"
-                content="Es la exactitud con la que una impresora puede reproducir una pieza sobre los tres ejes."
-                class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="extrusorNumberList">
-        <img class="printer-image-table-list" alt="Número de extrusores"
-            src="https://3dmakernow.com/wp-content/uploads/2018/12/extrusorNumber.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Número de extrusores:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="extrusorNumber"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Número de extrusores"
-                content="Número de extrusores que tiene la impresora." class="tooltip-link"]<i
-                    class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="extrusorTypeList">
-        <img class="printer-image-table-list" alt="Extrusor"
-            src="https://3dmakernow.com/wp-content/uploads/2018/12/extrusorType.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Extrusor:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="extrusorType"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Tipo de extrusor"
-                content="Si es extrusor directo o bowden, modelo del extrusor o datos relevantes del mismo."
-                class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="filamentDiameterList">
-        <img class="printer-image-table-list" alt="Diámetro de filamento"
-            src="https://3dmakernow.com/wp-content/uploads/2018/12/filamentDiameter.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Diámetro de filamento:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="filamentDiameter"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Diámetro del filamento"
-                content="Es el <b>diametro que debe tener el filamento que se utilice para imprimir en la impresora</b>,
-                se mide en mm normalmente suele ser de 1,75mm." class="tooltip-link"]<i
-                    class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="nozzleDiameterList">
-        <img class="printer-image-table-list" alt="Diámetro de la boquilla"
-            src="https://3dmakernow.com/wp-content/uploads/2018/12/nozzleDiameter.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Diámetro de la boquilla:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="nozzleDiameter"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Diámetro de la boquilla"
-                content="Es el <b>diametro que tiene la boquilla de la impresora</b>, se mide en mm y determina el
-                grosor que va tener el hilo de filamento al salir por la boquilla, lo normal es que tenga 0,4mm."
-                class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="bedLevelList">
-        <img class="printer-image-table-list" alt="Nivelación de la cama" src="https://3dmakernow.com/wp-content/uploads/2018/12/level.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Nivelación de la cama:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="bedLevel"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Nivelación de la cama"
-                content="Es posible que algunas impresoras tengan nivelación automática de la cama, en caso contrario
-                deberá ser de forma manual." class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="printingSpeedList">
-        <img class="printer-image-table-list" alt="Velocidad de impresión"
-            src="https://3dmakernow.com/wp-content/uploads/2018/12/printingSpeed.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Velocidad de impresión:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="printingSpeed"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Velocidad de impresión"
-                content="Es la velocidad a la que puede imprimir una impresora 3D y se expresa en mm/s."
-                class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="displacingSpeedList">
-        <img class="printer-image-table-list" alt="Velocidad de desplazamiento"
-            src="https://3dmakernow.com/wp-content/uploads/2018/12/displacementSpeed.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Velocidad de desplazamiento:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="displacingSpeed"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Velocidad de
-                desplazamiento" content="Es la velocidad a la que se mueve la boquilla cuando se mueve de un lugar a
-                otro sin imprimir, se expresa en mm/s." class="tooltip-link"]<i
-                    class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="extrusorTempList">
-        <img class="printer-image-table-list" alt="Temperatura máxima del extrusor"
-            src="https://3dmakernow.com/wp-content/uploads/2018/12/extrusorTemp.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Temperatura máxima del extrusor:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="extrusorTemp"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Temperatura máxima del
-                extrusor" content="Máxima temperatura a la que se puede calentar el extrusor, esto es importante ya que
-                <b>algunos materiales necesitan temperaturas muy altas para imprimirlos</b>." class="tooltip-link"]<i
-                    class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="bedTempList">
-        <img class="printer-image-table-list" alt="Temperatura máxima de la cama" src="https://3dmakernow.com/wp-content/uploads/2018/12/bedTemp.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Temperatura máxima de la cama:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="bedTemp"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Temperatura máxima de la
-                cama" content="Temperatura máxima que puede alcanzar la cama caliente extrusor, esto es importante ya
-                que <b>algunos materiales necesitan que la cama esté a temperaturas muy altas para imprimirlos</b>."
-                class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="supportMaterialsList">
-        <img class="printer-image-table-list" alt="Materiales soportados"
-            src="https://3dmakernow.com/wp-content/uploads/2018/12/supportMaterials.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Materiales soportados:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="supportMaterials"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Materiales soportados"
-                content="Materiales con los que se puede imprimir en la impresora 3D." class="tooltip-link"]<i
-                    class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
+  <li class="feature-table-list" id="materialTypeList">
+    <img class="printer-image-table-list" alt="Tipo de material" src="https://3dmakernow.com/wp-content/uploads/2018/12/technology.svg" />
+    <div class="feature-table-list-container">
+      <span class="bold">
+        Tipo de material:
+      </span>
+    </div>
+    <div class="feature-table-list-container">
+      <span class="feature-table-list-container-text" id="materialType"></span>
+      <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Tipo de material"
+        content="Es el tipo de material, PLA, ABS, Flexible..."]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
+    </div>
+  </li>
+  <li class="feature-table-list" id="diameterList">
+    <img class="printer-image-table-list" alt="Diámetro del filamento" src="https://3dmakernow.com/wp-content/uploads/2018/12/filamentDiameter.svg" />
+    <div class="feature-table-list-container">
+      <span class="bold">
+        Diámetro del filamento:
+      </span>
+    </div>
+    <div class="feature-table-list-container">
+      <span class="feature-table-list-container-text" id="diameter"></span>
+      <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Diámetro del filamento"
+        content="El diámetro que tiene el filamento"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
+    </div>
+  </li>
+  <li class="feature-table-list" id="reelSizeList">
+    <img class="printer-image-table-list" alt="Tamaño de la bobina"
+      src="https://3dmakernow.com/wp-content/uploads/2018/12/supportMaterials.svg" />
+    <div class="feature-table-list-container">
+      <span class="bold">
+        Tamaño de la bobina:
+      </span>
+    </div>
+    <div class="feature-table-list-container">
+      <span class="feature-table-list-container-text" id="reelSize"></span>
+      <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Tamaño de la bobina"
+        content="Representa el tamaño que tiene el plástico exterior de la bobina, esto es importante para saber si cabe en soporte de tu impresora 3D."
+        class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
+    </div>
+  </li>
+  <li class="feature-table-list" id="reelDiameterList">
+    <img class="printer-image-table-list" alt="Diámetro del eje de la bobina"
+      src="https://3dmakernow.com/wp-content/uploads/2018/12/accuracy.svg" />
+    <div class="feature-table-list-container">
+      <span class="bold">
+        Diámetro eje bobina:
+      </span>
+    </div>
+    <div class="feature-table-list-container">
+      <span class="feature-table-list-container-text" id="reelDiameter"></span>
+      <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Diámetro del eje de la bobina"
+        content="Es el hueco interior del plástico de la bobina, es interesante para ver si cabe en el soporte de tu impresora 3D"
+        class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
+    </div>
+  </li>
+  <li class="feature-table-list" id="compositionList">
+    <img class="printer-image-table-list" alt="Composición"
+      src="https://3dmakernow.com/wp-content/uploads/2018/12/printerVolume.svg" />
+    <div class="feature-table-list-container">
+      <span class="bold">
+        Composición:
+      </span>
+    </div>
+    <div class="feature-table-list-container">
+      <span class="feature-table-list-container-text" id="composition"></span>
+      <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Composición"
+        content="Composición del material."
+        class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
+    </div>
+  </li>
 </ul>
 [/su_tab]
-[su_tab title="Software" disabled="no" anchor="" url="" target="blank" class=""]
-<ul class="feature-table">
-    <li class="feature-table-list" id="slicerList">
-        <img class="printer-image-table-list" alt="Slicer" src="https://3dmakernow.com/wp-content/uploads/2018/12/slicer.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Slicer:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="slicer"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Slicer" content="Software
-                con el que se pueden ajustar los parámetros para adaptarlos a la impresión." close="no"
-                class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="inputFormatList">
-        <img class="printer-image-table-list" alt="Formatos de entrada" src="https://3dmakernow.com/wp-content/uploads/2018/12/inputFormat.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Formatos de entrada:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="inputFormat"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Formatos de entrada"
-                content="Los tipos de formatos de entrada que admite la impresora." close="no"
-                class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="firmwareList">
-        <img class="printer-image-table-list" alt="Firmware"
-            src="https://3dmakernow.com/wp-content/uploads/2018/12/outputFormat.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Firmware:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="firmware"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Firmware"
-                content="El firmware se asemejaría al sistema operativo que lleva la impresora en su placa."
-                class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="displayList">
-        <img class="printer-image-table-list" alt="Display" src="https://3dmakernow.com/wp-content/uploads/2018/12/lcdDisplay.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Display:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="display"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Display"
-                content="Normalmente las impresoras incorporan una pantalla a través de la cual se lleva el control de
-                la impresora." class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="conectivityList">
-        <img class="printer-image-table-list" alt="Conectividad" src="https://3dmakernow.com/wp-content/uploads/2018/12/conectivity.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Conectividad:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="conectivity"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Conectividad" content="El
-                método con el que puede conectarse para importar los archivos a la impresora." close="no"
-                class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
+[su_tab title="Temperatura de impresión" disabled="no" anchor="" url="" target="blank"]
+  <li class="feature-table-list" id="temperatureRangeList">
+    <img class="printer-image-table-list" alt="Rango de temperaturas"
+      src="https://3dmakernow.com/wp-content/uploads/2018/12/extrusorTemp.svg" />
+    <div class="feature-table-list-container">
+      <span class="bold">
+        Rango de temperatura:
+      </span>
+    </div>
+    <div class="feature-table-list-container">
+      <span class="feature-table-list-container-text" id="temperatureRange"></span>
+      <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Rango de temperaturas"
+        content="Es el rango de temperaturas entra las que puede imprimir este material." class="tooltip-link"]<i
+          class="fa fa-info-circle"></i>[/su_tooltip]</span>
+    </div>
+  </li>
+  <li class="feature-table-list" id="temperatureOptimalList">
+    <img class="printer-image-table-list" alt="Temperatura óptima de impresión"
+      src="https://3dmakernow.com/wp-content/uploads/2018/12/bedTemp.svg" />
+    <div class="feature-table-list-container">
+      <span class="bold">
+        Temperatura óptima de impresión:
+      </span>
+    </div>
+    <div class="feature-table-list-container">
+      <span class="feature-table-list-container-text" id="temperatureOptimal"></span>
+      <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Temperatura óptima de impresión"
+        content="Es el rango de temperaturas óptima a la que puede imprimir el material."
+        class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
+    </div>
+  </li>
 </ul>
 [/su_tab]
-[su_tab title="Eléctrico" disabled="no" anchor="" url="" target="blank" class=""]
+[su_tab title="Packaging" disabled="no" anchor="" url="" target="blank"]
 <ul class="feature-table">
-    <li class="feature-table-list" id="inputElectricityList">
-        <img class="printer-image-table-list" alt="Capacidad de entrada" src="https://3dmakernow.com/wp-content/uploads/2018/12/input.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Capacidad de entrada:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="inputElectricity"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Capacidad de entrada"
-                content="Es la tensión que acepta la impresora, por lo general <b>suele estar en torno a los 100-240V de
-                corriente alterna, y en torno a 50-60Hz de frecuencia</b>." class="tooltip-link"]<i
-                    class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="outputElectricityList">
-        <img class="printer-image-table-list" alt="Voltaje de trabajo" src="https://3dmakernow.com/wp-content/uploads/2018/12/output.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Voltaje de trabajo:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="outputElectricity"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Voltaje de trabajo"
-                content="Es el voltaje que necesita la impresora para poder trabajar, se expresa en Voltios (V) y
-                generalmente <b>suele estar en los 12V</b>." close="no"
-                class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
+  <li class="feature-table-list" id="weightList">
+    <img class="printer-image-table-list" alt="Peso del material" src="https://3dmakernow.com/wp-content/uploads/2018/12/shippingWeight.svg" />
+    <div class="feature-table-list-container">
+      <span class="bold">
+        Peso:
+      </span>
+    </div>
+    <div class="feature-table-list-container">
+      <span class="feature-table-list-container-text" id="weight"></span>
+      <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Peso"
+        content="La cantidad de peso que tiene el material" class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
+    </div>
+  </li>
+  <li class="feature-table-list" id="packagingList">
+    <img class="printer-image-table-list" alt="Caja exterior"
+      src="https://3dmakernow.com/wp-content/uploads/2018/12/shippingDimensions.svg" />
+    <div class="feature-table-list-container">
+      <span class="bold">
+        Caja exterior:
+      </span>
+    </div>
+    <div class="feature-table-list-container">
+      <span class="feature-table-list-container-text" id="packaging"></span>
+      <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Caja exterior"
+        content="Es el tamaño de la caja en la que viene el material." class="tooltip-link"]<i
+          class="fa fa-info-circle"></i>[/su_tooltip]</span>
+    </div>
+  </li>
 </ul>
-[/su_tab]
-[su_tab title="Unboxing" disabled="no" anchor="" url="" target="blank" class=""]
-<ul class="feature-table">
-    <li class="feature-table-list" id="machineDimensionsList">
-        <img class="printer-image-table-list" alt="Dimensiones de la impresora" src="https://3dmakernow.com/wp-content/uploads/2018/12/machineDimensions.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Dimensiones de la impresora:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="machineDimensions"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Dimensiones de la impresora"
-                content="Dimensiones de la impresora expresada en mm." class="tooltip-link"]<i
-                    class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="machineWeightList">
-        <img class="printer-image-table-list" alt="Peso de la impresora" src="https://3dmakernow.com/wp-content/uploads/2018/12/machineWeight.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Peso de la impresora:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="machineWeight"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Peso de la impresora"
-                content="Peso de la impresora expresado en kg." close="no"
-                class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="shippingDimensionsList">
-        <img class="printer-image-table-list" alt="Dimensiones del paquete" src="https://3dmakernow.com/wp-content/uploads/2018/12/shippingDimensions.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Dimensiones del paquete:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="shippingDimensions"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Dimensiones del paquete"
-                content="Dimensiones del paquete expresado en mm." class="tooltip-link"]<i
-                    class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-    <li class="feature-table-list" id="shippingWeightList">
-        <img class="printer-image-table-list" alt="Peso del paquete" src="https://3dmakernow.com/wp-content/uploads/2018/12/shippingWeight.svg" />
-        <div class="feature-table-list-container">
-            <span class="bold">
-                Peso del paquete:
-            </span>
-        </div>
-        <div class="feature-table-list-container">
-            <span class="feature-table-list-container-text" id="shippingWeight"></span>
-            <span>[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Peso del paquete"
-                content="Peso del paquete expresado en kg." close="no"
-                class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]</span>
-        </div>
-    </li>
-</ul>
-[/su_tab]
-[su_tab title="Contenido de la caja" disabled="no" anchor="" url="" target="blank" class=""]
-[su_row]
-[su_column size="1/2"]
-<ul class="feature-table" id="contentBoxList">
-</ul>
-[/su_column]
-[su_column size="1/2"]
-<img id="imageContent" alt="Contenido de la caja">
-[/su_column]
-[/su_row]
 [/su_tab]
 [/su_tabs]
 <script type="text/javascript">
-    // Technology
-    const printerTechnology = document.querySelector('#printerTechnology');
+  const getBrowserInfoFeatureTabs = function () {
+    var ua = navigator.userAgent,
+      tem,
+      M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+    if (/trident/i.test(M[1])) {
+      tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+      return 'IE ' + (tem[1] || '');
+    }
+    if (M[1] === 'Chrome') {
+      tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
+      if (tem != null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+    }
+    M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+    if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
+    return M.join(' ');
+  };
+  // Material type
+  const materialTypeList = document.querySelector('#materialTypeList');
+  const materialType = document.querySelector('#materialType');
 
-    // Volume
-    const printerVolumeList = document.querySelector('#printerVolumeList');
-    const printerVolume = document.querySelector('#printerVolume');
+  // weight
+  const weightList = document.querySelector('#weightList');
+  const weight = document.querySelector('#weight');
 
-    // printerResolution
-    const printerResolutionList = document.querySelector('#printerResolutionList');
-    const printerResolution = document.querySelector('#printerResolution');
+  // diameter
+  const diameterList = document.querySelector('#diameterList');
+  const diameter = document.querySelector('#diameter');
 
-    // printerPrecision
-    const printerPrecisionList = document.querySelector('#printerPrecisionList');
-    const printerPrecision = document.querySelector('#printerPrecision');
+  // reelSize
+  const reelSizeList = document.querySelector('#reelSizeList');
+  const reelSize = document.querySelector('#reelSize');
 
-    // extrusorNumber
-    const extrusorNumberList = document.querySelector('#extrusorNumberList');
-    const extrusorNumber = document.querySelector('#extrusorNumber');
+  // reelDiameter
+  const reelDiameterList = document.querySelector('#reelDiameterList');
+  const reelDiameter = document.querySelector('#reelDiameter');
 
-    // extrusorType
-    const extrusorTypeList = document.querySelector('#extrusorTypeList');
-    const extrusorType = document.querySelector('#extrusorType')
+  // packaging
+  const packagingList = document.querySelector('#packagingList');
+  const packaging = document.querySelector('#packaging');
 
-    // filamentDiameter
-    const filamentDiameterList = document.querySelector('#filamentDiameterList');
-    const filamentDiameter = document.querySelector('#filamentDiameter');
+  // composition
+  const compositionList = document.querySelector('#compositionList');
+  const composition = document.querySelector('#composition');
 
-    // nozzleDiameter
-    const nozzleDiameterList = document.querySelector('#nozzleDiameterList');
-    const nozzleDiameter = document.querySelector('#nozzleDiameter');
+  // temperatureRange
+  const temperatureRangeList = document.querySelector('#temperatureRangeList');
+  const temperatureRange = document.querySelector('#temperatureRange');
 
-    // printingSpeed
-    const printingSpeedList = document.querySelector('#printingSpeedList');
-    const printingSpeed = document.querySelector('#printingSpeed');
+  // temperatureOptimal
+  const temperatureOptimalList = document.querySelector('#temperatureOptimalList');
+  const temperatureOptimal = document.querySelector('#temperatureOptimal');
 
-    // displacingSpeed
-    const displacingSpeedList = document.querySelector('#displacingSpeedList');
-    const displacingSpeed = document.querySelector('displacingSpeed');
+  fetch('https://api-3dmakernow.herokuapp.com/material/%%materialId%%?authentication=3DMAKERNOW&featuresInfo=true')
+    .then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      const {
+        materialFeatures = {},
+        materialFeatures: {
+          composition: compositionBd,
+          diameter: diameterBd,
+          materialType: materialTypeBd,
+          packagingSize: packagingSizeBd,
+          reelDiameter: reelDiameterBd,
+          reelSize: reelSizeBd,
+          temperatureOptimal: temperatureOptimalBd,
+          temperatureRange: temperatureRangeBd,
+          weight: weightBd
+        }
+      } = data;
 
-    // extrusorTemp
-    const extrusorTempList = document.querySelector('#extrusorTempList');
-    const extrusorTemp = document.querySelector('#extrusorTemp');
+      // SET caracteristicas labels
+      composition ? composition.innerHTML = compositionBd : compositionList.hidden = true;
+      diameter ? diameter.innerHTML = diameterBd : diameterList.hidden = true;
+      materialType ? materialType.innerHTML = materialTypeBd : materialTypeList.hidden = true;
+      packaging ? packaging.innerHTML = packagingSizeBd : packagingList.hidden = true;
+      reelDiameter ? reelDiameter.innerHTML = reelDiameterBd : reelDiameterList.hidden = true;
+      reelSize ? reelSize.innerHTML = reelSizeBd : reelSizeList.hidden = true;
+      temperatureOptimal ? temperatureOptimal.innerHTML = temperatureOptimalBd : temperatureOptimalList.hidden = true;
+      temperatureRange ? temperatureRange.innerHTML = temperatureRangeBd : temperatureRangeList.hidden = true;
+      weight ? weight.innerHTML = weightBd : weightList.hidden = true;
 
-    // bedTemp
-    const bedTempList = document.querySelector('#bedTempList');
-    const bedTemp = document.querySelector('#bedTemp');
+    }).catch(error => {
+      fetch(
+          `https://api-3dmakernow.herokuapp.com/error-notification/%%materialId%%?authentication=3DMAKERNOW&&shortcode=printer-feature-tabs&&error=${error}&&browser=${getBrowserInfoFeatureTabs()}`
+          )
+        .then(data => error)
+    });
 
-    // supportMaterials
-    const supportMaterialsList = document.querySelector('#supportMaterialsList');
-    const supportMaterials = document.querySelector('#supportMaterials');
-
-    // bedLevel
-    const bedLevelList = document.querySelector('#bedLevelList');
-    const bedLevel = document.querySelector('#bedLevel');
-
-    // slicerList
-    const slicerList = document.querySelector('#slicerList');
-    const slicer = document.querySelector('#slicer');
-
-    // inputFormat
-    const inputFormatList = document.querySelector('#inputFormatList');
-    const inputFormat = document.querySelector('#inputFormat');
-
-    // conectivity
-    const conectivityList = document.querySelector('#conectivityList');
-    const conectivity = document.querySelector('#conectivity');
-
-    // display
-    const displayList = document.querySelector('#displayList');
-    const display = document.querySelector('#display');
-
-    // firmware
-    const firmwareList = document.querySelector('#firmwareList');
-    const firmware = document.querySelector('#firmware');
-
-    // inputElectricity
-    const inputElectricityList = document.querySelector('#inputElectricityList');
-    const inputElectricity = document.querySelector('#inputElectricity');
-
-    // outputElectricity
-    const outputElectricityList = document.querySelector('#outputElectricityList');
-    const outputElectricity = document.querySelector('#outputElectricity');
-
-    // machineDimensions
-    const machineDimensionsList = document.querySelector('#machineDimensionsList');
-    const machineDimensions = document.querySelector('#machineDimensions');
-
-    // machineWeight
-    const machineWeightList = document.querySelector('#machineWeightList');
-    const machineWeight = document.querySelector('#machineWeight');
-
-    // shippingDimensions
-    const shippingDimensionsList = document.querySelector('#shippingDimensionsList');
-    const shippingDimensions = document.querySelector('#shippingDimensions');
-
-    // shippingWeight
-    const shippingWeightList = document.querySelector('#shippingWeightList');
-    const shippingWeight = document.querySelector('#shippingWeight');
-
-    // contentBox
-    const contentBoxList = document.querySelector('#contentBoxList');
-    const imageContent = document.querySelector('#imageContent');
-
-    fetch('http://localhost:3128/printer/%%printerId%%?authentication=3DMAKERNOW')
-        .then(function (response) {
-            return response.json();
-        }).then(function (data) {
-            const { printFeatures,  printerElectricity, printerParameters, printerSoftware, printerUnboxing } = data;
-            const { technology, printerVolume: volume, printerResolutionLayer, printerPrecision: precision, extrudeNumber, bedLeveling, nozzleSize } = printFeatures;
-            const { extrusorPrinter, filamentDiameter: filDiameter, filamentsSuported, maxExtruderTemp, maxHeatedTemp, maxPrinterSpeed, displacementSpeed, resumePrint } = printerParameters;
-            const { conectivity: connectivity, display: displayLCD, firmware: firmwarePrinter, formatFile, operativeSystem, slicer: slicerSoftware } = printerSoftware;
-            const { machineDimensions: printerMachineDimensions, machineWeight: printerMachineWeight, shippingDimensions: printerShippingDimensions, shippingWeight: printerShippingWeight, printerContent, contentImage } = printerUnboxing;
-            const { input, output } = printerElectricity;
-
-            // SET caracteristicas labels
-            printerTechnology.innerHTML = technology;
-            if (technology.includes('FDM')) {
-                printerTechnologyTooltip.innerHTML =
-                    '[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Impresión por deposición de material fundido" content="Es un tipo de impresión por el que <b>la pieza se va realizando capa a capa</b>. El material se va fundiendo a su paso por el extrusor de la impresora y va realizando la pieza." close="no" class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]'
-            }
-            if (technology.includes('SLA')) {
-                printerTechnologyTooltip.innerHTML =
-                    '[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Impresión por estereolitografía" content="La impresión 3D se realiza mediante resina líquida, gracias a una luz photónica que va solidificando el material capa a capa." close="no" class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]'
-            }
-            printerVolume ? printerVolume.innerHTML = volume : printerVolumeList.hidden = true;
-            printerResolutionLayer ? printerResolution.innerHTML = printerResolutionLayer : printerResolutionList
-                .hidden = true;
-            precision ? printerPrecision.innerHTML = precision : printerPrecisionList.hidden = true;
-            extrudeNumber ? extrusorNumber.innerHTML = extrudeNumber : extrusorNumberList.hidden = true;
-            filDiameter ? filamentDiameter.innerHTML = filDiameter : filamentDiameterList.hidden = true;
-            nozzleSize ? nozzleDiameter.innerHTML = nozzleSize : nozzleDiameterList.hidden = true;
-            maxPrinterSpeed ? printingSpeed.innerHTML = maxPrinterSpeed : printingSpeedList.hidden = true;
-            displacementSpeed ? displacingSpeed.innerHTML = displacementSpeed : displacingSpeedList.hidden = true;
-            filamentsSuported ? supportMaterials.innerHTML = filamentsSuported : supportMaterialsList.hidden = true;
-            bedLeveling ? bedLevel.innerHTML = bedLeveling : bedLevelList.hidden = true;
-            extrusorPrinter ? extrusorType.innerHTML = extrusorPrinter : extrusorTypeList.hidden = true;
-            maxExtruderTemp ? extrusorTemp.innerHTML = maxExtruderTemp : extrusorTempList.hidden = true;
-            maxHeatedTemp ? bedTemp.innerHTML = maxHeatedTemp : bedTempList.hidden = true;
-
-            // SET software labels
-            connectivity ? conectivity.innerHTML = connectivity : conectivityList.hidden = true;
-            displayLCD ? display.innerHTML = displayLCD : displayList.hidden = true;
-            firmwarePrinter ? firmware.innerHTML = firmwarePrinter : firmwareList.hidden = true;
-            formatFile ? inputFormat.innerHTML = formatFile : inputFormatList.hidden = true;
-            slicerSoftware ? slicer.innerHTML = slicerSoftware : slicerList.hidden = true;
-
-            // SET electricity labels
-            input ? inputElectricity.innerHTML = input : inputElectricity.hidden = true;
-            output ? outputElectricity.innerHTML = output : outputElectricity.hidden = true;
-
-            // SET unboxing labels
-            printerMachineDimensions ? machineDimensions.innerHTML = printerMachineDimensions : machineDimensionsList.hidden = true;
-            printerMachineWeight ? machineWeight.innerHTML = printerMachineWeight : machineWeightList.hidden = true;
-            printerShippingDimensions ? shippingDimensions.innerHTML = printerShippingDimensions : shippingDimensionsList.hidden = true;
-            printerShippingWeight ? shippingWeight.innerHTML = printerShippingWeight : shippingWeightList.hidden = true;
-
-            // SET content
-            let contentItems = ""
-            printerContent ? printerContent.map(item => {
-                contentItems +=`<li class="feature-table-list">
-                    <div class="feature-table-list-container">
-                        <span class="feature-table-list-container-text">${item}</span>
-                    </div>
-                </li>`}) : contentBoxList.hidden = true;
-            contentBoxList.innerHTML = contentItems;
-            contentImage && contentImage.length && contentImage[0] !== '' ? imageContent.src = contentImage[0] : imageContent.hidden = true;
-        });
 </script>

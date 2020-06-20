@@ -18,7 +18,6 @@
       if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
       return M.join(' ');
     };
-    // community printer list
     const comunityPrinterListFacebook = document.querySelector('#community-printer-list-facebook-%%printerId%%');
     const comunityPrinterListTelegram = document.querySelector('#community-printer-list-telegram-%%printerId%%');
     const comunityPrinterListWhatsapp = document.querySelector('#community-printer-list-whatsapp-%%printerId%%');
@@ -39,7 +38,7 @@
             }, {});
 
             if(socialGroup['facebook'] && socialGroup['facebook'].length) {
-                var facebookCommunity = ''
+                var facebookCommunity = '';
                 socialGroup['facebook'].map(item => {
                     facebookCommunity += `<li class="community-printer-list-item ${item.languaje}">
                         <a class="community-printer-list-link" href="${item.url}" target="_blank" rel="noopener nofollow noreferrer">
@@ -52,7 +51,7 @@
             } else { comunityPrinterListFacebook.hidden = true; }
 
             if(socialGroup['telegram'] && socialGroup['telegram'].length) {
-                var telegramCommunity = ''
+                var telegramCommunity = '';
                 socialGroup['telegram'].map(item => {
                     telegramCommunity += `<li class="community-printer-list-item ${item.languaje}">
                         <a class="community-printer-list-link" href="${item.url}" target="_blank" rel="noopener nofollow noreferrer">
@@ -65,7 +64,7 @@
             } else { comunityPrinterListTelegram.hidden = true; }
 
             if(socialGroup['whatsapp'] && socialGroup['whatsapp'].length) {
-                var whatsappCommunity = ''
+                var whatsappCommunity = '';
                 socialGroup['whatsapp'].map(item => {
                     whatsappCommunity += `<li class="community-printer-list-item ${item.languaje}">
                         <a class="community-printer-list-link" href="${item.url}" target="_blank" rel="noopener nofollow noreferrer">
@@ -78,7 +77,7 @@
             } else { comunityPrinterListWhatsapp.hidden = true; }
 
             if(socialGroup['thingiverse'] && socialGroup['thingiverse'].length) {
-                var thingiverseCommunity = ''
+                var thingiverseCommunity = '';
                 socialGroup['thingiverse'].map(item => {
                     thingiverseCommunity += `<li class="community-printer-list-item ${item.languaje}">
                         <a class="community-printer-list-link" href="${item.url}" target="_blank" rel="noopener nofollow noreferrer">
@@ -92,6 +91,6 @@
 
         }).catch(error => {
             fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW&&shortcode=community-printer-list&&error=${error}&&browser=${getBrowserCommunityPrinterList()}`)
-              .then(data => error)
+              .then(data => error);
           });
 </script>

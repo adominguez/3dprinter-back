@@ -60,7 +60,7 @@
         `<i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i><i class="fa fa-star icon orange"></i>`;
     }
     return htmlRating;
-  }
+  };
 
   const setAmazonProducts = (amazonProducts, hideAmazon, id) => {
     let amazonElementList = '';
@@ -73,13 +73,13 @@
       if (amazonProducts.length && !hideAmazon) {
       amazonProducts.forEach(item => {
         if (item.amazonPrice !== '0.00') {
-          sortAmazonProducts.push(item)
+          sortAmazonProducts.push(item);
         }
       });
       sortAmazonProducts.sort((a, b) => (parseInt(a.amazonPrice) > parseInt(b.amazonPrice)) ? 1 : ((parseInt(b.amazonPrice) > parseInt(a.amazonPrice)) ? -1 : 0));
       amazonProducts.forEach(item => {
         if (item.amazonPrice === '0.00') {
-          sortAmazonProducts.push(item)
+          sortAmazonProducts.push(item);
         }
       });
 
@@ -100,31 +100,28 @@
         } = element;
         let hidePrice = false;
         let link = amazonPrice === '0.00' ? urlBackup : affiliateShortLink;
-        let price = amazonPrice === '0.00' ? hidePrice = true :
-          `${amazonPrice.toString().replace('.', ',')} ${currency}`;
+        let price = amazonPrice === '0.00' ? hidePrice = true : `${amazonPrice.toString().replace('.', ',')} ${currency}`;
 
         amazonElementList += `<li class="related-products-list-item amazon">
-            <a href="${link}" rel="nofollow noopener noreferrer" target="_blank">
-                <div class="related-product-list-item-image"
-                style="background: url(${image})">
-                </div>
+            <a href="https://3dmakernow.com/goto/?url=${link}" rel="nofollow noopener noreferrer" target="_blank">
+              <img loading="lazy" class="related-product-list-item-image lazyloaded" src="${image}" />
             </a>
-            <h4><a href="${link}" rel="nofollow noopener noreferrer" target="_blank">${name}</a></h4>
-            ${amazonPrime ? `<img src="https://3dmakernow.com/wp-content/uploads/2018/12/amazon-prime.png" alt="amazon prime" width="60" />` : ''}
-            <div class="related-product-list-item-info">
+            <h4><a href="https://3dmakernow.com/goto/?url=${link}" rel="nofollow noopener noreferrer" target="_blank">${name}</a></h4>
+            ${amazonPrime ? `<img loading="lazy" src="https://3dmakernow.com/wp-content/uploads/2018/12/amazon-prime.png" alt="amazon prime" width="60" />` : ''}
+            <div class="related-product-list-item-info lazyloaded">
                 ${!hidePrice ? `<span class="related-product-list-item-price">${price}</span>` : ''}
                 ${amazonPrice !== '0.00' && amazonRate >= 3 ? `<div>${starsRating(amazonRate)}</div>` : ''}
             </div>
-            <a class="sections-link sections-link-buy amazon" href="${link}" rel="nofollow noopener noreferrer"
+            <a class="sections-link sections-link-buy amazon" href="https://3dmakernow.com/goto/?url=${link}" rel="nofollow noopener noreferrer"
               title="Ver más información en Amazon" target="_blank">Ver más información</a>
-          </li>`
+          </li>`;
       });
       productListAmazon.innerHTML = amazonElementList;
     } else {
       productListAmazon.classList.add('hidden');
       amazonEmptyView.classList.remove('hidden');
     }
-  }
+  };
 
   const setAliexpressProducts = (aliexpressProducts, hideAliexpress, id) => {
     let aliexpressElementList = '';
@@ -137,13 +134,13 @@
     if (aliexpressProducts.length && !hideAliexpress) {
       aliexpressProducts.forEach(item => {
         if (item.aliexpressPrice !== '0.00') {
-          sortAliexpressProducts.push(item)
+          sortAliexpressProducts.push(item);
         }
       });
       sortAliexpressProducts.sort((a, b) => (parseInt(a.aliexpressPrice) > parseInt(b.aliexpressPrice)) ? 1 : ((parseInt(b.aliexpressPrice) > parseInt(a.aliexpressPrice)) ? -1 : 0));
       aliexpressProducts.forEach(item => {
         if (item.aliexpressPrice === '0.00') {
-          sortAliexpressProducts.push(item)
+          sortAliexpressProducts.push(item);
         }
       });
 
@@ -163,30 +160,27 @@
         } = element;
         let hidePrice = false;
         let link = aliexpressPrice === '0.00' ? urlBackup : affiliateAliShortLink;
-        let price = aliexpressPrice === '0.00' ? hidePrice = true :
-          `${aliexpressPrice.toString().replace('.', ',')} ${currency}`;
+        let price = aliexpressPrice === '0.00' ? hidePrice = true : `${aliexpressPrice.toString().replace('.', ',')} ${currency}`;
 
         aliexpressElementList += `<li class="related-products-list-item aliexpress">
-            <a href="${link}" rel="nofollow noopener noreferrer" target="_blank">
-                <div class="related-product-list-item-image"
-                style="background: url(${image})">
-                </div>
+            <a href="https://3dmakernow.com/goto/?url=${link}" rel="nofollow noopener noreferrer" target="_blank">
+              <img loading="lazy" class="related-product-list-item-image lazyloaded" src="${image}" />
             </a>
-            <h4><a href="${link}" rel="nofollow noopener noreferrer" target="_blank">${name}</a></h4>
+            <h4><a href="https://3dmakernow.com/goto/?url=${link}" rel="nofollow noopener noreferrer" target="_blank">${name}</a></h4>
             <div class="related-product-list-item-info">
                 ${!hidePrice ? `<span class="related-product-list-item-price">${price}</span>` : ''}
                 ${aliexpressPrice !== '0.00' && aliexpressRate >= 3 ? `<div>${starsRating(aliexpressRate)}</div>` : ''}
             </div>
-            <a class="sections-link sections-link-buy aliexpress" href="${link}" rel="nofollow noopener noreferrer"
+            <a class="sections-link sections-link-buy aliexpress" href="https://3dmakernow.com/goto/?url=${link}" rel="nofollow noopener noreferrer"
               title="Ver más información en Aliexpress" target="_blank">Ver más información</a>
-          </li>`
+          </li>`;
       });
       productListAliexpress.innerHTML = aliexpressElementList;
     } else {
       productListAliexpress.classList.add('hidden');
       aliexpressEmptyView.classList.remove('hidden');
     }
-  }
+  };
 
   const setGearbestProducts = (gearbestProducts, hideGearbest, id) => {
     let gearbestElementList = '';
@@ -200,13 +194,13 @@
     if (gearbestProducts.length && !hideGearbest) {
       gearbestProducts.forEach(item => {
         if (item.gearbestPrice !== '0.00') {
-          sortGearbestProducts.push(item)
+          sortGearbestProducts.push(item);
         }
       });
       sortGearbestProducts.sort((a, b) => (parseInt(a.gearbestPrice) > parseInt(b.gearbestPrice)) ? 1 : ((parseInt(b.gearbestPrice) > parseInt(a.gearbestPrice)) ? -1 : 0));
       gearbestProducts.forEach(item => {
         if (item.gearbestPrice === '0.00') {
-          sortGearbestProducts.push(item)
+          sortGearbestProducts.push(item);
         }
       });
 
@@ -225,30 +219,27 @@
         } = element;
         let hidePrice = false;
         let link = gearbestPrice === '0.00' ? urlBackup : informationLink;
-        let price = gearbestPrice === '0.00' ? hidePrice = true :
-          `${gearbestPrice.toString().replace('.', ',')} ${currency}`;
+        let price = gearbestPrice === '0.00' ? hidePrice = true : `${gearbestPrice.toString().replace('.', ',')} ${currency}`;
 
         gearbestElementList += `<li class="related-products-list-item gearbest">
-            <a href="${link}" rel="nofollow noopener noreferrer" target="_blank">
-                <div class="related-product-list-item-image"
-                style="background: url(${image})">
-                </div>
+            <a href="https://3dmakernow.com/goto/?url=${link}" rel="nofollow noopener noreferrer" target="_blank">
+              <img loading="lazy" class="related-product-list-item-image lazyloaded" src="${image}" />
             </a>
-            <h4><a href="${link}" rel="nofollow noopener noreferrer" target="_blank">${name}</a></h4>
+            <h4><a href="https://3dmakernow.com/goto/?url=${link}" rel="nofollow noopener noreferrer" target="_blank">${name}</a></h4>
             <div class="related-product-list-item-info">
                 ${!hidePrice ? `<span class="related-product-list-item-price">${price}</span>` : ''}
                 ${gearbestPrice !== '0.00' && gearbestRate >= 3 ? `<div>${starsRating(gearbestRate)}</div>` : ''}
             </div>
-            <a class="sections-link sections-link-buy gearbest" href="${link}" rel="nofollow noopener noreferrer"
+            <a class="sections-link sections-link-buy gearbest" href="https://3dmakernow.com/goto/?url=${link}" rel="nofollow noopener noreferrer"
               title="Ver más información en Gearbest" target="_blank">Ver más información</a>
-          </li>`
+          </li>`;
       });
       productListGearbest.innerHTML = gearbestElementList;
     } else {
       productListGearbest.classList.add('hidden');
       gearbestEmptyView.classList.remove('hidden');
     }
-  }
+  };
 
   const setDocumentElements = (data) => {
     const {id} = data;
@@ -278,7 +269,7 @@
     } else {
       setGearbestProducts(gearbestProducts, hideGearbest, id);
     }
-  }
+  };
 
   const setProductsList = (data) => {
     let productsElementList = '';
@@ -313,17 +304,17 @@
     });
     multipleProductCardList.innerHTML = productsElementList;
     data.forEach(item => setDocumentElements(item));
-  }
+  };
 
   const fetchData = (countryCode) => {
     const productsList = '%%productsList%%';
     fetch(`https://api-3dmakernow.herokuapp.com/printer-list?authentication=3DMAKERNOW&country=${countryCode}&productsList=${productsList}`)
       .then(response => response.json()).then(data => {
-        setProductsList(data)
+        setProductsList(data);
       }).catch(error => {
-        fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW&&shortcode=multiple-product-card-list&&error=${error}&&browser=${getBrowserProductCardList()}&&country=${countryCode}`).then(data => error)
+        fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW&&shortcode=multiple-product-card-list&&error=${error}&&browser=${getBrowserProductCardList()}&&country=${countryCode}`).then(data => error);
       });
-  }
+  };
 
   fetch('https://ipapi.co/json/').then(response => response.text()).then(data => {
     const { country_code: countryCode } = JSON.parse(data);

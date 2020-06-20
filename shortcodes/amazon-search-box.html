@@ -9,16 +9,16 @@
     </div>
   </div>
 </div>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 <script type="text/javascript">
   const setSlider = () => {
     const product = '%%productType%%', buttonText = '%%buttonText%%' || 'Ver impresoras', searchBoxButton = document.querySelector('#searchBoxButton');
     let initialMin = '%%initialMin%%' || 80, initialMax = '%%initialMax%%' || 500, max = '%%max%%' || 800, min = 0, currency = '%%currency%%' || '€';
     jQuery("#amount").val(initialMin + currency + " - " + initialMax + currency);
-    let url = "https://www.amazon.es/s?k=%%productType%%&rh=p_36%3A" + initialMin + "00-" + initialMax + "00&linkCode=ll2&tag=" + '3dmakernow-21';
+    let url = "https://3dmakernow.com/goto/?url=https://www.amazon.es/s?k=%%productType%%&rh=p_36%3A" + initialMin + "00-" + initialMax + "00&linkCode=ll2&tag=" + 'banner-web-21';
     searchBoxButton.href= url;
     searchBoxButton.innerHTML = buttonText;
     jQuery('#slider-range').slider({
@@ -28,10 +28,10 @@
       values: [ initialMin, initialMax ],
       slide: function( event, ui ) {
         jQuery("#amount").val( ui.values[ 0 ] + currency + " - " + ui.values[ 1 ] + currency);
-        let url = "https://www.amazon.es/s?k=%%productType%%&rh=p_36%3A" + ui.values[ 0 ] + "00-" + ui.values[ 1 ] + "00&linkCode=ll2&tag=" + '3dmakernow-21';
+        let url = "https://3dmakernow.com/goto/?url=https://www.amazon.es/s?k=%%productType%%&rh=p_36%3A" + ui.values[ 0 ] + "00-" + ui.values[ 1 ] + "00&linkCode=ll2&tag=" + 'banner-web-21';
         document.querySelector('#searchBoxButton').href= url;
       }
     });
-  }
+  };
   setSlider();
 </script>

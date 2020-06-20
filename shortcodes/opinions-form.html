@@ -21,23 +21,21 @@
       const reviewField = document.querySelector('#review');
       reviewField.disabled = false;
       if (input.value === 'no') {
-          reviewField.placeholder =
-              `¿No la has probado nunca? no te preocupes, comenta sobre lo que te llama la atención de la impresora y si estás dispuesto a probarla.`;
+          reviewField.placeholder = `¿No la has probado nunca? no te preocupes, comenta sobre lo que te llama la atención de la impresora y si estás dispuesto a probarla.`;
           yes.classList.remove('selected');
           no.classList.add('selected');
       } else {
-          reviewField.placeholder =
-              `Explica aquí tu experiencia, hace cuanto tiempo que la tienes, ¿Por qué probaste esta impresora? ¿Qué es lo que más te llama la atención?`;
+          reviewField.placeholder = `Explica aquí tu experiencia, hace cuanto tiempo que la tienes, ¿Por qué probaste esta impresora? ¿Qué es lo que más te llama la atención?`;
           yes.classList.add('selected');
           no.classList.remove('selected');
       }
       reviewField.focus();
-  }
+  };
 
   function showForm() {
       document.querySelector('#opinionsForm').hidden = false;
       document.querySelector('#nameReview').focus();
-  }
+  };
 
   function checkTextarea(textarea) {
       const sendReview = document.querySelector('#sendReview');
@@ -46,7 +44,7 @@
       } else {
           sendReview.disabled = true;
       }
-  }
+  };
 
   function sendReviewForm(e) {
       const nameReview = document.querySelector('#nameReview');
@@ -54,8 +52,7 @@
       const no = document.querySelector('#no');
       const tryReview = yes.classList.contains('selected') ? 'yes' : 'no';
       const review = document.querySelector('#review');
-      const url =
-          `https://api-3dmakernow.herokuapp.com/add-printer-review/%%printerId%%?authentication=3DMAKERNOW&name=${nameReview.value}&try=${tryReview}&review=${review.value}`
+      const url = `https://api-3dmakernow.herokuapp.com/add-printer-review/%%printerId%%?authentication=3DMAKERNOW&name=${nameReview.value}&try=${tryReview}&review=${review.value}`;
 
       fetch(url).then(res => res.json())
           .catch(error => {
@@ -75,7 +72,7 @@
               document.querySelector('#opiniones').scrollIntoView();
               return response;
           });
-  }
+  };
 
   fetch('https://api-3dmakernow.herokuapp.com/printer/%%printerId%%?authentication=3DMAKERNOW&reviewsInfo=true')
       .then(function (response) {
@@ -115,7 +112,7 @@
 
       }).catch(error => {
         fetch(`https://api-3dmakernow.herokuapp.com/error-notification/%%printerId%%?authentication=3DMAKERNOW&&shortcode=opinions-form&&error=${error}&&browser=${getBrowserOpinionsForm()}`)
-          .then(data => error)
+          .then(data => error);
       });
 </script>
 <div id="reviewSuccess" hidden class="reviewSuccess">Muchas gracias por dejar tu review</div>

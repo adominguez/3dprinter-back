@@ -94,7 +94,7 @@
         price = affiliateAmazonInfo.amazonPrice === '0.00' ? hidePrice = true : `${affiliateAmazonInfo.amazonPrice.toString().replace('.', ',')} ${affiliateAmazonInfo.currency}`;
         colors && colors.length && colors.forEach(item => {
             let colorLink = item.affiliateLink;
-            colorList += `<li class="related-product-list-item" alt="${item.colorName}" title="${item.colorName}" style="background-color: ${item.color}"><a rel="nofollow noopener noreferrer" target="_blank" class="related-product-list-item-link" href=${colorLink}></a></li>`;
+            colorList += `<li class="related-product-list-item" alt="${item.colorName}" title="${item.colorName}" style="background-color: ${item.color}"><a rel="nofollow noopener noreferrer" target="_blank" class="related-product-list-item-link" href=https://3dmakernow.com/goto/?url=${colorLink}></a></li>`;
         });
       }
       if (affiliateInfo === 'aliexpress') {
@@ -106,19 +106,17 @@
       }
       productList += `
         <li class="related-products-list-item amazon">
-          <a href="${link}" rel="nofollow noopener noreferrer" target="_blank">
-              <div class="related-product-list-item-image"
-              style="background: url(${image})">
-              </div>
+          <a href="https://3dmakernow.com/goto/?url=${link}" rel="nofollow noopener noreferrer" target="_blank">
+              <img loading="lazy" class="related-product-list-item-image lazyloaded" src="${image}" />
           </a>
-          <h4><a href="${link}" rel="nofollow noopener noreferrer" target="_blank">${name}</a></h4>
-          ${element.affiliateAmazonInfo.amazonPrime ? `<img src="https://3dmakernow.com/wp-content/uploads/2018/12/amazon-prime.png" alt="amazon prime" width="60" />` : ''}
+          <h4><a href="https://3dmakernow.com/goto/?url=${link}" rel="nofollow noopener noreferrer" target="_blank">${name}</a></h4>
+          ${element.affiliateAmazonInfo.amazonPrime ? `<img loading="lazy" class="lazyloaded" src="https://3dmakernow.com/wp-content/uploads/2018/12/amazon-prime.png" alt="amazon prime" width="60" />` : ''}
           <div class="related-product-list-item-info">
               ${!hidePrice ? `<span class="related-product-list-item-price">${price}</span>` : ''}
               ${element.affiliateAmazonInfo.amazonPrice !== '0.00' && element.affiliateAmazonInfo.amazonRate >= 3 ? `<div>${starsRating(affiliateAmazonInfo.amazonRate)}</div>` : ''}
           </div>
           ${colors.length ? `<ul class="${`related-product-list-colors`}">${colorList}</ul>` : ''}
-          <a class="sections-link sections-link-buy" href="${link}" rel="nofollow noopener noreferrer"
+          <a class="sections-link sections-link-buy" href="https://3dmakernow.com/goto/?url=${link}" rel="nofollow noopener noreferrer"
             title="Ver más información en Amazon" target="_blank">Ver más información</a>
         </li>`;
     });

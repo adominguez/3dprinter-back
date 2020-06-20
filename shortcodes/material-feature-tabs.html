@@ -2,7 +2,7 @@
 [su_tab title="Caracteristicas del material" disabled="no" anchor="" url="" target="blank"]
 <ul class="feature-table">
   <li class="feature-table-list" id="materialTypeList">
-    <img class="printer-image-table-list" alt="Tipo de material" src="https://3dmakernow.com/wp-content/uploads/2018/12/technology.svg" />
+    <img loading="lazy" class="printer-image-table-list lazyloaded" alt="Tipo de material" src="https://3dmakernow.com/wp-content/uploads/2018/12/technology.svg" />
     <div class="feature-table-list-container">
       <span class="bold">
         Tipo de material:
@@ -15,7 +15,7 @@
     </div>
   </li>
   <li class="feature-table-list" id="diameterList">
-    <img class="printer-image-table-list" alt="Diámetro del filamento" src="https://3dmakernow.com/wp-content/uploads/2018/12/filamentDiameter.svg" />
+    <img loading="lazy" class="printer-image-table-list lazyloaded" alt="Diámetro del filamento" src="https://3dmakernow.com/wp-content/uploads/2018/12/filamentDiameter.svg" />
     <div class="feature-table-list-container">
       <span class="bold">
         Diámetro del filamento:
@@ -28,7 +28,7 @@
     </div>
   </li>
   <li class="feature-table-list" id="reelSizeList">
-    <img class="printer-image-table-list" alt="Tamaño de la bobina"
+    <img loading="lazy" class="printer-image-table-list lazyloaded" alt="Tamaño de la bobina"
       src="https://3dmakernow.com/wp-content/uploads/2018/12/supportMaterials.svg" />
     <div class="feature-table-list-container">
       <span class="bold">
@@ -43,7 +43,7 @@
     </div>
   </li>
   <li class="feature-table-list" id="reelDiameterList">
-    <img class="printer-image-table-list" alt="Diámetro del eje de la bobina"
+    <img loading="lazy" class="printer-image-table-list lazyloaded" alt="Diámetro del eje de la bobina"
       src="https://3dmakernow.com/wp-content/uploads/2018/12/accuracy.svg" />
     <div class="feature-table-list-container">
       <span class="bold">
@@ -58,7 +58,7 @@
     </div>
   </li>
   <li class="feature-table-list" id="compositionList">
-    <img class="printer-image-table-list" alt="Composición"
+    <img loading="lazy" class="printer-image-table-list lazyloaded" alt="Composición"
       src="https://3dmakernow.com/wp-content/uploads/2018/12/printerVolume.svg" />
     <div class="feature-table-list-container">
       <span class="bold">
@@ -76,7 +76,7 @@
 [/su_tab]
 [su_tab title="Temperatura de impresión" disabled="no" anchor="" url="" target="blank"]
   <li class="feature-table-list" id="temperatureRangeList">
-    <img class="printer-image-table-list" alt="Rango de temperaturas"
+    <img loading="lazy" class="printer-image-table-list lazyloaded" alt="Rango de temperaturas"
       src="https://3dmakernow.com/wp-content/uploads/2018/12/extrusorTemp.svg" />
     <div class="feature-table-list-container">
       <span class="bold">
@@ -91,7 +91,7 @@
     </div>
   </li>
   <li class="feature-table-list" id="temperatureOptimalList">
-    <img class="printer-image-table-list" alt="Temperatura óptima de impresión"
+    <img loading="lazy" class="printer-image-table-list lazyloaded" alt="Temperatura óptima de impresión"
       src="https://3dmakernow.com/wp-content/uploads/2018/12/bedTemp.svg" />
     <div class="feature-table-list-container">
       <span class="bold">
@@ -110,7 +110,7 @@
 [su_tab title="Packaging" disabled="no" anchor="" url="" target="blank"]
 <ul class="feature-table">
   <li class="feature-table-list" id="weightList">
-    <img class="printer-image-table-list" alt="Peso del material" src="https://3dmakernow.com/wp-content/uploads/2018/12/shippingWeight.svg" />
+    <img loading="lazy" class="printer-image-table-list lazyloaded" alt="Peso del material" src="https://3dmakernow.com/wp-content/uploads/2018/12/shippingWeight.svg" />
     <div class="feature-table-list-container">
       <span class="bold">
         Peso:
@@ -123,7 +123,7 @@
     </div>
   </li>
   <li class="feature-table-list" id="packagingList">
-    <img class="printer-image-table-list" alt="Caja exterior"
+    <img loading="lazy" class="printer-image-table-list lazyloaded" alt="Caja exterior"
       src="https://3dmakernow.com/wp-content/uploads/2018/12/shippingDimensions.svg" />
     <div class="feature-table-list-container">
       <span class="bold">
@@ -157,39 +157,39 @@
     if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
     return M.join(' ');
   };
-  // Material type
+  /*Material type*/
   const materialTypeList = document.querySelector('#materialTypeList');
   const materialType = document.querySelector('#materialType');
 
-  // weight
+  /* weight */
   const weightList = document.querySelector('#weightList');
   const weight = document.querySelector('#weight');
 
-  // diameter
+  /* diameter */
   const diameterList = document.querySelector('#diameterList');
   const diameter = document.querySelector('#diameter');
 
-  // reelSize
+  /* reelSize */
   const reelSizeList = document.querySelector('#reelSizeList');
   const reelSize = document.querySelector('#reelSize');
 
-  // reelDiameter
+  /* reelDiameter */
   const reelDiameterList = document.querySelector('#reelDiameterList');
   const reelDiameter = document.querySelector('#reelDiameter');
 
-  // packaging
+  /* packaging */
   const packagingList = document.querySelector('#packagingList');
   const packaging = document.querySelector('#packaging');
 
-  // composition
+  /* composition */
   const compositionList = document.querySelector('#compositionList');
   const composition = document.querySelector('#composition');
 
-  // temperatureRange
+  /* temperatureRange */
   const temperatureRangeList = document.querySelector('#temperatureRangeList');
   const temperatureRange = document.querySelector('#temperatureRange');
 
-  // temperatureOptimal
+  /* temperatureOptimal */
   const temperatureOptimalList = document.querySelector('#temperatureOptimalList');
   const temperatureOptimal = document.querySelector('#temperatureOptimal');
 
@@ -212,7 +212,7 @@
         }
       } = data;
 
-      // SET caracteristicas labels
+      /* SET caracteristicas labels */
       composition ? composition.innerHTML = compositionBd : compositionList.hidden = true;
       diameter ? diameter.innerHTML = diameterBd : diameterList.hidden = true;
       materialType ? materialType.innerHTML = materialTypeBd : materialTypeList.hidden = true;
@@ -227,7 +227,7 @@
       fetch(
           `https://api-3dmakernow.herokuapp.com/error-notification/%%materialId%%?authentication=3DMAKERNOW&&shortcode=printer-feature-tabs&&error=${error}&&browser=${getBrowserInfoFeatureTabs()}`
           )
-        .then(data => error)
+        .then(data => error);
     });
 
 </script>

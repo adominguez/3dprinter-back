@@ -1,0 +1,71 @@
+<div id="redirectTo"></div>
+<div id="infoBack"></div>
+<div class="flex-center">
+  <div id="redirect-container" class="redirect-container">
+    <span>Navegando hacia</span>
+    <img id="redirect-image" class="redirect-image" />
+    <span id="redirect-countdown" class="redirect-countdown"></span>
+  </div>
+  <div id="redirect-error-container" class="redirect-error-container" hidden>
+    <i class="fa fa-exclamation-triangle"></i>
+    <span>Hay un error al intentar redireccionar, accede a una de estas páginas para encontrar más información.</span>
+    <ul class="su-siblings">
+      <li class="page_item page-item-1241">
+        <a href="https://3dmakernow.com/comprar-tu-primera-impresora-3d/">Guía para comprar tu primera impresora 3D como un auténtico profesional</a>
+      </li>
+      <li class="page_item page-item-1177">
+        <a href="https://3dmakernow.com/impresora-3d-sla/">Impresora 3D SLA | Elige la mejor impresora 3d profesional</a>
+      </li>
+      <li class="page_item page-item-316">
+        <a href="https://3dmakernow.com/kit-impresora-3d-para-montar/">kit impresora 3D para montar, Megaguía de compra</a>
+      </li>
+      <li class="page_item page-item-522">
+        <a href="https://3dmakernow.com/">mejor impresora 3d</a>
+      </li>
+      <li class="page_item page-item-2320">
+        <a href="https://3dmakernow.com/resinas-para-impresoras-3d/">Superguía de resinas para impresoras 3D SLA</a>
+      </li>
+      <li class="page_item page-item-1542">
+        <a href="https://3dmakernow.com/filamento-para-impresora-3d/">Superguía para elegir filamento para impresora 3D</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<script>
+  /*let redirectTo = {};
+  const splittedUrl = window.location.search.replace('?', '').split('&');
+  splittedUrl.forEach(item => {
+    const splittedItem = item.split('=');
+    redirectTo[splittedItem[0]] = splittedItem[1];
+  })*/
+  let totalTime = 4;
+  const url = window.location.search.replace('?url=', '');
+  const destiny = (url.includes('amazon') || url.includes('amzn')) && 'Amazon' || url.includes('aliexpress') && 'Aliexpress' || url.includes('gearbest') && 'Gearbest' || null;
+  redirectTo = {
+    url,
+    destiny
+  }
+
+  if(redirectTo.url && redirectTo.destiny) {
+    document.querySelector('#redirectTo').innerHTML = `La información que has solicitado se encuentra en <b>${redirectTo.destiny}</b> vas a salir de 3DMakerNow para ver lo que estás buscando.`;
+    document.querySelector('#infoBack').innerHTML = `Recuerda que siempre puedes volver a 3DMakerNow para ver más información sobre impresión 3D.`;
+    document.querySelector('#redirect-image').src = `https://3dmakernow.com/wp-content/uploads/2020/06/${redirectTo.destiny}-logo.svg`;
+    updateClock();
+  } else {
+    document.querySelector('#redirect-container').hidden = true;
+    document.querySelector('#redirectTo').hidden = true
+    document.querySelector('#infoBack').hidden = true;
+    document.querySelector('#redirect-error-container').hidden = false;
+  }
+
+  function updateClock() {
+    if(totalTime === 0){
+      window.location.href = redirectTo.url;
+    }else{
+      totalTime-=1;
+      document.querySelector('#redirect-countdown').innerHTML = totalTime;
+      setTimeout("updateClock()",1000);
+    }
+  }
+
+</script>

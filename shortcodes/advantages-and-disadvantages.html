@@ -1,0 +1,44 @@
+<div class="advantage-card" id="advantage-%%id%%">
+    <div class="su-row">
+    </div>
+</div>
+<script>
+    var advantagesData = `%%advantages:[]%%`;
+    var advantagesDataReplaced = advantagesData.replaceAll(`'`, `"`).replaceAll('\n', '').replaceAll('%', `'`);
+    var advantages = JSON.parse(`[${advantagesDataReplaced}]`);
+    var disadvantagesData = `%%disadvantages:[]%%`;
+    var disadvantagesDataReplaced = disadvantagesData.replaceAll(`'`, `"`).replaceAll('\n', '').replaceAll('%', `'`);
+    var disadvantages = JSON.parse(`[${disadvantagesDataReplaced}]`);
+    var columnSize = advantages.length && disadvantages.length ? '2' : '1';
+    var advantageCard = document.getElementById('advantage-%%id%%');
+
+    var createColumn = (data, type) => {
+        var column = advantageCard.appendChild('div');
+        column.className = `su-column su-column-size-1-${columnSize}`;
+        var html = '';
+        data.forEach(element => {
+            html += `<div class="su-service advantage-card-item ${type}">
+                <div class="su-service-title">
+                    ${element.image ? `<img src="${element.image}" alt="${element.title}" />` : ''}
+                    ${element.title}
+                </div>
+                <div class="su-service-content su-u-clearfix su-u-trim" style="padding-left:84px">
+                    ${element.text}
+                </div>
+            </div>`;
+        });
+        column.innerHTML = `<div class="su-column-inner su-u-clearfix su-u-trim" id="column-%%id%%-${type}">
+            <h3 id="advantages-title-%%id%%-${type}">${type === 'advantage' ? 'Ventajas' : 'desventajas'}</h3>
+            ${html}
+        </div>`;
+    }
+
+    if(advantages.length) {
+        createColumn(advantages, 'advantage');
+    }
+
+    if(disadvantages.length) {
+        createColumn(disadvantages, 'disadvantage');
+    }
+
+</script>

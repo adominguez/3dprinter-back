@@ -106,7 +106,7 @@
     </li>
     <li class="feature-table-list" id="nozzleDiameterList">
         <img loading="lazy" class="printer-image-table-list lazyloaded" alt="Diámetro de la boquilla"
-            src="https://3dmakernow.com/wp-content/uploads/2018/12/nozzleDiameter.svg" />
+            src="https://3dmakernow.com/wp-content/uploads/2018/12/nozzlePrinterDiameter.svg" />
         <div class="feature-table-list-container">
             <span class="bold">
                 Diámetro de la boquilla:
@@ -394,7 +394,7 @@
 [/su_row]
 [/su_tab]
 [/su_tabs]
-<script type="text/javascript">
+<script>
     const getBrowserInfoFeatureTabs = function() {
         var ua= navigator.userAgent, tem,
         M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
@@ -526,12 +526,6 @@
 
             /* SET caracteristicas labels */
             printerTechnology.innerHTML = technology;
-            if (technology.includes('FDM')) {
-                printerTechnologyTooltip.innerHTML = '[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Impresión por deposición de material fundido" content="Es un tipo de impresión por el que <b>la pieza se va realizando capa a capa</b>. El material se va fundiendo a su paso por el extrusor de la impresora y va realizando la pieza." close="no" class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]';
-            }
-            if (technology.includes('SLA')) {
-                printerTechnologyTooltip.innerHTML = '[su_tooltip style="bootstrap" position="east" rounded="yes" size="1" title="Impresión por estereolitografía" content="La impresión 3D se realiza mediante resina líquida, gracias a una luz photónica que va solidificando el material capa a capa." close="no" class="tooltip-link"]<i class="fa fa-info-circle"></i>[/su_tooltip]';
-            }
             printerVolume ? printerVolume.innerHTML = volume : printerVolumeList.hidden = true;
             printerResolutionLayer ? printerResolution.innerHTML = printerResolutionLayer : printerResolutionList.hidden = true;
             precision ? printerPrecision.innerHTML = precision : printerPrecisionList.hidden = true;
